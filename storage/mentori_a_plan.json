@@ -1,0 +1,78 @@
+{
+  "diagnostico": "Média: 7.58 | Veredito: prata",
+  "pilares": [
+    {
+      "nome": "Propósito/Valores",
+      "score": 9,
+      "nota": "Alinhado com integridade, justiça e caráter."
+    },
+    {
+      "nome": "Viabilidade Financeira",
+      "score": 7,
+      "nota": "Unit economics aceitável, melhora com escala."
+    },
+    {
+      "nome": "Produto/Mercado",
+      "score": 8,
+      "nota": "Dor real e proposta clara."
+    },
+    {
+      "nome": "Equipe/Liderança",
+      "score": 8,
+      "nota": "Compromisso e visão IA-First."
+    },
+    {
+      "nome": "Marca/Posicionamento",
+      "score": 7,
+      "nota": "Arquitetura de marcas sólida."
+    },
+    {
+      "nome": "Compliance/Legal",
+      "score": 7,
+      "nota": "Acompanhamento tributário necessário."
+    },
+    {
+      "nome": "Operação/Processos",
+      "score": 6,
+      "nota": "Automação em curso, padronizar mais."
+    },
+    {
+      "nome": "Tecnologia/IA",
+      "score": 9,
+      "nota": "DNA IA-First e multiagente."
+    },
+    {
+      "nome": "Canais/Distribuição",
+      "score": 7,
+      "nota": "WhatsApp/Telegram fortes, expandir mídia."
+    },
+    {
+      "nome": "Parcerias",
+      "score": 6,
+      "nota": "Tratar APIs de cashback e redes nacionais."
+    },
+    {
+      "nome": "Escalabilidade",
+      "score": 8,
+      "nota": "White-label multi-tenant promissor."
+    },
+    {
+      "nome": "Impacto Social/Kingdom",
+      "score": 9,
+      "nota": "Orientação para abundância."
+    }
+  ],
+  "acoes_prioritarias": [
+    "Lançar ALIANCI.A. com programa de afiliados 3 níveis (25%-10%-5%) + mensalidade R$197.",
+    "Integrar ECONOMI.A. (cashback/descontos) com APIs (supermercados, postos, farmácias).",
+    "Implantar AURI.A. + PREDITIVI.A. (diagnóstico > solução > acompanhamento)."
+  ],
+  "rotina_prox_passos": [
+    "Ler status → identificar gargalos.",
+    "Planejar dia por prioridade.",
+    "Criar/testar/publicar módulos.",
+    "Relatar progresso e previsões.",
+    "Revisar valores e integridade."
+  ],
+  "saved_at": "2025-11-15T17:35:43.349551"
+}

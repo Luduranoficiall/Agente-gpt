@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>API do Cliente — Agente GPT</title>
+<style>
+body { font-family: sans-serif; padding: 40px; }
+.section { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+code { background: #eee; padding: 2px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<h1>📘 API do Cliente — Agente GPT</h1>
+<p>Este documento explica como empresas usam o seu agente GPT.</p>
+
+<div class="section">
+<h2>1. Criar Token</h2>
+<p><b>POST</b> <code>/public/tenant/create</code></p>
+<pre>{
+ "company_name": "Minha Empresa"
+}</pre>
+</div>
+
+<div class="section">
+<h2>2. Obter Informações</h2>
+<p>GET <code>/tenant/info</code></p>
+<p>Header:</p>
+<pre>X-Token: SEU_TOKEN_AQUI</pre>
+</div>
+
+<div class="section">
+<h2>3. Executar Módulos Internos</h2>
+<p><b>POST</b> <code>/run/task</code></p>
+<pre>{
+ "module": "auriar.run_auditoria"
+}</pre>
+<p>Header:</p>
+<pre>X-Token: SEU_TOKEN_AQUI</pre>
+</div>
+
+</body>
+</html>

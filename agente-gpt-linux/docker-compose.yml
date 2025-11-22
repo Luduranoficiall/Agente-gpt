@@ -1,0 +1,31 @@
+
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: agente-gpt-app
+    ports:
+      - "8080:8080"
+    env_file: .env
+    volumes:
+      - ./storage:/app/storage
+      - ./credentials:/app/credentials
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: postgres:16
+    container_name: agente-gpt-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: agent
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:

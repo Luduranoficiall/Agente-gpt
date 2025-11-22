@@ -1,0 +1,12 @@
+
+PyYAML
+fastapi
+uvicorn
+APScheduler
+python-dotenv
+SQLAlchemy
+psycopg2-binary
+requests
+pydantic
+gspread
+google-auth

@@ -1,0 +1,38 @@
+{
+  "campaigns": [
+    {
+      "title": "Campanha 1: Lançar ALIANCI.A. com programa de afiliados 3 níveis (25%-10%-5%) + mensalidade R$197.",
+      "description": "Lançar ALIANCI.A. com programa de afiliados 3 níveis (25%-10%-5%) + mensalidade R$197.",
+      "channels": [
+        "WhatsApp (API Oficial, 360Dialog, Twilio, Zenvia)",
+        "Telegram (BotFather/API)",
+        "WebApp (Next.js + Vercel)",
+        "Mobile (FlutterFlow / Expo)"
+      ],
+      "status": "queued"
+    },
+    {
+      "title": "Campanha 2: Integrar ECONOMI.A. (cashback/descontos) com APIs (supermercados, postos, farmácias).",
+      "description": "Integrar ECONOMI.A. (cashback/descontos) com APIs (supermercados, postos, farmácias).",
+      "channels": [
+        "WhatsApp (API Oficial, 360Dialog, Twilio, Zenvia)",
+        "Telegram (BotFather/API)",
+        "WebApp (Next.js + Vercel)",
+        "Mobile (FlutterFlow / Expo)"
+      ],
+      "status": "queued"
+    },
+    {
+      "title": "Campanha 3: Implantar AURI.A. + PREDITIVI.A. (diagnóstico > solução > acompanhamento).",
+      "description": "Implantar AURI.A. + PREDITIVI.A. (diagnóstico > solução > acompanhamento).",
+      "channels": [
+        "WhatsApp (API Oficial, 360Dialog, Twilio, Zenvia)",
+        "Telegram (BotFather/API)",
+        "WebApp (Next.js + Vercel)",
+        "Mobile (FlutterFlow / Expo)"
+      ],
+      "status": "queued"
+    }
+  ],
+  "at": "2025-11-15T17:35:43.476128"
+}

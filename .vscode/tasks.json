@@ -1,0 +1,10 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Iniciar backend FastAPI na porta 4000",
+			"type": "shell",
+			"command": "uvicorn agent_gpt:app --host 0.0.0.0 --port 4000"
+		}
+	]
+}
