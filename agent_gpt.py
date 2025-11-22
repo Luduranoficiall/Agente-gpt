@@ -1,26 +1,26 @@
 
+import os
 # --- CONEXÃO PROFISSIONAL COM BANCO RAILWAY ---
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
-        raise ValueError("A variável DATABASE_URL não foi encontrada. Configure no Railway!")
+    raise ValueError("A variável DATABASE_URL não foi encontrada. Configure no Railway!")
 if DATABASE_URL.startswith("postgres://"):
-        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")
 engine = create_engine(
-        DATABASE_URL,
-        connect_args={"sslmode": "require"}
+    DATABASE_URL,
+    connect_args={"sslmode": "require"}
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 def get_db():
-        db = SessionLocal()
-        try:
-                yield db
-        finally:
-                db.close()
-import os
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 def get_agent_url():
     return os.getenv("AGENT_URL", "https://agente.extraordinaria.ai")
 
@@ -66,24 +66,83 @@ logger = logging.getLogger("AgenteGPT")
 def log_event(msg, level="info"):
     if level == "info":
         logger.info(f"✅ {msg}")
-    elif level == "error":
-        logger.error(f"❌ {msg}")
-    elif level == "warning":
-        logger.warning(f"⚠️ {msg}")
-    else:
-        logger.debug(msg)
 
+    # Função de inicialização do banco (exemplo, ajuste conforme seu modelo real)
 def handle_exception(exc, context=""):
     logger.error(f"❌ Erro: {exc} | Contexto: {context}")
     return {"error": str(exc), "context": context}
 
 
 
-
-          status TEXT,
-          created_at TEXT,
-          processed_at TEXT
-        )"""))
+# Função de inicialização do banco de dados
+def init_db():
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS kv (
+                k TEXT PRIMARY KEY,
+                v TEXT
+            );
+        """))
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS tasks (
+                id SERIAL PRIMARY KEY,
+                name TEXT,
+                module TEXT,
+                status TEXT,
+                started_at TEXT,
+                finished_at TEXT,
+                result TEXT,
+                error TEXT
+            );
+        """))
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS affiliates (
+                id SERIAL PRIMARY KEY,
+                name TEXT,
+                email TEXT,
+                phone TEXT,
+                sponsor_id INTEGER,
+                tenant_id TEXT,
+                created_at TEXT
+            );
+        """))
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS subscriptions (
+                id SERIAL PRIMARY KEY,
+                affiliate_id INTEGER,
+                amount FLOAT,
+                period TEXT,
+                tenant_id TEXT,
+                created_at TEXT
+            );
+        """))
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS commissions (
+                id SERIAL PRIMARY KEY,
+                payer_affiliate_id INTEGER,
+                beneficiary_affiliate_id INTEGER,
+                level INTEGER,
+                base_amount FLOAT,
+                percent FLOAT,
+                commission_value FLOAT,
+                tenant_id TEXT,
+                created_at TEXT
+            );
+        """))
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS business_demands (
+                id SERIAL PRIMARY KEY,
+                client_id TEXT,
+                title TEXT,
+                description TEXT,
+                channels TEXT,
+                to_map TEXT,
+                status TEXT,
+                created_at TEXT,
+                processed_at TEXT
+            );
+        """))
     logger.info("✔ Banco de dados pronto.")
 
 def kv_set(session, k, v):
