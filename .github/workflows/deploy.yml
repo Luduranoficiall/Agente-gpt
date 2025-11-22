@@ -23,7 +23,7 @@ jobs:
           pip install flake8
           flake8 . || true
       - name: Deploy to Railway
-        uses: railwayapp/actions@v1
+        uses: railwayapp/actions@latest
         with:
           railwayToken: ${{ secrets.RAILWAY_TOKEN }}
         env:
