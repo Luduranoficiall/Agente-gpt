@@ -1,3 +1,46 @@
+from sqlalchemy import create_engine, text
+from sqlalchemy.orm import sessionmaker
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///storage/agent.sqlite3")
+engine = create_engine(DATABASE_URL, echo=False, future=True)
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
+
+def init_db():
+        logger.info("🔧 Iniciando banco de dados e garantindo tabelas…")
+        with engine.begin() as conn:
+                conn.execute(text("""
+                CREATE TABLE IF NOT EXISTS tasks (
+                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    name TEXT, module TEXT, status TEXT,
+                    started_at TEXT, finished_at TEXT, result TEXT, error TEXT
+                )"""))
+                conn.execute(text("""CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT)"""))
+                conn.execute(text("""
+                CREATE TABLE IF NOT EXISTS affiliates (
+                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    name TEXT, email TEXT, phone TEXT,
+                    sponsor_id INTEGER, tenant_id TEXT, created_at TEXT
+                )"""))
+                conn.execute(text("""
+                CREATE TABLE IF NOT EXISTS subscriptions (
+                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    affiliate_id INTEGER, amount REAL, period TEXT,
+                    tenant_id TEXT, created_at TEXT
+                )"""))
+                conn.execute(text("""
+                CREATE TABLE IF NOT EXISTS commissions (
+                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    payer_affiliate_id INTEGER, beneficiary_affiliate_id INTEGER,
+                    level INTEGER, base_amount REAL, percent REAL, commission_value REAL,
+                    tenant_id TEXT, created_at TEXT
+                )"""))
+                conn.execute(text("""
+                CREATE TABLE IF NOT EXISTS business_demands (
+                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    client_id TEXT,
+                    title TEXT,
+                    description TEXT,
+                    channels TEXT,
+                )"""))
 import os
 def get_agent_url():
     return os.getenv("AGENT_URL", "https://agente.extraordinaria.ai")
@@ -30,12 +73,30 @@ LOGS = STORAGE / "logs"
 PROMPT_PATH = ROOT / "agent_gpt_prompt.yaml"
 STORAGE.mkdir(exist_ok=True); LOGS.mkdir(exist_ok=True)
 
+
 logging.basicConfig(
-  level=logging.INFO,
-  format="%(asctime)s [%(levelname)s] %(message)s",
-  handlers=[logging.FileHandler(LOGS / "agent.log", encoding="utf-8"), logging.StreamHandler(sys.stdout)]
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler(LOGS / "agent.log", encoding="utf-8"),
+        logging.StreamHandler(sys.stdout)
+    ]
 )
 logger = logging.getLogger("AgenteGPT")
+
+def log_event(msg, level="info"):
+    if level == "info":
+        logger.info(f"✅ {msg}")
+    elif level == "error":
+        logger.error(f"❌ {msg}")
+    elif level == "warning":
+        logger.warning(f"⚠️ {msg}")
+    else:
+        logger.debug(msg)
+
+def handle_exception(exc, context=""):
+    logger.error(f"❌ Erro: {exc} | Contexto: {context}")
+    return {"error": str(exc), "context": context}
 
 
 
