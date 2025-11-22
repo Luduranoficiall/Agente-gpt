@@ -14,8 +14,7 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from apscheduler.schedulers.background import BackgroundScheduler
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker
+
 
 from modules.integrations.social_channels import (
     ChannelName,
@@ -38,47 +37,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger("AgenteGPT")
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///storage/agent.sqlite3")
-engine = create_engine(DATABASE_URL, echo=False, future=True)
-SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
 
-def init_db():
-    logger.info("🔧 Iniciando banco de dados e garantindo tabelas…")
-    with engine.begin() as conn:
-        conn.execute(text("""
-        CREATE TABLE IF NOT EXISTS tasks (
-          id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-          name TEXT, module TEXT, status TEXT,
-          started_at TEXT, finished_at TEXT, result TEXT, error TEXT
-        )"""))
-        conn.execute(text("""CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT)"""))
-        conn.execute(text("""
-        CREATE TABLE IF NOT EXISTS affiliates (
-          id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-          name TEXT, email TEXT, phone TEXT,
-          sponsor_id INTEGER, tenant_id TEXT, created_at TEXT
-        )"""))
-        conn.execute(text("""
-        CREATE TABLE IF NOT EXISTS subscriptions (
-          id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-          affiliate_id INTEGER, amount REAL, period TEXT,
-          tenant_id TEXT, created_at TEXT
-        )"""))
-        conn.execute(text("""
-        CREATE TABLE IF NOT EXISTS commissions (
-          id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-          payer_affiliate_id INTEGER, beneficiary_affiliate_id INTEGER,
-          level INTEGER, base_amount REAL, percent REAL, commission_value REAL,
-          tenant_id TEXT, created_at TEXT
-        )"""))
-        conn.execute(text("""
-        CREATE TABLE IF NOT EXISTS business_demands (
-          id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-          client_id TEXT,
-          title TEXT,
-          description TEXT,
-          channels TEXT,
-          to_map TEXT,
+
+
           status TEXT,
           created_at TEXT,
           processed_at TEXT
