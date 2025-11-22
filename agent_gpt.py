@@ -1,46 +1,25 @@
-from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///storage/agent.sqlite3")
-engine = create_engine(DATABASE_URL, echo=False, future=True)
-SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
 
-def init_db():
-        logger.info("🔧 Iniciando banco de dados e garantindo tabelas…")
-        with engine.begin() as conn:
-                conn.execute(text("""
-                CREATE TABLE IF NOT EXISTS tasks (
-                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-                    name TEXT, module TEXT, status TEXT,
-                    started_at TEXT, finished_at TEXT, result TEXT, error TEXT
-                )"""))
-                conn.execute(text("""CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT)"""))
-                conn.execute(text("""
-                CREATE TABLE IF NOT EXISTS affiliates (
-                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-                    name TEXT, email TEXT, phone TEXT,
-                    sponsor_id INTEGER, tenant_id TEXT, created_at TEXT
-                )"""))
-                conn.execute(text("""
-                CREATE TABLE IF NOT EXISTS subscriptions (
-                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-                    affiliate_id INTEGER, amount REAL, period TEXT,
-                    tenant_id TEXT, created_at TEXT
-                )"""))
-                conn.execute(text("""
-                CREATE TABLE IF NOT EXISTS commissions (
-                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-                    payer_affiliate_id INTEGER, beneficiary_affiliate_id INTEGER,
-                    level INTEGER, base_amount REAL, percent REAL, commission_value REAL,
-                    tenant_id TEXT, created_at TEXT
-                )"""))
-                conn.execute(text("""
-                CREATE TABLE IF NOT EXISTS business_demands (
-                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-                    client_id TEXT,
-                    title TEXT,
-                    description TEXT,
-                    channels TEXT,
-                )"""))
+# --- CONEXÃO PROFISSIONAL COM BANCO RAILWAY ---
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+        raise ValueError("A variável DATABASE_URL não foi encontrada. Configure no Railway!")
+if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")
+engine = create_engine(
+        DATABASE_URL,
+        connect_args={"sslmode": "require"}
+)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+def get_db():
+        db = SessionLocal()
+        try:
+                yield db
+        finally:
+                db.close()
 import os
 def get_agent_url():
     return os.getenv("AGENT_URL", "https://agente.extraordinaria.ai")
