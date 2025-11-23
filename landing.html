@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agente GPT - O Atendente que Encanta</title>
+    <meta name="description" content="Transforme seu atendimento com o Agente GPT: humanizado, inteligente e pronto para impulsionar seu negócio 24h por dia.">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="container hero">
+            <img src="https://a.umbler.com/wp-content/uploads/2023/05/umbler-logo-bg-primary.svg" alt="Logo Agente GPT" class="logo">
+            <h1>O agente que dá superpoderes ao seu WhatsApp</h1>
+            <p class="subtitle">Qualifique leads, venda 24h por dia e encante clientes com atendimento realmente humano e inteligente.</p>
+            <a href="#contato" class="cta">Quero experimentar grátis</a>
+        </div>
+    </header>
+    <main>
+        <section class="benefits container">
+            <h2>Por que escolher o Agente GPT?</h2>
+            <ul>
+                <li>Atendimento humanizado e empático, sem respostas robóticas</li>
+                <li>Responde dúvidas, agenda compromissos e qualifica leads automaticamente</li>
+                <li>Funciona 24h, sem perder o toque humano</li>
+                <li>Integração fácil com WhatsApp, CRM e outros sistemas</li>
+                <li>Personalizável para o seu negócio</li>
+            </ul>
+        </section>
+        <section class="cases container">
+            <h2>Casos de uso reais</h2>
+            <div class="cases-list">
+                <div class="case">
+                    <h3>Clínicas e Saúde</h3>
+                    <p>Agendamento automático, lembretes de consulta e respostas humanizadas para pacientes.</p>
+                </div>
+                <div class="case">
+                    <h3>Educação</h3>
+                    <p>Responde dúvidas de alunos, envia informações sobre cursos e faz matrícula automática.</p>
+                </div>
+                <div class="case">
+                    <h3>Vendas e Serviços</h3>
+                    <p>Qualifica leads, responde orçamentos e nunca deixa um cliente sem resposta.</p>
+                </div>
+            </div>
+        </section>
+        <section class="faq container">
+            <h2>Dúvidas frequentes</h2>
+            <details>
+                <summary>O agente é mesmo humanizado?</summary>
+                <p>Sim! O Agente GPT foi treinado para conversar de forma natural, empática e personalizada, adaptando o tom conforme o contexto.</p>
+            </details>
+            <details>
+                <summary>Preciso de equipe técnica para usar?</summary>
+                <p>Não! A configuração é simples e você conta com nosso suporte para personalizar tudo do seu jeito.</p>
+            </details>
+            <details>
+                <summary>Como recebo os contatos do formulário?</summary>
+                <p>Você pode receber por e-mail, WhatsApp ou consultar direto no painel do agente.</p>
+            </details>
+        </section>
+        <section class="contact container" id="contato">
+            <h2>Fale com a gente</h2>
+            <form id="contatoForm" method="POST" action="/contato">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+                <label for="whatsapp">WhatsApp</label>
+                <input type="text" id="whatsapp" name="whatsapp" required placeholder="(XX) XXXXX-XXXX">
+                <label for="empresa">Empresa</label>
+                <input type="text" id="empresa" name="empresa">
+                <button type="submit">Enviar e conversar</button>
+                <div id="formMsg"></div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>© 2025 Agente GPT. Feito com 💚 para pessoas.</p>
+        </div>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>
