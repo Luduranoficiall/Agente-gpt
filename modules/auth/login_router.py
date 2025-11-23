@@ -1,5 +1,6 @@
-from fastapi import APIRouter, HTTPException, Header
+from fastapi import APIRouter, Header, HTTPException
 from fastapi.responses import HTMLResponse
+
 from .auth_jwt import validar_token
 
 router = APIRouter()
@@ -37,6 +38,7 @@ function login(e){
 </body>
 </html>
 """
+
 
 @router.get("/login", response_class=HTMLResponse)
 def login_page():

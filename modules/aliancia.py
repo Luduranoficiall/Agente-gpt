@@ -11,14 +11,17 @@ STORAGE = Path(__file__).resolve().parents[1] / "storage"
 DASHBOARD_FILE = STORAGE / "aliancia_dashboard.json"
 
 
-def _fetchall(session, query: str, params: Dict[str, Any] | None = None) -> List[Dict[str, Any]]:
+def _fetchall(
+    session, query: str, params: Dict[str, Any] | None = None
+) -> List[Dict[str, Any]]:
     rows = session.execute(text(query), params or {}).fetchall()
     return [dict(row._mapping) for row in rows]
 
 
 def _persist_dashboard(payload: Dict[str, Any]):
     STORAGE.mkdir(exist_ok=True)
-    DASHBOARD_FILE.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
+    DASHBOARD_FILE.write_text(json.dumps(
+        payload, indent=2, ensure_ascii=False))
 
 
 def _build_tree(session) -> List[Dict[str, Any]]:
@@ -28,7 +31,8 @@ def _build_tree(session) -> List[Dict[str, Any]]:
     )
     nodes: Dict[int, Dict[str, Any]] = {}
     for row in rows:
-        nodes[row["id"]] = {"id": row["id"], "name": row["name"], "children": []}
+        nodes[row["id"]] = {"id": row["id"],
+                            "name": row["name"], "children": []}
     roots: List[Dict[str, Any]] = []
     for row in rows:
         node = nodes[row["id"]]
@@ -42,7 +46,8 @@ def _build_tree(session) -> List[Dict[str, Any]]:
 
 def build_affiliates_backend(session, cfg: Dict[str, Any]):
     """Computa métricas ALIANCI.A e salva dashboard JSON."""
-    totals = session.execute(text("SELECT COUNT(*) FROM affiliates")).fetchone()
+    totals = session.execute(
+        text("SELECT COUNT(*) FROM affiliates")).fetchone()
     total_affiliates = totals[0] if totals else 0
 
     commissions = _fetchall(
@@ -59,7 +64,9 @@ def build_affiliates_backend(session, cfg: Dict[str, Any]):
     )
 
     last_30 = session.execute(
-        text("SELECT COALESCE(SUM(amount),0) FROM subscriptions WHERE created_at >= :cut"),
+        text(
+            "SELECT COALESCE(SUM(amount),0) FROM subscriptions WHERE created_at >= :cut"
+        ),
         {"cut": (datetime.utcnow() - timedelta(days=30)).isoformat()},
     ).fetchone()
 

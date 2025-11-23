@@ -1,5 +1,7 @@
 import os
+
 import requests
+
 
 def send_telegram(chat_id: str, message: str):
     token = os.getenv("TELEGRAM_BOT_TOKEN")

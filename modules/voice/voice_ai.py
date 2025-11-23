@@ -1,8 +1,10 @@
-import requests
-import os
 import base64
+import os
+
+import requests
 
 OPENAI_KEY = os.getenv("OPENAI_KEY")
+
 
 def audio_to_text(file_bytes: bytes):
     url = "https://api.openai.com/v1/audio/transcriptions"
@@ -17,14 +19,11 @@ def audio_to_text(file_bytes: bytes):
     r = requests.post(url, files=files, headers=h)
     return r.json()["text"]
 
+
 def text_to_audio(text: str):
     url = "https://api.openai.com/v1/audio/speech"
 
-    payload = {
-        "model": "gpt-4o-mini-tts",
-        "input": text,
-        "voice": "alloy"
-    }
+    payload = {"model": "gpt-4o-mini-tts", "input": text, "voice": "alloy"}
 
     h = {"Authorization": f"Bearer {OPENAI_KEY}"}
 

@@ -13,11 +13,11 @@
 # By: Agente GPT (para Humberto Duran)
 # ============================================================
 
-import os
-import sys
 import json
-import time
+import os
 import subprocess
+import sys
+import time
 from pathlib import Path
 
 ROOT = Path.home() / "agente-gpt-linux"
@@ -27,6 +27,7 @@ INTEGRATIONS = MODULES / "integrations"
 # ============================================================
 # UTILITÁRIOS
 # ============================================================
+
 
 def write(path: Path, content: str):
     """Cria arquivo com conteúdo."""
@@ -64,7 +65,9 @@ ROOT.mkdir(parents=True, exist_ok=True)
 # (prompt YAML, requirements, env, docker)
 # ============================================================
 
-write(ROOT / "agent_gpt_prompt.yaml", """
+write(
+    ROOT / "agent_gpt_prompt.yaml",
+    """
 # PROMPT-MESTRE DO AGENTE GPT (HUMANIZADO, AUTÔNOMO)
 agente:
   nome: "Agente GPT"
@@ -128,9 +131,12 @@ pipeline_execucao:
 
 modo_operacao: "Autônomo, colaborativo, humanizado"
 mensagem_inicial: "Agente GPT ativado. Missão: prosperidade."
-""")
+""",
+)
 
-write(ROOT / "requirements.txt", """
+write(
+    ROOT / "requirements.txt",
+    """
 PyYAML
 fastapi
 uvicorn
@@ -142,9 +148,12 @@ requests
 pydantic
 gspread
 google-auth
-""")
+""",
+)
 
-write(ROOT / ".env.example", """
+write(
+    ROOT / ".env.example",
+    """
 WHATSAPP_CLOUD_TOKEN=
 WHATSAPP_CLOUD_PHONE_NUMBER_ID=
 
@@ -168,18 +177,24 @@ KWAI_WEBHOOK_URL=
 GOOGLE_SERVICE_ACCOUNT_JSON=/app/credentials/service.json
 DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/agent
 FASTAPI_PORT=8080
-""")
+""",
+)
 
-write(ROOT / "Dockerfile", """
+write(
+    ROOT / "Dockerfile",
+    """
 FROM python:3.11-slim
 WORKDIR /app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 CMD ["python", "agent_gpt.py"]
-""")
+""",
+)
 
-write(ROOT / "docker-compose.yml", """
+write(
+    ROOT / "docker-compose.yml",
+    """
 version: "3.9"
 services:
   app:
@@ -210,13 +225,16 @@ services:
 
 volumes:
   pgdata:
-""")
+""",
+)
 
 # ============================================================
 # AGENTE GPT COMPLETO (IA + API + SCHEDULER + NEGÓCIOS)
 # ============================================================
 
-write(ROOT / "agent_gpt.py", """
+write(
+    ROOT / "agent_gpt.py",
+    """
 # (ARQUIVO COMPLETO DO AGENTE GPT)
 # IA HUMANIZADA + AFILIADOS + MULTICANAIS + DEMANDA NEGÓCIO
 # (CÓDIGO ENCURTADO POR LIMITES DO CHAT)
@@ -236,7 +254,8 @@ write(ROOT / "agent_gpt.py", """
 # —— 
 # Se quiser, envio a versão estendida inteira AGORA.
 print("Agente GPT carregado. Pronto para trabalhar.")
-""")
+""",
+)
 
 # ============================================================
 # MÓDULOS (BOTGPT, AURIAR, ECONOMI.A etc)
@@ -244,53 +263,71 @@ print("Agente GPT carregado. Pronto para trabalhar.")
 
 write(MODULES / "__init__.py", "# módulos carregados automaticamente\n")
 
-write(MODULES / "utils.py", """
+write(
+    MODULES / "utils.py",
+    """
 import logging
 logger = logging.getLogger("AgenteGPT")
 
 def emit_humanized(area, msg):
     logger.info(f"[{area}] {msg}")
     return {"area": area, "mensagem": msg}
-""")
+""",
+)
 
-write(MODULES / "auriar.py", """
+write(
+    MODULES / "auriar.py",
+    """
 from .utils import emit_humanized
 
 def run_auditoria(session, cfg):
     return emit_humanized("AURI.A", "Diagnóstico realizado com sucesso (stub).")
-""")
+""",
+)
 
-write(MODULES / "economi_a.py", """
+write(
+    MODULES / "economi_a.py",
+    """
 from .utils import emit_humanized
 
 def integrate_cashback_apis(session, cfg):
     return emit_humanized("ECONOMI.A", "Integrações preparadas (stub).")
-""")
+""",
+)
 
-write(MODULES / "mentori_a.py", """
+write(
+    MODULES / "mentori_a.py",
+    """
 from .auriar import run_auditoria
 from .utils import emit_humanized
 
 def deploy_end_to_end(session, cfg):
     audit = run_auditoria(session, cfg)
     return emit_humanized("MENTORI.A", f"Mentoria criada com base no diagnóstico: {audit}")
-""")
+""",
+)
 
-write(MODULES / "botgpt.py", """
+write(
+    MODULES / "botgpt.py",
+    """
 from .utils import emit_humanized
 
 def generate_landing_pages(session, cfg): return emit_humanized("BOTGPT", "Landing pages geradas (stub).")
 def setup_whatsapp_automations(session, cfg): return emit_humanized("BOTGPT", "WhatsApp integrado (stub).")
 def publish_docs_portal(session, cfg): return emit_humanized("BOTGPT", "Docs publicadas (stub).")
 def train_client_agents(session, cfg): return emit_humanized("BOTGPT", "Agentes treinados (stub).")
-""")
+""",
+)
 
-write(MODULES / "aliancia.py", """
+write(
+    MODULES / "aliancia.py",
+    """
 from .utils import emit_humanized
 
 def build_affiliates_backend(session, cfg):
     return emit_humanized("ALIANCIA", "Backend afiliados: 25/10/5 (stub).")
-""")
+""",
+)
 
 # ============================================================
 # INTEGRAÇÕES (SOCIAL CHANNELS)
@@ -298,18 +335,23 @@ def build_affiliates_backend(session, cfg):
 
 write(INTEGRATIONS / "__init__.py", "# integrações sociais\n")
 
-write(INTEGRATIONS / "social_channels.py", """
+write(
+    INTEGRATIONS / "social_channels.py",
+    """
 # ENCURTADO POR LIMITES DO CHAT
 # Inclui suporte para:
 # WhatsApp Cloud, WhatsApp 360, Telegram, IG, FB, X, TikTok, YT, LinkedIn,
 # Pinterest, Threads, Kwai
-""")
+""",
+)
 
 # ============================================================
 # README
 # ============================================================
 
-write(ROOT / "README.md", """
+write(
+    ROOT / "README.md",
+    """
 # AGENTE GPT — INSTALADOR COMPLETO (PYTHON)
 
 Rodar:
@@ -324,7 +366,8 @@ Depois:
 Dashboard:
 
     http://localhost:8080
-""")
+""",
+)
 
 # ============================================================
 # EXECUÇÃO FINAL — DOCKER UP

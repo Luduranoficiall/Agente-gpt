@@ -2,25 +2,23 @@
 
 from __future__ import annotations
 
+import importlib
 import json
 import logging
-import importlib
-import os
-import sys
-import json
-import logging
-import importlib
 import os
 import sys
 from pathlib import Path
+
 import yaml
 
 # dotenv é opcional para execução local
 try:
     from dotenv import load_dotenv
 except ModuleNotFoundError:
+
     def load_dotenv(*_, **__):
         return False
+
 
 load_dotenv()
 
@@ -51,7 +49,8 @@ def kv_set(session, k: str, v: str):
 
 
 def kv_get(session, k: str, default=None):
-    row = session.execute(text("SELECT v FROM kv WHERE k=:k"), {"k": k}).fetchone()
+    row = session.execute(
+        text("SELECT v FROM kv WHERE k=:k"), {"k": k}).fetchone()
     return row[0] if row else default
 
 
@@ -76,7 +75,8 @@ def collect_system_status():
             counts = {}
             for table in ("affiliates", "subscriptions", "business_demands", "tasks"):
                 try:
-                    rows = session.execute(text(f"SELECT COUNT(*) FROM {table}"))
+                    rows = session.execute(
+                        text(f"SELECT COUNT(*) FROM {table}"))
                     counts[table] = rows.fetchone()[0]
                 except Exception as exc:  # noqa: BLE001
                     counts[table] = f"erro: {exc}"  # pragma: no cover
@@ -99,14 +99,18 @@ class TaskExecutor:
 
     def _import_callable(self, dotted: str):
         if not dotted or "." not in dotted:
-            raise ValueError(f"Formato de módulo inválido: '{dotted}'. Use pacote.funcao")
+            raise ValueError(
+                f"Formato de módulo inválido: '{dotted}'. Use pacote.funcao"
+            )
         mod_name, func_name = dotted.split(".", 1)
         try:
             mod = importlib.import_module(f"modules.{mod_name}")
         except ImportError as exc:
-            raise ImportError(f"Não foi possível importar modules.{mod_name}") from exc
+            raise ImportError(
+                f"Não foi possível importar modules.{mod_name}") from exc
         if not hasattr(mod, func_name):
-            raise AttributeError(f"modules.{mod_name} não possui '{func_name}'")
+            raise AttributeError(
+                f"modules.{mod_name} não possui '{func_name}'")
         func = getattr(mod, func_name)
         if not callable(func):
             raise TypeError(f"'{dotted}' não é uma função executável")
@@ -117,7 +121,8 @@ class TaskExecutor:
             text(
                 "INSERT INTO tasks (name,module,status,started_at) VALUES (:n,:m,:s,:t) RETURNING id"
             ),
-            {"n": name, "m": module, "s": status, "t": datetime.utcnow().isoformat()},
+            {"n": name, "m": module, "s": status,
+                "t": datetime.utcnow().isoformat()},
         ).fetchone()
         self.session.commit()
         return row[0]
@@ -140,7 +145,9 @@ class TaskExecutor:
     def run_pipeline(self):
         pipeline = self.config.get("pipeline_execucao") or []
         if not pipeline:
-            logger.warning("⚠️ pipeline_execucao vazio em agent_gpt_prompt.yaml — nada a executar.")
+            logger.warning(
+                "⚠️ pipeline_execucao vazio em agent_gpt_prompt.yaml — nada a executar."
+            )
             return
         total = len(pipeline)
         logger.info("🧠 Executando pipeline com %s etapas.", total)
@@ -148,7 +155,8 @@ class TaskExecutor:
             name = step.get("tarefa") or f"etapa_{idx}"
             module = step.get("modulo")
             if not module:
-                logger.warning("⚠️ Etapa '%s' sem campo 'modulo' — ignorada.", name)
+                logger.warning(
+                    "⚠️ Etapa '%s' sem campo 'modulo' — ignorada.", name)
                 continue
             responsible = step.get("responsável") or "Agente GPT"
             logger.info(
@@ -164,7 +172,8 @@ class TaskExecutor:
                 fn = self._import_callable(module)
                 result = fn(self.session, self.config)
             except Exception as exc:  # noqa: BLE001
-                logger.exception("❌ Falha durante a tarefa '%s' (%s)", name, module)
+                logger.exception(
+                    "❌ Falha durante a tarefa '%s' (%s)", name, module)
                 self._finish_task(tid, "error", error=str(exc))
                 continue
             self._finish_task(tid, "done", result=str(result))
@@ -172,7 +181,8 @@ class TaskExecutor:
 
     def run_task(self, module_path: str):
         logger.info("⚙️ Execução manual solicitada para %s", module_path)
-        tid = self._insert_task(f"manual:{module_path}", module_path, "running")
+        tid = self._insert_task(
+            f"manual:{module_path}", module_path, "running")
         try:
             func = self._import_callable(module_path)
             result = func(self.session, self.config)

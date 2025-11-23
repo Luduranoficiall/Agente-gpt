@@ -1,14 +1,20 @@
+from modules.utils import logger
+from typing import List
+from pathlib import Path
+import json
+
+
 def list_sheets():
     return ["Sheet1", "Sheet2"]
+
+
 def write_row(sheet_name, row_number, values):
     return True
+
+
 def read_rows(sheet_name):
     return []
-import json
-from pathlib import Path
-from typing import List
 
-from modules.utils import logger
 
 SHEETS_BUFFER = Path("storage") / "sheets_buffer.jsonl"
 SHEETS_BUFFER.parent.mkdir(exist_ok=True)

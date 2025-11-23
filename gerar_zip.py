@@ -1,6 +1,7 @@
 import os
 import zipfile
 
+
 def zip_project(output="agente_gpt_final.zip"):
     root = os.getcwd()
     with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as z:
@@ -12,6 +13,7 @@ def zip_project(output="agente_gpt_final.zip"):
                 rel = os.path.relpath(full, root)
                 z.write(full, rel)
     print(f"ZIP gerado com sucesso: {output}")
+
 
 if __name__ == "__main__":
     zip_project()

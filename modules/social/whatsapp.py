@@ -1,5 +1,7 @@
 import os
+
 import requests
+
 
 def send_whatsapp(phone: str, message: str):
     """

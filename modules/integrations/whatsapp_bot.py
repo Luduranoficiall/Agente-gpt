@@ -3,22 +3,27 @@
 # ============================================================
 
 import os
+
 import requests
+
 from modules.menus import main_menu
 
 TOKEN = os.getenv("WHATSAPP_CLOUD_TOKEN")
 PHONE = os.getenv("WHATSAPP_CLOUD_PHONE_NUMBER_ID")
 
+
 def wa_send(to, text):
     url = f"https://graph.facebook.com/v18.0/{PHONE}/messages"
-    headers = {"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"}
+    headers = {"Authorization": f"Bearer {TOKEN}",
+               "Content-Type": "application/json"}
     data = {
         "messaging_product": "whatsapp",
         "to": to,
         "type": "text",
-        "text": {"body": text}
+        "text": {"body": text},
     }
     return requests.post(url, json=data, headers=headers).json()
+
 
 def handle_whatsapp_message(data):
     msg = data["entry"][0]["changes"][0]["value"]["messages"][0]

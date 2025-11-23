@@ -1,16 +1,21 @@
+from .whatsapp_ai import ask_gpt
+from .whatsapp import send_whatsapp  # envia mensagens
 import os
-from fastapi import APIRouter, Request, HTTPException
+
+from fastapi import APIRouter, HTTPException, Request
 
 router = APIRouter()
 
 VERIFY_TOKEN = os.getenv("WABA_VERIFY_TOKEN", "EXTRAORDINARIA_VERIFIED")
 WABA_TOKEN = os.getenv("WABA_TOKEN")
 
+
 @router.get("/webhook")
 async def verify(mode: str = None, challenge: str = None, token: str = None):
     if mode == "subscribe" and token == VERIFY_TOKEN:
         return int(challenge)
     raise HTTPException(status_code=403, detail="Unauthorized")
+
 
 @router.post("/webhook")
 async def webhook_handler(request: Request):
@@ -32,9 +37,9 @@ async def webhook_handler(request: Request):
 
     return {"status": "ignored"}
 
+
 # Lógica principal do WhatsApp Bot
-from .whatsapp_ai import ask_gpt
-from .whatsapp import send_whatsapp  # envia mensagens
+
 
 def process_message(phone, msg_text):
     # 1. Responde via IA

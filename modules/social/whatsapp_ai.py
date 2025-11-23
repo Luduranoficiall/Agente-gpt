@@ -1,5 +1,7 @@
-import requests
 import os
+
+import requests
+
 
 def ask_gpt(user_message: str):
     """
@@ -14,12 +16,16 @@ def ask_gpt(user_message: str):
     payload = {
         "model": "gpt-4o-mini",
         "messages": [
-            {"role": "system", "content": "Você é o AGENTE GPT — educado, humano, rápido e cordial."},
-            {"role": "user", "content": user_message}
-        ]
+            {
+                "role": "system",
+                "content": "Você é o AGENTE GPT — educado, humano, rápido e cordial.",
+            },
+            {"role": "user", "content": user_message},
+        ],
     }
 
-    head = {"Authorization": f"Bearer {OPENAI_KEY}", "Content-Type": "application/json"}
+    head = {"Authorization": f"Bearer {OPENAI_KEY}",
+            "Content-Type": "application/json"}
 
     r = requests.post(url, json=payload, headers=head)
 

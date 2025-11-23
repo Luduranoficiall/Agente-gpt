@@ -1,5 +1,7 @@
 import os
+
 import requests
+
 
 def send_linkedin(urn_id: str, message: str):
     token = os.getenv("LINKEDIN_TOKEN")
@@ -14,10 +16,10 @@ def send_linkedin(urn_id: str, message: str):
         "specificContent": {
             "com.linkedin.ugc.ShareContent": {
                 "shareCommentary": {"text": message},
-                "shareMediaCategory": "NONE"
+                "shareMediaCategory": "NONE",
             }
         },
-        "visibility": {"com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"}
+        "visibility": {"com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"},
     }
 
     headers = {

@@ -1,6 +1,7 @@
-from typing import Dict, Any, List, Tuple
+from typing import Any, Dict, List, Tuple
 
 TwelveFilters = List[Tuple[str, int, str]]
+
 
 def score_12_peneiras(dados: Dict[str, Any]) -> TwelveFilters:
     filtros = [

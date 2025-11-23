@@ -1,5 +1,7 @@
 import os
+
 import requests
+
 
 def send_twitter(username: str, message: str):
     token = os.getenv("X_BEARER_TOKEN")

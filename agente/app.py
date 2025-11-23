@@ -1,22 +1,27 @@
-from fastapi import FastAPI, Request
+import requests
 import os
+
 from ai import gerar_resposta
-from nlu import detectar_intencao
+from fastapi import FastAPI, Request
 from memory import salvar_mensagem
+from nlu import detectar_intencao
 
 app = FastAPI()
 
 VERIFY_TOKEN = os.getenv("VERIFY_TOKEN")
 
+
 @app.get("/")
 def home():
     return {"status": "Agente Extraordinaria.AI rodando!"}
+
 
 @app.get("/webhook")
 def verificar_webhook(mode: str = None, token: str = None, challenge: str = None):
     if mode == "subscribe" and token == VERIFY_TOKEN:
         return int(challenge)
     return "Erro de autorização"
+
 
 @app.post("/webhook")
 async def receber(request: Request):
@@ -49,17 +54,20 @@ async def receber(request: Request):
 
     return {"status": "SUCESSO"}
 
-import requests
 
 async def enviar_msg(to, texto):
     url = f"https://graph.facebook.com/v18.0/{os.getenv('PHONE_NUMBER_ID')}/messages"
 
-    requests.post(url, json={
-        "messaging_product": "whatsapp",
-        "to": to,
-        "type": "text",
-        "text": {"body": texto}
-    }, headers={
-        "Authorization": f"Bearer {os.getenv('WHATSAPP_TOKEN')}",
-        "Content-Type": "application/json"
-    })
+    requests.post(
+        url,
+        json={
+            "messaging_product": "whatsapp",
+            "to": to,
+            "type": "text",
+            "text": {"body": texto},
+        },
+        headers={
+            "Authorization": f"Bearer {os.getenv('WHATSAPP_TOKEN')}",
+            "Content-Type": "application/json",
+        },
+    )

@@ -1,12 +1,13 @@
-from .whatsapp import send_whatsapp
-from .telegram import send_telegram
-from .instagram import send_instagram
 from .facebook import send_facebook
-from .twitter import send_twitter
-from .youtube import send_youtube_comment
+from .instagram import send_instagram
+from .kwai import send_kwai
 from .linkedin import send_linkedin
 from .pinterest import send_pinterest
-from .kwai import send_kwai
+from .telegram import send_telegram
+from .twitter import send_twitter
+from .whatsapp import send_whatsapp
+from .youtube import send_youtube_comment
+
 
 def send_message(platform: str, target: str, message: str):
     platform = platform.lower()

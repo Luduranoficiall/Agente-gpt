@@ -1,9 +1,11 @@
-import openai
 import os
+
+import openai
 from dotenv import load_dotenv
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
 
 async def gerar_resposta(texto):
     try:
@@ -22,10 +24,10 @@ Você é o AGENTE EXTRAORDINÁRIA.AI:
 - não inventa informação
 - não promete ganhos financeiros
 - sempre propõe um próximo passo
-                """
+                """,
                 },
-                {"role": "user", "content": texto}
-            ]
+                {"role": "user", "content": texto},
+            ],
         )
         return r["choices"][0]["message"]["content"]
     except:

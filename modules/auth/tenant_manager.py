@@ -1,8 +1,11 @@
 import uuid
 from datetime import datetime
+
 from sqlalchemy import text
-## Removido import de SessionLocal para evitar ciclo
+
+# Removido import de SessionLocal para evitar ciclo
 from .auth_jwt import gerar_token
+
 
 def criar_empresa(nome: str, email: str):
     empresa_id = str(uuid.uuid4())

@@ -1,56 +1,63 @@
-
+from modules.integrations.social_channels import (ChannelName,
+                                                  SocialChannelError,
+                                                  broadcast, send_to_channel)
+from pydantic import BaseModel
+from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, HTTPException
+from dotenv import load_dotenv
+from apscheduler.schedulers.background import BackgroundScheduler
+import yaml
+import requests
+from typing import Any, Dict, List, Optional, Union
+from pathlib import Path
+from datetime import datetime
+import time
+import threading
+import sys
+import logging
+import json
+import importlib
 import os
+
 # --- CONEXÃO PROFISSIONAL COM BANCO RAILWAY ---
 from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
-    raise ValueError("A variável DATABASE_URL não foi encontrada. Configure no Railway!")
+    raise ValueError(
+        "A variável DATABASE_URL não foi encontrada. Configure no Railway!"
+    )
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"sslmode": "require"}
-)
+engine = create_engine(DATABASE_URL, connect_args={"sslmode": "require"})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
+
+
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
+
+
 def get_agent_url():
     return os.getenv("AGENT_URL", "https://agente.extraordinaria.ai")
 
+
 if __name__ == "__main__":
     print(f"Seu agente está disponível em: {get_agent_url()}")
-import os, sys, yaml, time, logging, importlib, threading, requests, json
-from pathlib import Path
-from datetime import datetime
-from typing import Any, Dict, Optional, List, Union
 
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
-from pydantic import BaseModel
-from apscheduler.schedulers.background import BackgroundScheduler
-from dotenv import load_dotenv
-
-
-from modules.integrations.social_channels import (
-    ChannelName,
-    send_to_channel,
-    broadcast,
-    SocialChannelError,
-)
 
 load_dotenv()
 ROOT = Path(__file__).resolve().parent
 STORAGE = ROOT / "storage"
 LOGS = STORAGE / "logs"
 PROMPT_PATH = ROOT / "agent_gpt_prompt.yaml"
-STORAGE.mkdir(exist_ok=True); LOGS.mkdir(exist_ok=True)
+STORAGE.mkdir(exist_ok=True)
+LOGS.mkdir(exist_ok=True)
 
 
 logging.basicConfig(
@@ -58,33 +65,42 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.FileHandler(LOGS / "agent.log", encoding="utf-8"),
-        logging.StreamHandler(sys.stdout)
-    ]
+        logging.StreamHandler(sys.stdout),
+    ],
 )
 logger = logging.getLogger("AgenteGPT")
+
 
 def log_event(msg, level="info"):
     if level == "info":
         logger.info(f"✅ {msg}")
 
     # Função de inicialização do banco (exemplo, ajuste conforme seu modelo real)
+
+
 def handle_exception(exc, context=""):
     logger.error(f"❌ Erro: {exc} | Contexto: {context}")
     return {"error": str(exc), "context": context}
 
 
-
 # Função de inicialização do banco de dados
 def init_db():
     from sqlalchemy import text
+
     with engine.connect() as conn:
-        conn.execute(text("""
+        conn.execute(
+            text(
+                """
             CREATE TABLE IF NOT EXISTS kv (
                 k TEXT PRIMARY KEY,
                 v TEXT
             );
-        """))
-        conn.execute(text("""
+        """
+            )
+        )
+        conn.execute(
+            text(
+                """
             CREATE TABLE IF NOT EXISTS tasks (
                 id SERIAL PRIMARY KEY,
                 name TEXT,
@@ -95,8 +111,12 @@ def init_db():
                 result TEXT,
                 error TEXT
             );
-        """))
-        conn.execute(text("""
+        """
+            )
+        )
+        conn.execute(
+            text(
+                """
             CREATE TABLE IF NOT EXISTS affiliates (
                 id SERIAL PRIMARY KEY,
                 name TEXT,
@@ -106,8 +126,12 @@ def init_db():
                 tenant_id TEXT,
                 created_at TEXT
             );
-        """))
-        conn.execute(text("""
+        """
+            )
+        )
+        conn.execute(
+            text(
+                """
             CREATE TABLE IF NOT EXISTS subscriptions (
                 id SERIAL PRIMARY KEY,
                 affiliate_id INTEGER,
@@ -116,8 +140,12 @@ def init_db():
                 tenant_id TEXT,
                 created_at TEXT
             );
-        """))
-        conn.execute(text("""
+        """
+            )
+        )
+        conn.execute(
+            text(
+                """
             CREATE TABLE IF NOT EXISTS commissions (
                 id SERIAL PRIMARY KEY,
                 payer_affiliate_id INTEGER,
@@ -129,8 +157,12 @@ def init_db():
                 tenant_id TEXT,
                 created_at TEXT
             );
-        """))
-        conn.execute(text("""
+        """
+            )
+        )
+        conn.execute(
+            text(
+                """
             CREATE TABLE IF NOT EXISTS business_demands (
                 id SERIAL PRIMARY KEY,
                 client_id TEXT,
@@ -142,89 +174,136 @@ def init_db():
                 created_at TEXT,
                 processed_at TEXT
             );
-        """))
+        """
+            )
+        )
     logger.info("✔ Banco de dados pronto.")
 
+
 def kv_set(session, k, v):
-    session.execute(text("INSERT INTO kv (k,v) VALUES (:k,:v) ON CONFLICT (k) DO UPDATE SET v=:v"), {"k":k,"v":v})
+    session.execute(
+        text("INSERT INTO kv (k,v) VALUES (:k,:v) ON CONFLICT (k) DO UPDATE SET v=:v"),
+        {"k": k, "v": v},
+    )
     session.commit()
 
+
 def kv_get(session, k, default=None):
-    row = session.execute(text("SELECT v FROM kv WHERE k=:k"), {"k":k}).fetchone()
+    row = session.execute(
+        text("SELECT v FROM kv WHERE k=:k"), {"k": k}).fetchone()
     return row[0] if row else default
+
 
 def load_prompt(path: Path) -> Dict[str, Any]:
     """Carrega o prompt mestre YAML que define o comportamento do agente."""
     with path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
+
 class TaskExecutor:
     """Orquestra a execução declarada no prompt e registra progresso no banco."""
 
     def __init__(self, session, config: Dict[str, Any]):
-        self.session = session; self.config = config
+        self.session = session
+        self.config = config
 
     def _import_callable(self, dotted: str):
         if not dotted or "." not in dotted:
-            raise ValueError(f"Formato de módulo inválido: '{dotted}'. Use pacote.funcao")
+            raise ValueError(
+                f"Formato de módulo inválido: '{dotted}'. Use pacote.funcao"
+            )
         mod_name, func_name = dotted.split(".", 1)
         try:
             mod = importlib.import_module(f"modules.{mod_name}")
         except ImportError as exc:
-            raise ImportError(f"Não foi possível importar modules.{mod_name}") from exc
+            raise ImportError(
+                f"Não foi possível importar modules.{mod_name}") from exc
         if not hasattr(mod, func_name):
-            raise AttributeError(f"modules.{mod_name} não possui '{func_name}'")
+            raise AttributeError(
+                f"modules.{mod_name} não possui '{func_name}'")
         func = getattr(mod, func_name)
         if not callable(func):
             raise TypeError(f"'{dotted}' não é uma função executável")
         return func
+
     def _insert_task(self, name, module, status):
-        row = self.session.execute(text(
-            "INSERT INTO tasks (name,module,status,started_at) VALUES (:n,:m,:s,:t) RETURNING id"
-        ), {"n":name,"m":module,"s":status,"t":datetime.utcnow().isoformat()}).fetchone()
-        self.session.commit(); return row[0]
-    def _finish_task(self, task_id, status, result=None, error=None):
-        self.session.execute(text(
-            "UPDATE tasks SET status=:st, finished_at=:ft, result=:rs, error=:er WHERE id=:id"
-        ), {"st":status,"ft":datetime.utcnow().isoformat(),"rs":result,"er":error,"id":task_id})
+        row = self.session.execute(
+            text(
+                "INSERT INTO tasks (name,module,status,started_at) VALUES (:n,:m,:s,:t) RETURNING id"
+            ),
+            {"n": name, "m": module, "s": status,
+                "t": datetime.utcnow().isoformat()},
+        ).fetchone()
         self.session.commit()
+        return row[0]
+
+    def _finish_task(self, task_id, status, result=None, error=None):
+        self.session.execute(
+            text(
+                "UPDATE tasks SET status=:st, finished_at=:ft, result=:rs, error=:er WHERE id=:id"
+            ),
+            {
+                "st": status,
+                "ft": datetime.utcnow().isoformat(),
+                "rs": result,
+                "er": error,
+                "id": task_id,
+            },
+        )
+        self.session.commit()
+
     def run_pipeline(self):
         pipeline = self.config.get("pipeline_execucao") or []
         if not pipeline:
-            logger.warning("⚠️ pipeline_execucao vazio em agent_gpt_prompt.yaml — nada a executar."); return
+            logger.warning(
+                "⚠️ pipeline_execucao vazio em agent_gpt_prompt.yaml — nada a executar."
+            )
+            return
         total = len(pipeline)
         logger.info("🧠 Executando pipeline com %s etapas.", total)
         for idx, step in enumerate(pipeline, 1):
             name = step.get("tarefa") or f"etapa_{idx}"
             module = step.get("modulo")
             if not module:
-                logger.warning("⚠️ Etapa '%s' sem campo 'modulo' — ignorada.", name)
+                logger.warning(
+                    "⚠️ Etapa '%s' sem campo 'modulo' — ignorada.", name)
                 continue
             responsible = step.get("responsável") or "Agente GPT"
-            logger.info("🚀 [%s/%s] %s — responsável: %s — módulo: %s", idx, total, name, responsible, module)
+            logger.info(
+                "🚀 [%s/%s] %s — responsável: %s — módulo: %s",
+                idx,
+                total,
+                name,
+                responsible,
+                module,
+            )
             tid = self._insert_task(name, module, "running")
             try:
                 fn = self._import_callable(module)
                 result = fn(self.session, self.config)
             except Exception as e:
-                logger.exception("❌ Falha durante a tarefa '%s' (%s)", name, module)
+                logger.exception(
+                    "❌ Falha durante a tarefa '%s' (%s)", name, module)
                 self._finish_task(tid, "error", error=str(e))
                 continue
             self._finish_task(tid, "done", result=str(result))
             logger.info("✅ Tarefa '%s' concluída.", name)
+
     def run_task(self, module_path: str):
         logger.info("⚙️ Execução manual solicitada para %s", module_path)
-        tid = self._insert_task(f"manual:{module_path}", module_path, "running")
+        tid = self._insert_task(
+            f"manual:{module_path}", module_path, "running")
         try:
             fn = self._import_callable(module_path)
             result = fn(self.session, self.config)
             self._finish_task(tid, "done", result=str(result))
             logger.info("✅ Execução manual finalizada para %s", module_path)
-            return {"status":"ok","result":result}
+            return {"status": "ok", "result": result}
         except Exception as e:
             logger.exception("❌ Erro em execução manual %s", module_path)
             self._finish_task(tid, "error", error=str(e))
             raise
+
 
 app = FastAPI(
     title="Agente GPT — EXTRAORDINARI.A",
@@ -232,8 +311,10 @@ app = FastAPI(
     description="IA Geral Autônoma • Multicanal • Multi-Empresas • Multi-Tenant",
 )
 
+
 class RunTaskIn(BaseModel):
     module: str
+
 
 class AffiliateIn(BaseModel):
     name: str
@@ -242,11 +323,13 @@ class AffiliateIn(BaseModel):
     sponsor_id: Optional[int] = None
     tenant_id: Optional[str] = "default"
 
+
 class SubscriptionIn(BaseModel):
     affiliate_id: int
     amount: float = 197.0
     period: str = "monthly"
     tenant_id: Optional[str] = "default"
+
 
 class DemandIn(BaseModel):
     client_id: str
@@ -255,24 +338,29 @@ class DemandIn(BaseModel):
     channels: List[str]
     to_map: Optional[Union[str, Dict[str, str]]] = None
 
+
 class WhatsAppMsgIn(BaseModel):
     channel: str
     destination: str
     message: str
 
+
 class SheetAppendIn(BaseModel):
     worksheet: Optional[str] = None
     values: list
+
 
 class SocialSingleIn(BaseModel):
     channel: ChannelName
     message: str
     to: Optional[str] = None
 
+
 class SocialBroadcastIn(BaseModel):
     channels: List[ChannelName]
     message: str
     to_map: Optional[Dict[ChannelName, str]] = None
+
 
 class DemandOut(BaseModel):
     id: int
@@ -285,6 +373,7 @@ class DemandOut(BaseModel):
     created_at: str
     processed_at: Optional[str] = None
 
+
 @app.get("/health")
 def health():
     return {
@@ -293,13 +382,15 @@ def health():
         "service": "Agente GPT — FULL VERSION",
     }
 
+
 @app.post("/run/pipeline")
 def run_pipeline():
     with SessionLocal() as session:
         config = load_prompt(PROMPT_PATH)
         executor = TaskExecutor(session, config)
         executor.run_pipeline()
-    return {"status":"pipeline_executado"}
+    return {"status": "pipeline_executado"}
+
 
 @app.post("/run/task")
 def run_task(payload: RunTaskIn):
@@ -311,22 +402,31 @@ def run_task(payload: RunTaskIn):
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/tasks")
 def list_tasks():
     with SessionLocal() as s:
-        rows = s.execute(text("""
+        rows = s.execute(
+            text(
+                """
             SELECT id,name,module,status,started_at,finished_at
             FROM tasks ORDER BY id DESC LIMIT 200
-        """)).fetchall()
+        """
+            )
+        ).fetchall()
         return [dict(r._mapping) for r in rows]
+
 
 @app.get("/tasks/{task_id}")
 def get_task(task_id: int):
     with SessionLocal() as s:
-        row = s.execute(text("SELECT * FROM tasks WHERE id=:id"), {"id":task_id}).fetchone()
+        row = s.execute(
+            text("SELECT * FROM tasks WHERE id=:id"), {"id": task_id}
+        ).fetchone()
         if not row:
             raise HTTPException(status_code=404, detail="Task não encontrada")
         return dict(row._mapping)
+
 
 def get_sponsor(session, affiliate_id):
     """Retorna o ID do patrocinador direto do afiliado."""
@@ -336,14 +436,19 @@ def get_sponsor(session, affiliate_id):
     ).fetchone()
     return row[0] if row else None
 
-def distribute_commissions(session, payer_affiliate_id: int, base_amount: float, tenant_id: str):
+
+def distribute_commissions(
+    session, payer_affiliate_id: int, base_amount: float, tenant_id: str
+):
     """Distribui comissões 25/10/5 para até três níveis ascendentes."""
     percentages = {1: 0.25, 2: 0.10, 3: 0.05}
     current = get_sponsor(session, payer_affiliate_id)
     level = 1
     while level <= 3 and current:
         commission_value = round(base_amount * percentages[level], 2)
-        session.execute(text("""
+        session.execute(
+            text(
+                """
             INSERT INTO commissions (
                 payer_affiliate_id,
                 beneficiary_affiliate_id,
@@ -354,88 +459,121 @@ def distribute_commissions(session, payer_affiliate_id: int, base_amount: float,
                 tenant_id,
                 created_at
             ) VALUES (:p,:b,:l,:ba,:pc,:cv,:t,:ts)
-        """), {
-            "p": payer_affiliate_id,
-            "b": current,
-            "l": level,
-            "ba": base_amount,
-            "pc": percentages[level] * 100,
-            "cv": commission_value,
-            "t": tenant_id,
-            "ts": datetime.utcnow().isoformat(),
-        })
+        """
+            ),
+            {
+                "p": payer_affiliate_id,
+                "b": current,
+                "l": level,
+                "ba": base_amount,
+                "pc": percentages[level] * 100,
+                "cv": commission_value,
+                "t": tenant_id,
+                "ts": datetime.utcnow().isoformat(),
+            },
+        )
         session.commit()
         current = get_sponsor(session, current)
         level += 1
 
+
 @app.post("/aliancia/register")
 def register_affiliate(inp: AffiliateIn):
-    with SessionLocal() as s:
-        row = s.execute(text("""
-            INSERT INTO affiliates (
-                name,email,phone,sponsor_id,tenant_id,created_at
-            ) VALUES (:n,:e,:p,:s,:t,:ts)
-            RETURNING id
-        """), {
-            "n": inp.name,
-            "e": inp.email,
-            "p": inp.phone,
-            "s": inp.sponsor_id,
-            "t": inp.tenant_id,
-            "ts": datetime.utcnow().isoformat(),
-        }).fetchone()
-        s.commit()
-        return {
-            "id": row[0],
-            "name": inp.name,
-            "tenant_id": inp.tenant_id,
-            "message": "Afiliado cadastrado com sucesso. Bem-vindo à ALIANCI.A!",
-        }
+    try:
+        with SessionLocal() as s:
+            row = s.execute(
+                text(
+                    """
+                INSERT INTO affiliates (
+                    name,email,phone,sponsor_id,tenant_id,created_at
+                ) VALUES (:n,:e,:p,:s,:t,:ts)
+                RETURNING id
+            """
+                ),
+                {
+                    "n": inp.name,
+                    "e": inp.email,
+                    "p": inp.phone,
+                    "s": inp.sponsor_id,
+                    "t": inp.tenant_id,
+                    "ts": datetime.utcnow().isoformat(),
+                },
+            ).fetchone()
+            s.commit()
+            logger.info(f"Afiliado cadastrado: {inp.name} (tenant: {inp.tenant_id})")
+            return {
+                "id": row[0],
+                "name": inp.name,
+                "tenant_id": inp.tenant_id,
+                "message": "Afiliado cadastrado com sucesso. Bem-vindo à ALIANCI.A!",
+            }
+    except Exception as e:
+        logger.exception("Erro ao cadastrar afiliado")
+        raise HTTPException(status_code=500, detail="Erro ao cadastrar afiliado")
+
 
 @app.post("/aliancia/subscribe")
 def register_subscription(inp: SubscriptionIn):
-    with SessionLocal() as s:
-        s.execute(text("""
-            INSERT INTO subscriptions (
-                affiliate_id,
-                amount,
-                period,
-                tenant_id,
-                created_at
-            ) VALUES (:a,:m,:p,:t,:ts)
-        """), {
-            "a": inp.affiliate_id,
-            "m": inp.amount,
-            "p": inp.period,
-            "t": inp.tenant_id,
-            "ts": datetime.utcnow().isoformat(),
-        })
-        s.commit()
-        distribute_commissions(
-            session=s,
-            payer_affiliate_id=inp.affiliate_id,
-            base_amount=inp.amount,
-            tenant_id=inp.tenant_id,
-        )
-        return {
-            "status": "ok",
-            "mensagem": "Assinatura registrada e comissões distribuídas (25/10/5).",
-        }
+    try:
+        with SessionLocal() as s:
+            s.execute(
+                text(
+                    """
+                INSERT INTO subscriptions (
+                    affiliate_id,
+                    amount,
+                    period,
+                    tenant_id,
+                    created_at
+                ) VALUES (:a,:m,:p,:t,:ts)
+            """
+                ),
+                {
+                    "a": inp.affiliate_id,
+                    "m": inp.amount,
+                    "p": inp.period,
+                    "t": inp.tenant_id,
+                    "ts": datetime.utcnow().isoformat(),
+                },
+            )
+            s.commit()
+            distribute_commissions(
+                session=s,
+                payer_affiliate_id=inp.affiliate_id,
+                base_amount=inp.amount,
+                tenant_id=inp.tenant_id,
+            )
+            logger.info(f"Assinatura registrada para afiliado {inp.affiliate_id} (tenant: {inp.tenant_id})")
+            return {
+                "status": "ok",
+                "mensagem": "Assinatura registrada e comissões distribuídas (25/10/5).",
+            }
+    except Exception as e:
+        logger.exception("Erro ao registrar assinatura")
+        raise HTTPException(status_code=500, detail="Erro ao registrar assinatura")
+
 
 @app.get("/aliancia/commissions/{affiliate_id}")
 def list_commissions(affiliate_id: int):
     with SessionLocal() as s:
-        rows = s.execute(text("""
+        rows = s.execute(
+            text(
+                """
           SELECT id, payer_affiliate_id, level, base_amount, percent, commission_value, tenant_id, created_at
           FROM commissions WHERE beneficiary_affiliate_id=:id ORDER BY id DESC
-        """), {"id":affiliate_id}).fetchall()
+        """
+            ),
+            {"id": affiliate_id},
+        ).fetchall()
         return [dict(r._mapping) for r in rows]
+
 
 @app.post("/notify/whatsapp")
 def whatsapp_send(inp: WhatsAppMsgIn):
     allowed = {"whatsapp_360", "whatsapp_cloud"}
     if inp.channel not in allowed:
-        raise HTTPException(status_code=400, detail="Canal inválido para esta rota.")
+        raise HTTPException(
+            status_code=400, detail="Canal inválido para esta rota.")
     try:
         result = send_to_channel(inp.channel, inp.message, to=inp.destination)
         return {"status": "sent", "channel": inp.channel, "result": result}
@@ -445,15 +583,19 @@ def whatsapp_send(inp: WhatsAppMsgIn):
         logger.exception("Erro ao enviar WhatsApp")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.post("/sheets/append")
 def sheets_append(inp: SheetAppendIn):
     try:
         from modules.integrations.sheets import append_values
-        worksheet = inp.worksheet or os.getenv("GOOGLE_SHEETS_WORKSHEET","Afiliados")
+
+        worksheet = inp.worksheet or os.getenv(
+            "GOOGLE_SHEETS_WORKSHEET", "Afiliados")
         append_values(worksheet, inp.values)
-        return {"status":"ok","worksheet":worksheet,"rows":len(inp.values)}
+        return {"status": "ok", "worksheet": worksheet, "rows": len(inp.values)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/notify/channel")
 def notify_channel(payload: SocialSingleIn):
@@ -463,12 +605,13 @@ def notify_channel(payload: SocialSingleIn):
             message=payload.message,
             to=payload.to,
         )
-        return {"status":"ok","channel":payload.channel,"result":result}
+        return {"status": "ok", "channel": payload.channel, "result": result}
     except SocialChannelError as se:
         raise HTTPException(status_code=400, detail=str(se))
     except Exception as e:
         logger.exception("Erro em /notify/channel")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/notify/broadcast")
 def notify_broadcast(payload: SocialBroadcastIn):
@@ -478,10 +621,11 @@ def notify_broadcast(payload: SocialBroadcastIn):
             message=payload.message,
             to_map=payload.to_map or {},
         )
-        return {"status":"ok","result":result}
+        return {"status": "ok", "result": result}
     except Exception as e:
         logger.exception("Erro em /notify/broadcast")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 def _normalize_to_map(raw: Optional[Union[str, Dict[str, str]]]) -> Dict[str, str]:
     if not raw:
@@ -494,9 +638,11 @@ def _normalize_to_map(raw: Optional[Union[str, Dict[str, str]]]) -> Dict[str, st
             logger.warning("to_map inválido recebido: %s", raw)
             return {}
     if not isinstance(data, dict):
-        logger.warning("to_map ignorado (formato não suportado): %s", type(data))
+        logger.warning(
+            "to_map ignorado (formato não suportado): %s", type(data))
         return {}
     return {str(k): str(v) for k, v in data.items()}
+
 
 @app.post("/business/demands", response_model=DemandOut)
 def create_demand(inp: DemandIn):
@@ -505,19 +651,24 @@ def create_demand(inp: DemandIn):
     to_map = _normalize_to_map(inp.to_map)
     message = f"{inp.title}\n\n{inp.description}".strip()
     with SessionLocal() as s:
-        row = s.execute(text("""
+        row = s.execute(
+            text(
+                """
           INSERT INTO business_demands (client_id,title,description,channels,to_map,status,created_at)
           VALUES (:client_id,:title,:description,:channels,:to_map,:status,:created_at)
           RETURNING id
-        """), {
-          "client_id":inp.client_id,
-          "title":inp.title,
-          "description":inp.description,
-          "channels":json.dumps(channels),
-          "to_map":json.dumps(to_map),
-          "status":"queued",
-          "created_at":now
-        }).fetchone()
+        """
+            ),
+            {
+                "client_id": inp.client_id,
+                "title": inp.title,
+                "description": inp.description,
+                "channels": json.dumps(channels),
+                "to_map": json.dumps(to_map),
+                "status": "queued",
+                "created_at": now,
+            },
+        ).fetchone()
         demand_id = row[0]
         s.commit()
         try:
@@ -528,16 +679,22 @@ def create_demand(inp: DemandIn):
             )
             status = "sent"
             processed_at = datetime.utcnow().isoformat()
-            logger.info("Demanda %s enviada com resultado: %s", demand_id, result)
+            logger.info("Demanda %s enviada com resultado: %s",
+                        demand_id, result)
         except Exception as e:
             logger.exception("Erro ao enviar broadcast demanda.")
             status = "error"
             processed_at = datetime.utcnow().isoformat()
-        s.execute(text("""
+        s.execute(
+            text(
+                """
           UPDATE business_demands
           SET status=:status, processed_at=:processed_at
           WHERE id=:id
-        """), {"status":status,"processed_at":processed_at,"id":demand_id})
+        """
+            ),
+            {"status": status, "processed_at": processed_at, "id": demand_id},
+        )
         s.commit()
         return DemandOut(
             id=demand_id,
@@ -550,6 +707,7 @@ def create_demand(inp: DemandIn):
             created_at=now,
             processed_at=processed_at,
         )
+
 
 @app.get("/business/demands", response_model=List[DemandOut])
 def list_demands(limit: int = 100, client_id: Optional[str] = None):
@@ -569,18 +727,21 @@ def list_demands(limit: int = 100, client_id: Optional[str] = None):
     for r in rows:
         channels = json.loads(r.channels) if r.channels else []
         to_map = json.loads(r.to_map) if r.to_map else {}
-        demands.append(DemandOut(
-            id=r.id,
-            client_id=r.client_id,
-            title=r.title,
-            description=r.description,
-            channels=channels,
-            to_map=to_map,
-            status=r.status,
-            created_at=r.created_at,
-            processed_at=r.processed_at,
-        ))
+        demands.append(
+            DemandOut(
+                id=r.id,
+                client_id=r.client_id,
+                title=r.title,
+                description=r.description,
+                channels=channels,
+                to_map=to_map,
+                status=r.status,
+                created_at=r.created_at,
+                processed_at=r.processed_at,
+            )
+        )
     return demands
+
 
 DASHBOARD_HTML = """<!doctype html><html><head><meta charset="utf-8"/><title>Agente GPT — Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -601,9 +762,11 @@ async function loadCommissions(){const id=document.getElementById('benef').value
 d.forEach(x=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${x.id}</td><td>${x.payer_affiliate_id}</td><td>${x.level}</td><td>${x.base_amount}</td><td>${x.percent}</td><td>${x.commission_value}</td><td>${x.created_at}</td>`;tb.appendChild(tr);});}
 loadTasks();</script></body></html>"""
 
+
 @app.get("/", response_class=HTMLResponse)
 def dashboard():
     return DASHBOARD_HTML
+
 
 def run_cycle():
     try:
@@ -615,18 +778,24 @@ def run_cycle():
     except Exception:
         logger.exception("Erro no ciclo programado:")
 
+
 def start_scheduler():
-    seconds = int(os.getenv("AGENT_CYCLE_SECONDS","120"))
+    seconds = int(os.getenv("AGENT_CYCLE_SECONDS", "120"))
     sched = BackgroundScheduler(daemon=True)
-    sched.add_job(run_cycle, "interval", seconds=seconds, id="agent_cycle", replace_existing=True)
+    sched.add_job(
+        run_cycle, "interval", seconds=seconds, id="agent_cycle", replace_existing=True
+    )
     sched.start()
     logger.info(f"Scheduler iniciado: a cada {seconds}s")
 
+
 def start_uvicorn():
     import uvicorn
-    host = os.getenv("FASTAPI_HOST","0.0.0.0")
-    port = int(os.getenv("FASTAPI_PORT","8080"))
+
+    host = os.getenv("FASTAPI_HOST", "0.0.0.0")
+    port = int(os.getenv("FASTAPI_PORT", "8080"))
     uvicorn.run(app, host=host, port=port, log_level="info")
+
 
 def main():
     logger.info("Agente GPT – Inicializando…")
@@ -639,6 +808,7 @@ def main():
             time.sleep(3600)
     except KeyboardInterrupt:
         logger.info("Encerrado.")
+
 
 if __name__ == "__main__":
     sys.exit(main())

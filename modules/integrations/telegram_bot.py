@@ -3,27 +3,33 @@
 # ============================================================
 
 import os
+
 import requests
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
 
 def telegram_send(chat_id, text):
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     return requests.post(url, json={"chat_id": chat_id, "text": text}).json()
 
+
 def telegram_set_webhook(url):
-    r = requests.get(f"https://api.telegram.org/bot{TOKEN}/setWebhook?url={url}")
+    r = requests.get(
+        f"https://api.telegram.org/bot{TOKEN}/setWebhook?url={url}")
     return r.json()
+
 
 def handle_telegram_update(update: dict):
     chat_id = update["message"]["chat"]["id"]
     text = update["message"]["text"].lower()
 
     if text == "/start":
-        return telegram_send(chat_id, 
+        return telegram_send(
+            chat_id,
             "🔥 Bem-vindo ao Agente GPT!\n"
             "Digite:\n"
-            "• afiliados\n• economi.a\n• auriar\n• social"
+            "• afiliados\n• economi.a\n• auriar\n• social",
         )
 
     if text == "afiliados":

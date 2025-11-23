@@ -2,11 +2,13 @@
 # DOCUMENTAÇÃO AUTOMÁTICA — AGENTE GPT
 # ============================================================
 
-from fastapi import HTTPException
 import os
 from pathlib import Path
 
+from fastapi import HTTPException
+
 DOCS_DIR = Path(__file__).resolve().parent.parent / "docs"
+
 
 def list_docs():
     """
@@ -24,5 +26,7 @@ def read_doc(section: str):
     """
     file_path = DOCS_DIR / f"{section}.md"
     if not file_path.exists():
-        raise HTTPException(status_code=404, detail="Seção de documentação não encontrada.")
+        raise HTTPException(
+            status_code=404, detail="Seção de documentação não encontrada."
+        )
     return file_path.read_text(encoding="utf-8")

@@ -1,10 +1,13 @@
-from fastapi import APIRouter, Depends, HTTPException, Header
+import json
+# Removido import de SessionLocal para evitar ciclo
+import os
+
+from fastapi import APIRouter, Depends, Header, HTTPException
 from fastapi.responses import HTMLResponse
 from sqlalchemy import text
-## Removido import de SessionLocal para evitar ciclo
-import os, json
 
 router = APIRouter()
+
 
 # ==============================
 # 🔐 VALIDAÇÃO DE TOKEN
@@ -15,10 +18,12 @@ def validar_token(x_token: str = Header(None)):
         raise HTTPException(status_code=401, detail="Token inválido.")
     return True
 
+
 # ==============================
 # 📊 HTML DO PAINEL
 # ==============================
-PANEL_HTML = """
+PANEL_HTML = (
+    """
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,12 +121,16 @@ th,td{
 
 <script>
 async function runPipeline(){
-    await fetch('/run/pipeline', {method:'POST', headers:{'x-token':'""" + os.getenv("PUBLIC_AGENT_SECRET", "") + """'}})
+    await fetch('/run/pipeline', {method:'POST', headers:{'x-token':'"""
+    + os.getenv("PUBLIC_AGENT_SECRET", "")
+    + """'}})
     loadTasks();
 }
 
 async function loadTasks(){
-    const r = await fetch('/tasks', {headers:{'x-token':'""" + os.getenv("PUBLIC_AGENT_SECRET", "") + """'}});
+    const r = await fetch('/tasks', {headers:{'x-token':'"""
+    + os.getenv("PUBLIC_AGENT_SECRET", "")
+    + """'}});
     const data = await r.json();
     const tbody = document.querySelector("#tasks-table tbody");
     tbody.innerHTML="";
@@ -131,7 +140,9 @@ async function loadTasks(){
 }
 
 async function loadAffiliates(){
-    const r = await fetch('/internal/affiliates', {headers:{'x-token':'""" + os.getenv("PUBLIC_AGENT_SECRET", "") + """'}});
+    const r = await fetch('/internal/affiliates', {headers:{'x-token':'"""
+    + os.getenv("PUBLIC_AGENT_SECRET", "")
+    + """'}});
     const data = await r.json();
     const tbody = document.querySelector("#affiliates-table tbody");
     tbody.innerHTML="";
@@ -141,7 +152,9 @@ async function loadAffiliates(){
 }
 
 async function loadCommissions(){
-    const r = await fetch('/internal/commissions', {headers:{'x-token':'""" + os.getenv("PUBLIC_AGENT_SECRET", "") + """'}});
+    const r = await fetch('/internal/commissions', {headers:{'x-token':'"""
+    + os.getenv("PUBLIC_AGENT_SECRET", "")
+    + """'}});
     const data = await r.json();
     const tbody = document.querySelector("#comm-table tbody");
     tbody.innerHTML="";
@@ -151,7 +164,9 @@ async function loadCommissions(){
 }
 
 async function loadDocs(){
-    const r = await fetch('/docs/generate', {headers:{'x-token':'""" + os.getenv("PUBLIC_AGENT_SECRET", "") + """'}});
+    const r = await fetch('/docs/generate', {headers:{'x-token':'"""
+    + os.getenv("PUBLIC_AGENT_SECRET", "")
+    + """'}});
     const data = await r.json();
     document.getElementById("docs-box").textContent = data.documentation;
 }
@@ -164,26 +179,33 @@ loadCommissions();
 </body>
 </html>
 """
+)
 
 # ==============================
 # 📌 ROTAS DO PAINEL
 # ==============================
 
+
 @router.get("/panel", response_class=HTMLResponse)
 def open_panel(token: bool = Depends(validar_token)):
     return PANEL_HTML
 
+
 @router.get("/internal/affiliates")
 def get_affiliates(token: bool = Depends(validar_token)):
     with SessionLocal() as s:
-        rows = s.execute(text("SELECT * FROM affiliates ORDER BY id DESC")).fetchall()
+        rows = s.execute(
+            text("SELECT * FROM affiliates ORDER BY id DESC")).fetchall()
         return [dict(r._mapping) for r in rows]
+
 
 @router.get("/internal/commissions")
 def get_comms(token: bool = Depends(validar_token)):
     with SessionLocal() as s:
-        rows = s.execute(text("SELECT * FROM commissions ORDER BY id DESC")).fetchall()
+        rows = s.execute(
+            text("SELECT * FROM commissions ORDER BY id DESC")).fetchall()
         return [dict(r._mapping) for r in rows]
+
 
 @router.get("/docs/generate")
 def generate_docs(token: bool = Depends(validar_token)):

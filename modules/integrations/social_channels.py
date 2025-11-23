@@ -1,9 +1,10 @@
 """SOCIAL CHANNELS — EXTRAORDINARI.A / AGENTE GPT"""
 
-import os
 import json
-import requests
+import os
 from enum import Enum
+
+import requests
 
 
 class SocialChannelError(Exception):
@@ -30,7 +31,8 @@ def send_whatsapp_cloud(destination: str, message: str):
     phone_id = os.getenv("WHATSAPP_CLOUD_PHONE_NUMBER_ID")
 
     if not token or not phone_id:
-        raise SocialChannelError("WhatsApp Cloud não configurado corretamente.")
+        raise SocialChannelError(
+            "WhatsApp Cloud não configurado corretamente.")
 
     url = f"https://graph.facebook.com/v18.0/{phone_id}/messages"
     headers = {
@@ -311,8 +313,10 @@ def broadcast(message: str, channels: list, destinations: list):
         for dest in destinations:
             try:
                 r = send_to_channel(ch, dest, message)
-                results.append({"channel": ch, "destination": dest, "result": r})
+                results.append(
+                    {"channel": ch, "destination": dest, "result": r})
             except Exception as e:
-                results.append({"channel": ch, "destination": dest, "error": str(e)})
+                results.append(
+                    {"channel": ch, "destination": dest, "error": str(e)})
 
     return results
