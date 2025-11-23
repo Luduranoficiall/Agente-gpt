@@ -3,7 +3,7 @@ import socketserver
 import os
 from urllib.parse import parse_qs
 
-PORT = 8080
+PORT = int(os.environ.get("PORT", 8080))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -43,6 +43,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     os.chdir(DIRECTORY)
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
-        print(f"Servidor rodando em http://localhost:{PORT}")
+    # Para deploy, escute em 0.0.0.0 (acessível externamente)
+    with socketserver.TCPServer(("0.0.0.0", PORT), Handler) as httpd:
+        print(f"Servidor rodando em http://0.0.0.0:{PORT}")
         httpd.serve_forever()
