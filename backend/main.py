@@ -17,9 +17,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 app.include_router(chat_router)
 app.include_router(whatsapp_router)
 app.include_router(admin_router)
+
+# Rota personalizada para a raiz
+from fastapi.responses import RedirectResponse, JSONResponse
+
+@app.get("/")
+def root():
+    return JSONResponse({
+        "message": "Bem-vindo à API AGENTE.GPT! Acesse /docs para a documentação interativa.",
+        "docs": "/docs",
+        "status": "ok"
+    })
 
 @app.get("/health")
 def health():
