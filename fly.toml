@@ -1,0 +1,19 @@
+app = "agente-gpt"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+[env]
+PORT = "8080"
+[experimental]
+  auto_rollback = true
+[build]
+  dockerfile = "Dockerfile"
+[deploy]
+  release_command = "echo 'Release step'"
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
