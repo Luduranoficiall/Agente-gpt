@@ -2,10 +2,17 @@ import StatsCard from "../../components/StatsCard.tsx";
 import Navbar from "../../components/Navbar.tsx";
 
 export default async function Admin() {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/admin/analytics", {
-    cache: "no-store",
-  });
-  const analytics = await res.json();
+  let analytics = { total_users: 0, total_messages: 0, status: "offline" };
+  try {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/admin/analytics", {
+      cache: "no-store",
+    });
+    if (res.ok) {
+      analytics = await res.json();
+    }
+  } catch (e) {
+    // Se falhar, mantém mock e não quebra build
+  }
   return (
     <main className="min-h-screen">
       <Navbar />
