@@ -1,24 +1,46 @@
-# Agente GPT – EXTRAORDINARIA.AI
+# 🚀 agente.gpt – Ultra Enterprise
 
-Agente profissional, multi-plataforma, pronto para produção.
+Sistema FULL STACK completo com:
+- Backend Python FastAPI + PostgreSQL
+- WhatsApp Cloud API
+- Frontend Next.js 14
+- PWA Completo
+- Dashboard Admin
+- Animações Premium Blue Energy
+- Deploy Fly.io automatizado
 
-## Como rodar
+## Estrutura
 
-1. Configure as variáveis de ambiente obrigatórias no Fly.io:
-   - `DATABASE_URL`
-   - `PIX_CHAVE`
-   - `WHATSAPP_EMPRESA`
-2. Deploy automático via Fly.io:
-   - `flyctl deploy -a agente-gpt --remote-only`
-3. Acesse: https://agente-gpt.fly.dev/
+backend/
+frontend/
+scripts/
+.github/
 
-## Estrutura Essencial
-- `agent_gpt.py` (backend FastAPI principal)
-- `requirements.txt` (dependências)
-- `Dockerfile`, `fly.toml` (deploy)
-- `agente_gpt_mobile/` (Flutter)
-- `agente_gpt_desktop/` (Electron)
+## Instalação
 
----
+### Backend
+```bash
+bash scripts/install_backend.sh
+bash scripts/run_backend.sh
+```
 
-Pronto para clientes e produção!
+### Frontend
+```bash
+bash scripts/install_frontend.sh
+bash scripts/run_frontend.sh
+```
+
+## Ambiente
+Crie `.env` conforme exemplos em backend/ e frontend/.
+
+## Deploy Fly.io
+
+fly launch
+fly deploy
+
+## Endpoints principais
+- `/chat` (POST)
+- `/admin/analytics` (GET)
+- `/health` (GET)
+
+## Pronto para produção, escalável e premium!

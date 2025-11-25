@@ -1,5 +1,5 @@
-import StatsCard from "../../components/StatsCard";
-import Navbar from "../../components/Navbar";
+import StatsCard from "../../components/StatsCard.tsx";
+import Navbar from "../../components/Navbar.tsx";
 
 export default async function Admin() {
   const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/admin/analytics", {
