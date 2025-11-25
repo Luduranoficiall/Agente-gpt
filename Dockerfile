@@ -20,9 +20,9 @@ FROM python:3.10-slim
 WORKDIR /app
 # Copia backend
 COPY --from=backend-build /app /app
-# Copia build estático do Next.js para /app/static
-COPY --from=frontend-build /frontend/.next/static /app/static
+# Copia build do Next.js para /app/static e /app
 COPY --from=frontend-build /frontend/public /app/static
+COPY --from=frontend-build /frontend/.next/static /app/static
 COPY --from=frontend-build /frontend/.next/standalone /app
 COPY --from=frontend-build /frontend/.next/standalone/.next /app/.next
 
