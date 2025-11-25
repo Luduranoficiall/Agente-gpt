@@ -1,0 +1,14 @@
+# Ignorar dependências e builds locais
+node_modules/
+.next/
+.env
+.env.*
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+.DS_Store
+*.log
+storage/logs/
