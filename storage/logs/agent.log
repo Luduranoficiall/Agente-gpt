@@ -1,0 +1,1635 @@
+2025-11-15 05:04:41,729 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 05:04:41,730 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 05:04:42,524 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 05:04:42,637 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 05:04:42,639 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 05:04:43,563 [ERROR] ❌ Falha durante a tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' (aliancia.build_affiliates_backend)
+Traceback (most recent call last):
+  File "/media/luduranoficiall/LINUX MINT/TRABALHOS DA EXTRAORDINARIA.AI/AGENTE GPT/agent_runtime.py", line 312, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/luduranoficiall/LINUX MINT/TRABALHOS DA EXTRAORDINARIA.AI/AGENTE GPT/modules/aliancia.py", line 134, in build_affiliates_backend
+    metrics = _collect_metrics(session, tenant)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/luduranoficiall/LINUX MINT/TRABALHOS DA EXTRAORDINARIA.AI/AGENTE GPT/modules/aliancia.py", line 111, in _collect_metrics
+    "assinaturas": subs_row.total if subs_row else 0,
+                   ^^^^^^^^^^^^^^
+AttributeError: 'SimpleRow' object has no attribute 'total'
+2025-11-15 05:04:43,720 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 05:04:43,838 [ERROR] ❌ Falha durante a tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' (economi_a.integrate_cashback_apis)
+Traceback (most recent call last):
+  File "/media/luduranoficiall/LINUX MINT/TRABALHOS DA EXTRAORDINARIA.AI/AGENTE GPT/agent_runtime.py", line 312, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/luduranoficiall/LINUX MINT/TRABALHOS DA EXTRAORDINARIA.AI/AGENTE GPT/modules/economi_a.py", line 48, in integrate_cashback_apis
+    "prioridades": (config.get("prioridades_maximas") or [])[:3],
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: slice(None, 3, None)
+2025-11-15 05:04:43,949 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 05:04:44,061 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 05:04:44,175 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 05:04:44,177 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 05:04:44,294 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 05:04:44,408 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 05:04:44,408 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 05:04:44,861 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 05:04:45,092 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 05:04:45,205 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 05:04:45,205 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 05:04:45,876 [INFO] [MARI.A] 3 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 05:04:45,989 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 05:04:45,989 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 05:04:46,103 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 05:04:46,213 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 11:12:44,656 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 11:12:44,657 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 11:12:45,158 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 11:12:45,270 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 11:12:45,271 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 11:12:45,621 [INFO] [ALIANCIA] 3 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 11:12:45,733 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 11:12:45,734 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 11:12:46,078 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 11:12:46,247 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 11:12:46,248 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 11:12:46,364 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 11:12:46,483 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 11:12:46,483 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 11:12:46,598 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 11:12:46,709 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 11:12:46,710 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 11:12:46,842 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 11:12:47,063 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 11:12:47,174 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 11:12:47,175 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 11:12:47,397 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 11:12:47,509 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 11:12:47,509 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 11:12:47,621 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 11:12:47,733 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 11:14:21,190 [INFO] [INSIGHTS] Dashboard universal atualizado com afiliados, MRR e demandas pendentes.
+2025-11-15 11:33:59,844 [INFO] ==============================================
+2025-11-15 11:33:59,845 [INFO]    INICIANDO O AGENTE GPT (VERSÃO COMPLETA)
+2025-11-15 11:33:59,845 [INFO] ==============================================
+2025-11-15 11:34:33,829 [INFO] ==============================================
+2025-11-15 11:34:33,829 [INFO]    INICIANDO O AGENTE GPT (VERSÃO COMPLETA)
+2025-11-15 11:34:33,829 [INFO] ==============================================
+2025-11-15 11:39:19,139 [INFO] ==============================================
+2025-11-15 11:39:19,139 [INFO]    INICIANDO O AGENTE GPT (VERSÃO COMPLETA)
+2025-11-15 11:39:19,139 [INFO] ==============================================
+2025-11-15 11:39:19,434 [INFO] HTTP Request: POST http://testserver/business/demand "HTTP/1.1 200 OK"
+2025-11-15 11:39:19,440 [INFO] [SOCIAL] POST https://httpbin.org/post payload={'text': 'Brief rápido para validar broadcast.'}
+2025-11-15 11:39:21,007 [INFO] HTTP Request: POST http://testserver/business/demand/4/process "HTTP/1.1 200 OK"
+2025-11-15 16:38:31,413 [INFO] ==============================================
+2025-11-15 16:38:31,414 [INFO]    INICIANDO O AGENTE GPT (VERSÃO COMPLETA)
+2025-11-15 16:38:31,414 [INFO] ==============================================
+2025-11-15 16:38:31,460 [INFO] 🧠 Inicializando Agente GPT…
+2025-11-15 16:38:31,560 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-11-15 16:38:31,563 [INFO] Added job "run_cycle" to job store "default"
+2025-11-15 16:38:31,563 [INFO] Scheduler started
+2025-11-15 16:38:31,564 [INFO] 🕒 Scheduler iniciado | intervalo: 120s
+2025-11-15 16:38:31,661 [INFO] 🚀 API iniciando em http://0.0.0.0:8080
+2025-11-15 16:40:31,561 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:42:31 UTC)" (scheduled at 2025-11-15 16:40:31.560549+00:00)
+2025-11-15 16:40:31,587 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 16:40:31,587 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 16:40:31,598 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 16:40:31,603 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 16:40:31,603 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 16:40:31,613 [ERROR] ❌ Falha durante a tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' (aliancia.build_affiliates_backend)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-15 16:40:31,624 [ERROR] Erro durante o ciclo automático.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_gpt.py", line 676, in run_cycle
+    executor.run_pipeline()
+  File "/app/agent_runtime.py", line 361, in run_pipeline
+    self._finish_task(tid, "error", error=str(exc))
+  File "/app/agent_runtime.py", line 319, in _finish_task
+    self.session.execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: UPDATE tasks SET status=%(st)s, finished_at=%(ft)s, result=%(rs)s, error=%(er)s WHERE id=%(id)s]
+[parameters: {'st': 'error', 'ft': '2025-11-15T16:40:31.622840', 'rs': None, 'er': '(psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist\nLINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission ... (234 characters truncated) ... lue),2) AS valor\n        FROM commissions GROUP BY level ORDER BY level ASC\n        ]\n(Background on this error at: https://sqlalche.me/e/20/f405)', 'id': 2}]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-11-15 16:40:31,629 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:42:31 UTC)" executed successfully
+2025-11-15 16:42:31,561 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:44:31 UTC)" (scheduled at 2025-11-15 16:42:31.560549+00:00)
+2025-11-15 16:42:31,593 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 16:42:31,593 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 16:42:31,600 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 16:42:31,606 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 16:42:31,607 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 16:42:31,615 [ERROR] ❌ Falha durante a tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' (aliancia.build_affiliates_backend)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-15 16:42:31,624 [ERROR] Erro durante o ciclo automático.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_gpt.py", line 676, in run_cycle
+    executor.run_pipeline()
+  File "/app/agent_runtime.py", line 361, in run_pipeline
+    self._finish_task(tid, "error", error=str(exc))
+  File "/app/agent_runtime.py", line 319, in _finish_task
+    self.session.execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: UPDATE tasks SET status=%(st)s, finished_at=%(ft)s, result=%(rs)s, error=%(er)s WHERE id=%(id)s]
+[parameters: {'st': 'error', 'ft': '2025-11-15T16:42:31.622524', 'rs': None, 'er': '(psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist\nLINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission ... (234 characters truncated) ... lue),2) AS valor\n        FROM commissions GROUP BY level ORDER BY level ASC\n        ]\n(Background on this error at: https://sqlalche.me/e/20/f405)', 'id': 4}]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-11-15 16:42:31,635 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:44:31 UTC)" executed successfully
+2025-11-15 16:44:31,561 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:46:31 UTC)" (scheduled at 2025-11-15 16:44:31.560549+00:00)
+2025-11-15 16:44:31,610 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 16:44:31,611 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 16:44:31,618 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 16:44:31,622 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 16:44:31,623 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 16:44:31,630 [ERROR] ❌ Falha durante a tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' (aliancia.build_affiliates_backend)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-15 16:44:31,638 [ERROR] Erro durante o ciclo automático.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_gpt.py", line 676, in run_cycle
+    executor.run_pipeline()
+  File "/app/agent_runtime.py", line 361, in run_pipeline
+    self._finish_task(tid, "error", error=str(exc))
+  File "/app/agent_runtime.py", line 319, in _finish_task
+    self.session.execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: UPDATE tasks SET status=%(st)s, finished_at=%(ft)s, result=%(rs)s, error=%(er)s WHERE id=%(id)s]
+[parameters: {'st': 'error', 'ft': '2025-11-15T16:44:31.636681', 'rs': None, 'er': '(psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist\nLINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission ... (234 characters truncated) ... lue),2) AS valor\n        FROM commissions GROUP BY level ORDER BY level ASC\n        ]\n(Background on this error at: https://sqlalche.me/e/20/f405)', 'id': 6}]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-11-15 16:44:31,647 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:46:31 UTC)" executed successfully
+2025-11-15 16:46:31,561 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:48:31 UTC)" (scheduled at 2025-11-15 16:46:31.560549+00:00)
+2025-11-15 16:46:31,606 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 16:46:31,606 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 16:46:31,612 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 16:46:31,617 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 16:46:31,617 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 16:46:31,625 [ERROR] ❌ Falha durante a tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' (aliancia.build_affiliates_backend)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-15 16:46:31,632 [ERROR] Erro durante o ciclo automático.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_gpt.py", line 676, in run_cycle
+    executor.run_pipeline()
+  File "/app/agent_runtime.py", line 361, in run_pipeline
+    self._finish_task(tid, "error", error=str(exc))
+  File "/app/agent_runtime.py", line 319, in _finish_task
+    self.session.execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: UPDATE tasks SET status=%(st)s, finished_at=%(ft)s, result=%(rs)s, error=%(er)s WHERE id=%(id)s]
+[parameters: {'st': 'error', 'ft': '2025-11-15T16:46:31.630167', 'rs': None, 'er': '(psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist\nLINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission ... (234 characters truncated) ... lue),2) AS valor\n        FROM commissions GROUP BY level ORDER BY level ASC\n        ]\n(Background on this error at: https://sqlalche.me/e/20/f405)', 'id': 8}]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-11-15 16:46:31,640 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:48:31 UTC)" executed successfully
+2025-11-15 16:48:31,561 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:50:31 UTC)" (scheduled at 2025-11-15 16:48:31.560549+00:00)
+2025-11-15 16:48:31,598 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 16:48:31,598 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 16:48:31,603 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 16:48:31,606 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 16:48:31,607 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 16:48:31,610 [ERROR] ❌ Falha durante a tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' (aliancia.build_affiliates_backend)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-11-15 16:48:31,615 [ERROR] Erro durante o ciclo automático.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_runtime.py", line 358, in run_pipeline
+    result = fn(self.session, self.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 48, in build_affiliates_backend
+    commissions = _fetchall(
+                  ^^^^^^^^^^
+  File "/app/modules/aliancia.py", line 15, in _fetchall
+    rows = session.execute(text(query), params or {}).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist
+LINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_...
+                                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+
+[SQL: 
+        SELECT level, COUNT(*) as qtd, ROUND(SUM(commission_value),2) AS valor
+        FROM commissions GROUP BY level ORDER BY level ASC
+        ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/agent_gpt.py", line 676, in run_cycle
+    executor.run_pipeline()
+  File "/app/agent_runtime.py", line 361, in run_pipeline
+    self._finish_task(tid, "error", error=str(exc))
+  File "/app/agent_runtime.py", line 319, in _finish_task
+    self.session.execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2256, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: UPDATE tasks SET status=%(st)s, finished_at=%(ft)s, result=%(rs)s, error=%(er)s WHERE id=%(id)s]
+[parameters: {'st': 'error', 'ft': '2025-11-15T16:48:31.613628', 'rs': None, 'er': '(psycopg2.errors.UndefinedFunction) function round(real, integer) does not exist\nLINE 2:         SELECT level, COUNT(*) as qtd, ROUND(SUM(commission ... (234 characters truncated) ... lue),2) AS valor\n        FROM commissions GROUP BY level ORDER BY level ASC\n        ]\n(Background on this error at: https://sqlalche.me/e/20/f405)', 'id': 10}]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-11-15 16:48:31,620 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:50:31 UTC)" executed successfully
+2025-11-15 16:53:42,977 [INFO] ==============================================
+2025-11-15 16:53:42,977 [INFO]    INICIANDO O AGENTE GPT (VERSÃO COMPLETA)
+2025-11-15 16:53:42,978 [INFO] ==============================================
+2025-11-15 16:53:43,035 [INFO] 🧠 Inicializando Agente GPT…
+2025-11-15 16:53:43,061 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-11-15 16:53:43,066 [INFO] Added job "run_cycle" to job store "default"
+2025-11-15 16:53:43,066 [INFO] Scheduler started
+2025-11-15 16:53:43,066 [INFO] 🕒 Scheduler iniciado | intervalo: 120s
+2025-11-15 16:53:43,152 [INFO] 🚀 API iniciando em http://0.0.0.0:8080
+2025-11-15 16:55:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:57:43 UTC)" (scheduled at 2025-11-15 16:55:43.061488+00:00)
+2025-11-15 16:55:43,101 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 16:55:43,102 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 16:55:43,113 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 16:55:43,117 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 16:55:43,117 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 16:55:43,244 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 16:55:43,248 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 16:55:43,249 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 16:55:43,364 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 16:55:43,368 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 16:55:43,368 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 16:55:43,372 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 16:55:43,375 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 16:55:43,375 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 16:55:43,380 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 16:55:43,383 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 16:55:43,383 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 16:55:43,393 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 16:55:43,513 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 16:55:43,516 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 16:55:43,517 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 16:55:43,644 [INFO] [MARI.A] 3 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 16:55:43,650 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 16:55:43,650 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 16:55:43,654 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 16:55:43,657 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 16:55:43,660 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 16:55:43,661 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:57:43 UTC)" executed successfully
+2025-11-15 16:57:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:59:43 UTC)" (scheduled at 2025-11-15 16:57:43.061488+00:00)
+2025-11-15 16:57:43,084 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 16:57:43,084 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 16:57:43,089 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 16:57:43,098 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 16:57:43,098 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 16:57:43,212 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 16:57:43,217 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 16:57:43,217 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 16:57:43,325 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 16:57:43,331 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 16:57:43,331 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 16:57:43,335 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 16:57:43,339 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 16:57:43,339 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 16:57:43,342 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 16:57:43,346 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 16:57:43,347 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 16:57:43,350 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 16:57:43,467 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 16:57:43,471 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 16:57:43,472 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 16:57:43,588 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 16:57:43,598 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 16:57:43,598 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 16:57:43,601 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 16:57:43,604 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 16:57:43,608 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 16:57:43,609 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 16:59:43 UTC)" executed successfully
+2025-11-15 16:59:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:01:43 UTC)" (scheduled at 2025-11-15 16:59:43.061488+00:00)
+2025-11-15 16:59:43,086 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 16:59:43,087 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 16:59:43,093 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 16:59:43,097 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 16:59:43,097 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 16:59:43,212 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 16:59:43,216 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 16:59:43,216 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 16:59:43,332 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 16:59:43,336 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 16:59:43,336 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 16:59:43,338 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 16:59:43,341 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 16:59:43,341 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 16:59:43,344 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 16:59:43,348 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 16:59:43,348 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 16:59:43,351 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 16:59:43,466 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 16:59:43,470 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 16:59:43,470 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 16:59:43,580 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 16:59:43,588 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 16:59:43,588 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 16:59:43,592 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 16:59:43,597 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 16:59:43,602 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 16:59:43,604 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:01:43 UTC)" executed successfully
+2025-11-15 17:01:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:03:43 UTC)" (scheduled at 2025-11-15 17:01:43.061488+00:00)
+2025-11-15 17:01:43,080 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:01:43,080 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:01:43,086 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:01:43,091 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:01:43,091 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:01:43,204 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:01:43,210 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:01:43,210 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:01:43,324 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:01:43,331 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:01:43,331 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:01:43,336 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:01:43,341 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:01:43,341 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:01:43,345 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:01:43,347 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:01:43,348 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:01:43,352 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:01:43,468 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:01:43,473 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:01:43,473 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:01:43,588 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:01:43,595 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:01:43,595 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:01:43,600 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:01:43,606 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:01:43,610 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:01:43,610 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:03:43 UTC)" executed successfully
+2025-11-15 17:03:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:05:43 UTC)" (scheduled at 2025-11-15 17:03:43.061488+00:00)
+2025-11-15 17:03:43,094 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:03:43,094 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:03:43,102 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:03:43,106 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:03:43,107 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:03:43,228 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:03:43,233 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:03:43,234 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:03:43,348 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:03:43,354 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:03:43,354 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:03:43,359 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:03:43,365 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:03:43,366 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:03:43,372 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:03:43,378 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:03:43,378 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:03:43,384 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:03:43,502 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:03:43,507 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:03:43,508 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:03:43,628 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:03:43,635 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:03:43,636 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:03:43,641 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:03:43,646 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:03:43,651 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:03:43,652 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:05:43 UTC)" executed successfully
+2025-11-15 17:05:43,061 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:07:43 UTC)" (scheduled at 2025-11-15 17:05:43.061488+00:00)
+2025-11-15 17:05:43,080 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:05:43,080 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:05:43,085 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:05:43,087 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:05:43,087 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:05:43,197 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:05:43,201 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:05:43,201 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:05:43,308 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:05:43,316 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:05:43,317 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:05:43,322 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:05:43,327 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:05:43,328 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:05:43,331 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:05:43,335 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:05:43,335 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:05:43,338 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:05:43,450 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:05:43,455 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:05:43,455 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:05:43,572 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:05:43,580 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:05:43,581 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:05:43,586 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:05:43,590 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:05:43,597 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:05:43,598 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:07:43 UTC)" executed successfully
+2025-11-15 17:07:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:09:43 UTC)" (scheduled at 2025-11-15 17:07:43.061488+00:00)
+2025-11-15 17:07:43,083 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:07:43,083 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:07:43,088 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:07:43,090 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:07:43,091 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:07:43,204 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:07:43,210 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:07:43,210 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:07:43,324 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:07:43,332 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:07:43,333 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:07:43,338 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:07:43,343 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:07:43,343 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:07:43,346 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:07:43,350 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:07:43,351 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:07:43,355 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:07:43,467 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:07:43,471 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:07:43,471 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:07:43,589 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:07:43,594 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:07:43,594 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:07:43,596 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:07:43,600 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:07:43,604 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:07:43,605 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:09:43 UTC)" executed successfully
+2025-11-15 17:09:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:11:43 UTC)" (scheduled at 2025-11-15 17:09:43.061488+00:00)
+2025-11-15 17:09:43,089 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:09:43,090 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:09:43,095 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:09:43,098 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:09:43,098 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:09:43,212 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:09:43,218 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:09:43,218 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:09:43,324 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:09:43,328 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:09:43,328 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:09:43,330 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:09:43,332 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:09:43,333 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:09:43,336 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:09:43,339 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:09:43,339 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:09:43,342 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:09:43,458 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:09:43,462 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:09:43,463 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:09:43,580 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:09:43,587 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:09:43,589 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:09:43,594 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:09:43,599 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:09:43,606 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:09:43,607 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:11:43 UTC)" executed successfully
+2025-11-15 17:11:43,063 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:13:43 UTC)" (scheduled at 2025-11-15 17:11:43.061488+00:00)
+2025-11-15 17:11:43,110 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:11:43,110 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:11:43,122 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:11:43,128 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:11:43,128 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:11:43,252 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:11:43,258 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:11:43,258 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:11:43,372 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:11:43,379 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:11:43,379 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:11:43,384 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:11:43,388 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:11:43,388 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:11:43,392 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:11:43,397 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:11:43,397 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:11:43,401 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:11:43,515 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:11:43,518 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:11:43,519 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:11:43,636 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:11:43,642 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:11:43,642 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:11:43,647 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:11:43,651 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:11:43,655 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:11:43,655 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:13:43 UTC)" executed successfully
+2025-11-15 17:13:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:15:43 UTC)" (scheduled at 2025-11-15 17:13:43.061488+00:00)
+2025-11-15 17:13:43,151 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:13:43,152 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:13:43,155 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:13:43,158 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:13:43,159 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:13:43,276 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:13:43,281 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:13:43,282 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:13:43,396 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:13:43,401 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:13:43,402 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:13:43,406 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:13:43,411 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:13:43,412 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:13:43,416 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:13:43,419 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:13:43,420 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:13:43,424 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:13:43,538 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:13:43,542 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:13:43,543 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:13:43,660 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:13:43,666 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:13:43,668 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:13:43,673 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:13:43,682 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:13:43,686 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:13:43,687 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:15:43 UTC)" executed successfully
+2025-11-15 17:15:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:17:43 UTC)" (scheduled at 2025-11-15 17:15:43.061488+00:00)
+2025-11-15 17:15:43,107 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:15:43,107 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:15:43,112 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:15:43,117 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:15:43,117 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:15:43,236 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:15:43,240 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:15:43,240 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:15:43,348 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:15:43,353 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:15:43,354 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:15:43,359 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:15:43,363 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:15:43,364 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:15:43,369 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:15:43,375 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:15:43,375 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:15:43,379 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:15:43,490 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:15:43,494 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:15:43,494 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:15:43,612 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:15:43,615 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:15:43,615 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:15:43,618 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:15:43,627 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:15:43,629 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:15:43,630 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:17:43 UTC)" executed successfully
+2025-11-15 17:17:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:19:43 UTC)" (scheduled at 2025-11-15 17:17:43.061488+00:00)
+2025-11-15 17:17:43,150 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:17:43,150 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:17:43,164 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:17:43,171 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:17:43,171 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:17:43,284 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:17:43,288 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:17:43,288 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:17:43,397 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:17:43,421 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:17:43,424 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:17:43,436 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:17:43,452 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:17:43,453 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:17:43,460 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:17:43,477 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:17:43,485 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:17:43,493 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:17:43,611 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:17:43,615 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:17:43,616 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:17:43,741 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:17:43,745 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:17:43,745 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:17:43,750 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:17:43,753 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:17:43,757 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:17:43,757 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:19:43 UTC)" executed successfully
+2025-11-15 17:19:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:21:43 UTC)" (scheduled at 2025-11-15 17:19:43.061488+00:00)
+2025-11-15 17:19:43,098 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:19:43,099 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:19:43,104 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:19:43,108 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:19:43,109 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:19:43,221 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:19:43,226 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:19:43,226 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:19:43,332 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:19:43,337 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:19:43,337 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:19:43,340 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:19:43,342 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:19:43,342 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:19:43,345 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:19:43,348 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:19:43,348 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:19:43,350 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:19:43,465 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:19:43,468 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:19:43,468 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:19:43,580 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:19:43,585 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:19:43,585 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:19:43,588 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:19:43,593 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:19:43,595 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:19:43,595 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:21:43 UTC)" executed successfully
+2025-11-15 17:21:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:23:43 UTC)" (scheduled at 2025-11-15 17:21:43.061488+00:00)
+2025-11-15 17:21:43,131 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:21:43,131 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:21:43,138 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:21:43,143 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:21:43,143 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:21:43,292 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:21:43,297 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:21:43,297 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:21:43,420 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:21:43,428 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:21:43,429 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:21:43,434 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:21:43,439 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:21:43,439 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:21:43,444 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:21:43,450 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:21:43,451 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:21:43,456 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:21:43,570 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:21:43,574 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:21:43,575 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:21:43,692 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:21:43,698 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:21:43,698 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:21:43,701 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:21:43,703 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:21:43,706 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:21:43,706 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:23:43 UTC)" executed successfully
+2025-11-15 17:23:43,063 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:25:43 UTC)" (scheduled at 2025-11-15 17:23:43.061488+00:00)
+2025-11-15 17:23:43,090 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:23:43,090 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:23:43,095 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:23:43,099 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:23:43,100 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:23:43,212 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:23:43,219 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:23:43,219 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:23:43,332 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:23:43,339 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:23:43,339 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:23:43,341 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:23:43,346 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:23:43,346 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:23:43,352 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:23:43,355 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:23:43,356 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:23:43,360 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:23:43,474 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:23:43,477 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:23:43,478 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:23:43,596 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:23:43,603 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:23:43,603 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:23:43,605 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:23:43,607 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:23:43,610 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:23:43,611 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:25:43 UTC)" executed successfully
+2025-11-15 17:25:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:27:43 UTC)" (scheduled at 2025-11-15 17:25:43.061488+00:00)
+2025-11-15 17:25:43,113 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:25:43,114 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:25:43,119 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:25:43,122 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:25:43,123 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:25:43,236 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:25:43,241 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:25:43,242 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:25:43,357 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:25:43,364 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:25:43,364 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:25:43,367 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:25:43,370 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:25:43,371 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:25:43,374 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:25:43,377 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:25:43,377 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:25:43,380 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:25:43,499 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:25:43,502 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:25:43,502 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:25:43,620 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:25:43,627 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:25:43,627 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:25:43,631 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:25:43,636 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:25:43,639 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:25:43,639 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:27:43 UTC)" executed successfully
+2025-11-15 17:27:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:29:43 UTC)" (scheduled at 2025-11-15 17:27:43.061488+00:00)
+2025-11-15 17:27:43,086 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:27:43,087 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:27:43,094 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:27:43,097 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:27:43,097 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:27:43,212 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:27:43,218 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:27:43,219 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:27:43,332 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:27:43,340 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:27:43,341 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:27:43,343 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:27:43,346 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:27:43,346 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:27:43,350 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:27:43,354 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:27:43,354 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:27:43,359 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:27:43,475 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:27:43,478 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:27:43,478 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:27:43,588 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:27:43,591 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:27:43,592 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:27:43,594 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:27:43,596 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:27:43,598 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:27:43,599 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:29:43 UTC)" executed successfully
+2025-11-15 17:29:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:31:43 UTC)" (scheduled at 2025-11-15 17:29:43.061488+00:00)
+2025-11-15 17:29:43,090 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:29:43,090 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:29:43,096 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:29:43,099 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:29:43,099 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:29:43,212 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:29:43,219 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:29:43,219 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:29:43,332 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:29:43,342 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:29:43,343 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:29:43,348 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:29:43,353 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:29:43,353 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:29:43,360 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:29:43,364 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:29:43,364 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:29:43,367 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:29:43,485 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:29:43,491 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:29:43,491 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:29:43,612 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:29:43,617 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:29:43,617 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:29:43,621 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:29:43,626 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:29:43,629 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:29:43,629 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:31:43 UTC)" executed successfully
+2025-11-15 17:31:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:33:43 UTC)" (scheduled at 2025-11-15 17:31:43.061488+00:00)
+2025-11-15 17:31:43,085 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:31:43,085 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:31:43,091 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:31:43,094 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:31:43,094 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:31:43,204 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:31:43,208 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:31:43,208 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:31:43,316 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:31:43,325 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:31:43,325 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:31:43,330 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:31:43,333 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:31:43,333 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:31:43,336 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:31:43,338 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:31:43,339 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:31:43,342 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:31:43,456 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:31:43,460 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:31:43,461 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:31:43,572 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:31:43,577 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:31:43,578 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:31:43,583 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:31:43,587 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:31:43,589 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:31:43,589 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:33:43 UTC)" executed successfully
+2025-11-15 17:33:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:35:43 UTC)" (scheduled at 2025-11-15 17:33:43.061488+00:00)
+2025-11-15 17:33:43,087 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:33:43,087 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:33:43,094 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:33:43,099 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:33:43,099 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:33:43,212 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:33:43,218 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:33:43,218 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:33:43,332 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:33:43,338 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:33:43,339 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:33:43,342 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:33:43,346 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:33:43,347 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:33:43,351 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:33:43,355 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:33:43,355 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:33:43,358 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:33:43,474 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:33:43,477 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:33:43,478 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:33:43,596 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:33:43,602 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:33:43,602 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:33:43,606 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:33:43,609 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:33:43,612 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:33:43,613 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:35:43 UTC)" executed successfully
+2025-11-15 17:35:43,062 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:37:43 UTC)" (scheduled at 2025-11-15 17:35:43.061488+00:00)
+2025-11-15 17:35:43,083 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-15 17:35:43,084 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-15 17:35:43,090 [INFO] [BOTGPT] Landing pages geradas automaticamente (stub).
+2025-11-15 17:35:43,093 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-15 17:35:43,093 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-15 17:35:43,204 [INFO] [ALIANCIA] 0 afiliados ativos e dashboard salvo em aliancia_dashboard.json
+2025-11-15 17:35:43,210 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-15 17:35:43,210 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-15 17:35:43,325 [INFO] [ECONOMI.A] 0/3 conectores com credenciais prontas para cashback/NFC-e.
+2025-11-15 17:35:43,329 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-15 17:35:43,329 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-15 17:35:43,334 [INFO] [BOTGPT] Automação WhatsApp configurada e validada (stub).
+2025-11-15 17:35:43,338 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-15 17:35:43,338 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-15 17:35:43,342 [INFO] [BOTGPT] Portal de documentação publicado e notificado (stub).
+2025-11-15 17:35:43,344 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-15 17:35:43,345 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-15 17:35:43,349 [INFO] [AURI.A] Média: 7.58 | Veredito: prata
+2025-11-15 17:35:43,466 [INFO] [MENTORI.A] Plano contínuo gerado com 3 prioridades e 12 pilares avaliados.
+2025-11-15 17:35:43,470 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-15 17:35:43,471 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-15 17:35:43,580 [INFO] [MARI.A] 0 novas campanhas multicanais prontas no pipeline de demands.
+2025-11-15 17:35:43,586 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-15 17:35:43,586 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-15 17:35:43,590 [INFO] [BOTGPT] Agentes dos clientes treinados com repertório atualizado (stub).
+2025-11-15 17:35:43,593 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-15 17:35:43,597 [INFO] ⏳ Ciclo automático executado.
+2025-11-15 17:35:43,597 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-15 17:37:43 UTC)" executed successfully
+2025-11-18 12:37:52,023 [INFO] Agente GPT – Inicializando…
+2025-11-18 12:37:53,675 [INFO] 🔧 Iniciando banco de dados e garantindo tabelas…
+2025-11-18 12:37:53,709 [INFO] ✔ Banco de dados pronto.
+2025-11-18 12:37:53,712 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-11-18 12:37:53,718 [INFO] Added job "run_cycle" to job store "default"
+2025-11-18 12:37:53,719 [INFO] Scheduler started
+2025-11-18 12:37:53,719 [INFO] Scheduler iniciado: a cada 120s
+2025-11-18 12:39:53,713 [INFO] Running job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-18 12:41:53 UTC)" (scheduled at 2025-11-18 12:39:53.712053+00:00)
+2025-11-18 12:39:53,714 [INFO] Scheduler: executando ciclo do pipeline…
+2025-11-18 12:39:53,739 [INFO] 🧠 Executando pipeline com 8 etapas.
+2025-11-18 12:39:53,739 [INFO] 🚀 [1/8] Landing pages unificadas por vertical (.app/.ai/.social.br) — responsável: Agente GPT — módulo: botgpt.generate_landing_pages
+2025-11-18 12:39:53,935 [INFO] [BOTGPT] Landing pages geradas (stub).
+2025-11-18 12:39:53,940 [INFO] ✅ Tarefa 'Landing pages unificadas por vertical (.app/.ai/.social.br)' concluída.
+2025-11-18 12:39:53,941 [INFO] 🚀 [2/8] Backend do programa de afiliados (Node/Prisma/PostgreSQL) — responsável: Agente GPT — módulo: aliancia.build_affiliates_backend
+2025-11-18 12:39:53,944 [INFO] [ALIANCIA] Backend (stub) preparado para 25/10/5 e R$197.
+2025-11-18 12:39:53,948 [INFO] ✅ Tarefa 'Backend do programa de afiliados (Node/Prisma/PostgreSQL)' concluída.
+2025-11-18 12:39:53,948 [INFO] 🚀 [3/8] ECONOMI.A. — Integração com APIs e NFC-e — responsável: Agente GPT — módulo: economi_a.integrate_cashback_apis
+2025-11-18 12:39:53,954 [INFO] [ECONOMI.A.] Integrações mapeadas e rotas preparadas (stub).
+2025-11-18 12:39:53,959 [INFO] ✅ Tarefa 'ECONOMI.A. — Integração com APIs e NFC-e' concluída.
+2025-11-18 12:39:53,960 [INFO] 🚀 [4/8] Automação WhatsApp Business + Zapier + Sheets — responsável: Agente GPT — módulo: botgpt.setup_whatsapp_automations
+2025-11-18 12:39:53,965 [INFO] [BOTGPT] Automação WhatsApp preparada (stub).
+2025-11-18 12:39:53,969 [INFO] ✅ Tarefa 'Automação WhatsApp Business + Zapier + Sheets' concluída.
+2025-11-18 12:39:53,970 [INFO] 🚀 [5/8] Portal de documentação (Notion/Docs) — responsável: Agente GPT — módulo: botgpt.publish_docs_portal
+2025-11-18 12:39:53,974 [INFO] [BOTGPT] Portal de documentação publicado (stub).
+2025-11-18 12:39:53,978 [INFO] ✅ Tarefa 'Portal de documentação (Notion/Docs)' concluída.
+2025-11-18 12:39:53,978 [INFO] 🚀 [6/8] AURI.A. + MENTORI.A. — implantar trilha completa — responsável: Agente GPT — módulo: mentori_a.deploy_end_to_end
+2025-11-18 12:39:53,989 [INFO] [AURI.A.] Média: 7.6 | Veredito: prata
+2025-11-18 12:39:53,989 [INFO] [MENTORI.A.] Trilha implantada com base no Média: 7.6 | Veredito: prata
+2025-11-18 12:39:53,994 [INFO] ✅ Tarefa 'AURI.A. + MENTORI.A. — implantar trilha completa' concluída.
+2025-11-18 12:39:53,994 [INFO] 🚀 [7/8] MARI.A. — Criar e agendar campanhas — responsável: Agente GPT — módulo: mari_a.schedule_campaigns
+2025-11-18 12:39:54,004 [INFO] [MARI.A.] Campanhas criadas e agendadas (stub).
+2025-11-18 12:39:54,008 [INFO] ✅ Tarefa 'MARI.A. — Criar e agendar campanhas' concluída.
+2025-11-18 12:39:54,008 [INFO] 🚀 [8/8] Treinar agentes clientes (white-label BOTGPT) — responsável: Agente GPT — módulo: botgpt.train_client_agents
+2025-11-18 12:39:54,011 [INFO] [BOTGPT] Agentes clientes treinados (stub).
+2025-11-18 12:39:54,014 [INFO] ✅ Tarefa 'Treinar agentes clientes (white-label BOTGPT)' concluída.
+2025-11-18 12:39:54,020 [INFO] Job "run_cycle (trigger: interval[0:02:00], next run at: 2025-11-18 12:41:53 UTC)" executed successfully

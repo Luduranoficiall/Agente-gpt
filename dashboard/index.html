@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Painel do Agente</title>
+  <style>
+    body { font-family: Arial; padding: 40px; background: #f3f3f3; }
+    h1 { color: #0a3d98; }
+    pre { background: #fff; padding: 20px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+<h1>Painel do Agente</h1>
+<p>Mensagens recebidas nas últimas 24h:</p>
+<pre id="msgs">Carregando...</pre>
+<script>
+fetch("/api/logs")
+  .then(r => r.json())
+  .then(data => document.getElementById("msgs").innerText = JSON.stringify(data, null, 2))
+</script>
+</body>
+</html>
