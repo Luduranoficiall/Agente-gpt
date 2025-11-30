@@ -2,6 +2,7 @@ dotenv.config();
 import express from "express";
 import dotenv from "dotenv";
 import webhook from "./webhook.js";
+import adminRoutes from "./src/routes/admin.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -12,6 +13,9 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
+
+// Rotas administrativas (painel admin Next.js)
+app.use("/api/admin", adminRoutes);
 
 // Página principal
 app.use(express.static(path.join(__dirname, "public")));

@@ -1,4 +1,4 @@
-# 🚀 agente.gpt – Ultra Enterprise
+-# 🚀 agente.gpt – Ultra Enterprise
 
 Sistema FULL STACK completo com:
 - Backend Python FastAPI + PostgreSQL
@@ -7,7 +7,7 @@ Sistema FULL STACK completo com:
 - PWA Completo
 - Dashboard Admin
 - Animações Premium Blue Energy
-- Deploy Fly.io automatizado
+
 
 ## Estrutura
 
@@ -16,31 +16,36 @@ frontend/
 scripts/
 .github/
 
+
 ## Instalação
 
 ### Backend
+
 ```bash
 bash scripts/install_backend.sh
 bash scripts/run_backend.sh
 ```
 
 ### Frontend
+
 ```bash
 bash scripts/install_frontend.sh
 bash scripts/run_frontend.sh
 ```
 
+
 ## Ambiente
+
 Crie `.env` conforme exemplos em backend/ e frontend/.
 
-## Deploy Fly.io
 
-fly launch
-fly deploy
+
 
 ## Endpoints principais
+
 - `/chat` (POST)
 - `/admin/analytics` (GET)
 - `/health` (GET)
 
-## Pronto para produção, escalável e premium!
+
+## Pronto para produção, escalável e premium
