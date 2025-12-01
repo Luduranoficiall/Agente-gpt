@@ -17,21 +17,15 @@ scripts/
 .github/
 
 
-## Instalação
+## Deploy (Vercel)
 
-### Backend
+Este projeto está configurado para deploy automático na Vercel.
 
-```bash
-bash scripts/install_backend.sh
-bash scripts/run_backend.sh
-```
+1. Importe o projeto na Vercel.
+2. Selecione o framework **Next.js**.
+3. Clique em **Deploy**.
 
-### Frontend
-
-```bash
-bash scripts/install_frontend.sh
-bash scripts/run_frontend.sh
-```
+A configuração `vercel.json` já cuida do roteamento entre Frontend e Backend.
 
 
 ## Ambiente
