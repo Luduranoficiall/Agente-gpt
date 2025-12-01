@@ -1,4 +1,4 @@
-# 🚀 Agente GPT - Ultra Enterprise (ATUALIZADO)
+# 🚀 Agente Premium Master Ouro (ATUALIZADO)
 
 > **DOCUMENTAÇÃO OFICIAL VERCEL - VERSÃO 2.0**
 > *Última atualização: 01/12/2025*
