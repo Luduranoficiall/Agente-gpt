@@ -14,7 +14,7 @@ const handle = nextApp.getRequestHandler();
 
 nextApp.prepare().then(() => {
   // Handle all other routes with Next.js
-  app.all("*", (req, res) => {
+  app.all(/(.*)/, (req, res) => {
     return handle(req, res);
   });
 
