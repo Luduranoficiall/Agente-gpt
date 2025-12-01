@@ -185,13 +185,13 @@ export default function Home() {
             </a>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-2">
+            <nav className="hidden lg:flex items-center gap-8"> {/* Aumentado gap para mais espaço */}
               {['home', 'agente', 'planos', 'docs', 'analytics', 'admin'].map((page) => (
                 <a 
                   key={page}
                   href="#" 
                   onClick={(e) => { e.preventDefault(); setActivePage(page); }} 
-                  className={`nav-item ${activePage === page ? 'active' : ''} capitalize`}
+                  className={`nav-item ${activePage === page ? 'active' : ''} capitalize text-sm font-medium tracking-wide transition-all duration-300 hover:text-[#00A8FF]`}
                 >
                   {page === 'home' ? 'Início' : page === 'agente' ? 'Agente IA' : page === 'docs' ? 'API' : page}
                 </a>
@@ -254,24 +254,24 @@ export default function Home() {
                       <span className="text-sm font-medium text-gray-300">ULTRA ENTERPRISE • v2.0 Online</span>
                     </div>
 
-                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] animate-fade-up" style={{animationDelay: '0.2s'}}>
+                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] animate-fade-up tracking-tight" style={{animationDelay: '0.2s'}}>
                       <span className="text-white">Conheça o</span><br />
                       <span className="text-gradient glow-text">agente.gpt</span>
                     </h1>
 
-                    <p className="text-xl text-gray-400 leading-relaxed max-w-xl animate-fade-up" style={{animationDelay: '0.3s'}}>
-                      Plataforma de <strong className="text-white">Inteligência Artificial Conversacional</strong> com 
-                      <strong className="text-white"> Analytics Avançado</strong> do ecossistema 
-                      <span className="text-shimmer font-semibold"> EXTRAORDINÁRI.A • ALIANCI.A</span>
+                    <p className="text-xl text-gray-300 leading-relaxed max-w-xl animate-fade-up font-light" style={{animationDelay: '0.3s'}}>
+                      Plataforma de <strong className="text-white font-semibold">Inteligência Artificial Conversacional</strong> com 
+                      <strong className="text-white font-semibold"> Analytics Avançado</strong> do ecossistema 
+                      <span className="text-shimmer font-medium"> EXTRAORDINÁRI.A • ALIANCI.A</span>
                     </p>
 
-                    <div className="flex flex-wrap gap-4 animate-fade-up" style={{animationDelay: '0.4s'}}>
-                      <button onClick={() => setActivePage('agente')} className="btn-primary px-8 py-4 rounded-2xl text-lg flex items-center gap-3">
-                        <Bot className="w-5 h-5" />
+                    <div className="flex flex-wrap gap-6 animate-fade-up" style={{animationDelay: '0.4s'}}>
+                      <button onClick={() => setActivePage('agente')} className="btn-primary px-10 py-5 rounded-2xl text-lg font-bold flex items-center gap-3 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all">
+                        <Bot className="w-6 h-6" />
                         Falar com Agente
                       </button>
-                      <a href="https://wa.me/5512996341928" target="_blank" className="btn-secondary px-8 py-4 rounded-2xl text-lg flex items-center gap-3">
-                        <Phone className="w-5 h-5" />
+                      <a href="https://wa.me/5512996341928" target="_blank" className="btn-secondary px-10 py-5 rounded-2xl text-lg font-bold flex items-center gap-3 border border-white/10 hover:bg-white/5 transition-all">
+                        <Phone className="w-6 h-6" />
                         WhatsApp Direto
                       </a>
                     </div>
