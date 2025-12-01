@@ -1,45 +1,43 @@
--# 🚀 agente.gpt – Ultra Enterprise
+# 🚀 Agente GPT - Ultra Enterprise
 
-Sistema FULL STACK completo com:
-- Backend Python FastAPI + PostgreSQL
-- WhatsApp Cloud API
-- Frontend Next.js 14
-- PWA Completo
-- Dashboard Admin
-- Animações Premium Blue Energy
+Sistema FULL STACK unificado (Next.js + Node.js/Express) pronto para Vercel.
 
+## Tecnologias
 
-## Estrutura
+- **Frontend:** Next.js 14 (App Router), TailwindCSS, React
+- **Backend:** Node.js / Express (Integrado via `vercel.json`)
+- **Banco de Dados:** PostgreSQL
+- **IA:** OpenAI GPT-4o-mini
 
-backend/
-frontend/
-scripts/
-.github/
+## Estrutura do Projeto
 
+O projeto foi unificado para facilitar o deploy:
+
+- `/app` - Páginas e rotas do Next.js
+- `/components` - Componentes React
+- `/public` - Arquivos estáticos
+- `server.js` - Backend Express (API)
+- `vercel.json` - Configuração de roteamento Vercel
+
+## Configuração de Ambiente (.env)
+
+Crie um arquivo `.env` na raiz com as seguintes variáveis:
+
+```env
+DATABASE_URL=postgres://usuario:senha@host:porta/banco
+OPENAI_KEY=sk-...
+```
 
 ## Deploy (Vercel)
 
-Este projeto está configurado para deploy automático na Vercel.
+Este projeto está 100% configurado para a Vercel.
 
-1. Importe o projeto na Vercel.
-2. Selecione o framework **Next.js**.
-3. Clique em **Deploy**.
+1. Importe o repositório na Vercel.
+2. O framework **Next.js** será detectado automaticamente.
+3. Configure as variáveis de ambiente.
+4. Clique em **Deploy**.
 
-A configuração `vercel.json` já cuida do roteamento entre Frontend e Backend.
+## Endpoints da API
 
-
-## Ambiente
-
-Crie `.env` conforme exemplos em backend/ e frontend/.
-
-
-
-
-## Endpoints principais
-
-- `/chat` (POST)
-- `/admin/analytics` (GET)
-- `/health` (GET)
-
-
-## Pronto para produção, escalável e premium
+- `/api/chat` - Chat com IA
+- `/webhook` - Integração WhatsApp
