@@ -1,8 +1,8 @@
 import "../styles/globals.css";
 
 export const metadata = {
-  title: "agente.gpt • EXTRAORDINÁRI.A",
-  description: "IA oficial da ALIANCI.A – atendimento premium humanizado",
+  title: "Agente Premium Master Ouro",
+  description: "Sistema Enterprise Agente Premium Master Ouro - Atendimento Humanizado e Inteligente",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
