@@ -173,14 +173,14 @@ export default function Home() {
             {/* Logo */}
             <a href="#" onClick={(e) => { e.preventDefault(); setActivePage('home'); }} className="flex items-center gap-4 group">
               <div className="relative">
-                <div className="w-14 h-14 rounded-2xl orb flex items-center justify-center animate-pulse-glow">
-                  <span className="font-black text-white text-lg logo-text drop-shadow-lg">GPT</span>
+                <div className="w-14 h-14 rounded-2xl orb flex items-center justify-center animate-pulse-glow border border-[#FFD700]/20">
+                  <span className="font-black text-[#FFD700] text-lg logo-text drop-shadow-lg">GPT</span>
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-[#010204] status-dot"></div>
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-gradient logo-text">agente.gpt</h1>
-                <p className="text-[10px] text-gray-500 uppercase tracking-[0.2em] font-medium">ULTRA ENTERPRISE</p>
+                <h1 className="text-xl font-bold text-gradient-gold logo-text">agente.gpt</h1>
+                <p className="text-[10px] text-[#FFD700] uppercase tracking-[0.2em] font-medium">MASTER OURO</p>
               </div>
             </a>
 
@@ -246,27 +246,27 @@ export default function Home() {
                 <div className="grid lg:grid-cols-2 gap-20 items-center">
                   {/* Left */}
                   <div className="space-y-8">
-                    <div className="inline-flex items-center gap-3 px-5 py-2.5 glass rounded-full animate-fade-up" style={{animationDelay: '0.1s'}}>
+                    <div className="inline-flex items-center gap-3 px-5 py-2.5 glass-gold rounded-full animate-fade-up" style={{animationDelay: '0.1s'}}>
                       <span className="relative flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD700] opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FFD700]"></span>
                       </span>
-                      <span className="text-sm font-medium text-gray-300">ULTRA ENTERPRISE • v2.0 Online</span>
+                      <span className="text-sm font-medium text-[#FFD700]">MASTER OURO • v2.0 Online</span>
                     </div>
 
                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] animate-fade-up tracking-tight" style={{animationDelay: '0.2s'}}>
                       <span className="text-white">Conheça o</span><br />
-                      <span className="text-gradient glow-text">agente.gpt</span>
+                      <span className="text-gradient-gold glow-text">agente.gpt</span>
                     </h1>
 
                     <p className="text-xl text-gray-300 leading-relaxed max-w-xl animate-fade-up font-light" style={{animationDelay: '0.3s'}}>
-                      Plataforma de <strong className="text-white font-semibold">Inteligência Artificial Conversacional</strong> com 
-                      <strong className="text-white font-semibold"> Analytics Avançado</strong> do ecossistema 
+                      Plataforma de <strong className="text-[#FFD700] font-semibold">Inteligência Artificial Conversacional</strong> com 
+                      <strong className="text-[#FFD700] font-semibold"> Analytics Avançado</strong> do ecossistema 
                       <span className="text-shimmer font-medium"> EXTRAORDINÁRI.A • ALIANCI.A</span>
                     </p>
 
                     <div className="flex flex-wrap gap-6 animate-fade-up" style={{animationDelay: '0.4s'}}>
-                      <button onClick={() => setActivePage('agente')} className="btn-primary px-10 py-5 rounded-2xl text-lg font-bold flex items-center gap-3 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all">
+                      <button onClick={() => setActivePage('agente')} className="btn-primary px-10 py-5 rounded-2xl text-lg font-bold flex items-center gap-3 shadow-lg shadow-[#FFD700]/20 hover:shadow-[#FFD700]/40 transition-all bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black border-none">
                         <Bot className="w-6 h-6" />
                         Falar com Agente
                       </button>
@@ -415,120 +415,109 @@ export default function Home() {
 
         {/* AGENTE PAGE */}
         {activePage === 'agente' && (
-          <section className="min-h-screen py-10 animate-fade-up">
-            <div className="max-w-5xl mx-auto px-6">
-              <div className="text-center mb-10">
-                <h1 className="text-4xl font-bold"><span class="text-gradient">agente.gpt</span></h1>
-                <p className="text-gray-400 mt-2">Assistente IA Ultra Enterprise • GPT-4o Turbo</p>
+          <section className="h-[calc(100vh-80px)] flex animate-fade-up overflow-hidden">
+            {/* Sidebar (Desktop) */}
+            <div className="hidden lg:flex w-80 glass-strong border-r border-white/5 flex-col">
+              <div className="p-6 border-b border-white/5">
+                <button onClick={() => setChatMessages([])} className="w-full py-3 px-4 glass rounded-xl flex items-center gap-3 hover:bg-white/5 transition-all text-sm font-medium">
+                  <Bot className="w-5 h-5 text-[#FFD700]" />
+                  Nova Conversa
+                </button>
               </div>
+              <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                <p className="text-xs font-bold text-gray-500 px-2 mb-2 uppercase tracking-wider">Histórico</p>
+                {['Sobre Planos', 'Integração API', 'Suporte Técnico'].map((hist, i) => (
+                  <button key={i} className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/5 text-sm text-gray-400 hover:text-white transition-all truncate">
+                    {hist}
+                  </button>
+                ))}
+              </div>
+              <div className="p-4 border-t border-white/5">
+                <div className="p-4 glass rounded-xl bg-gradient-to-br from-[#FFD700]/10 to-transparent border border-[#FFD700]/20">
+                  <h4 className="font-bold text-[#FFD700] text-sm mb-1">Master Ouro</h4>
+                  <p className="text-xs text-gray-400 mb-3">Acesso total liberado</p>
+                  <button className="w-full py-2 bg-[#FFD700] text-black text-xs font-bold rounded-lg hover:bg-[#FDB931] transition-all">
+                    Gerenciar Assinatura
+                  </button>
+                </div>
+              </div>
+            </div>
 
-              <div className="card overflow-hidden glow-box">
-                {/* Chat Header */}
-                <div className="glass-strong px-6 py-5 flex items-center justify-between border-b border-white/5">
-                  <div className="flex items-center gap-4">
-                    <div className="relative">
-                      <div className="w-14 h-14 rounded-2xl orb animate-pulse-glow flex items-center justify-center">
-                        <span className="font-bold text-white text-sm">GPT</span>
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-[#111] status-dot"></div>
+            {/* Chat Area */}
+            <div className="flex-1 flex flex-col relative bg-black/20">
+              {/* Chat Header */}
+              <div className="px-6 py-4 flex items-center justify-between border-b border-white/5 glass-strong">
+                <div className="flex items-center gap-4">
+                  <div className="relative">
+                    <div className="w-10 h-10 rounded-xl orb animate-pulse-glow flex items-center justify-center border border-[#FFD700]/30">
+                      <span className="font-bold text-[#FFD700] text-xs">GPT</span>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-lg">agente.gpt</h3>
-                      <div className="flex items-center gap-2 text-sm text-gray-400">
-                        <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                        Online • Latência: 0.3s
-                      </div>
+                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#111]"></div>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-base text-white">agente.gpt <span className="text-[#FFD700] text-xs ml-2 px-2 py-0.5 rounded-full bg-[#FFD700]/10 border border-[#FFD700]/20">MASTER OURO</span></h3>
+                    <div className="flex items-center gap-2 text-xs text-gray-400">
+                      <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                      Online
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <button onClick={() => setChatMessages([])} className="p-3 glass rounded-xl hover:bg-white/10 transition-all" title="Limpar">
-                      <Trash2 className="w-5 h-5 text-gray-400" />
-                    </button>
-                    <button className="p-3 glass rounded-xl hover:bg-white/10 transition-all" title="Exportar">
-                      <Download className="w-5 h-5 text-gray-400" />
-                    </button>
-                  </div>
                 </div>
-
-                {/* Messages */}
-                <div ref={chatContainerRef} className="h-[500px] overflow-y-auto p-6 space-y-6">
-                  {chatMessages.map((msg, i) => (
-                    <div key={i} className={`flex gap-4 ${msg.role === 'user' ? 'flex-row-reverse' : ''} animate-fade-up`}>
-                      <div className={`w-10 h-10 rounded-xl ${msg.role === 'user' ? 'bg-gradient-to-br from-purple-500 to-pink-500' : 'orb'} flex items-center justify-center text-xs font-bold text-white flex-shrink-0`}>
-                        {msg.role === 'user' ? 'EU' : 'GPT'}
-                      </div>
-                      <div 
-                        className={`${msg.role === 'user' ? 'bubble-user' : 'bubble-agent'} px-5 py-4 max-w-[80%]`}
-                        dangerouslySetInnerHTML={{ __html: formatMsg(msg.content) }}
-                      ></div>
-                    </div>
-                  ))}
-                  
-                  {isTyping && (
-                    <div className="flex gap-4 items-start">
-                      <div className="w-10 h-10 rounded-xl orb flex items-center justify-center text-xs font-bold text-white flex-shrink-0">GPT</div>
-                      <div className="bubble-agent px-5 py-4 flex items-center gap-3">
-                        <div className="flex gap-1.5">
-                          <span className="w-2 h-2 bg-[#00A8FF] rounded-full animate-bounce" style={{animationDelay: '0s'}}></span>
-                          <span className="w-2 h-2 bg-[#00A8FF] rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></span>
-                          <span className="w-2 h-2 bg-[#00A8FF] rounded-full animate-bounce" style={{animationDelay: '0.4s'}}></span>
-                        </div>
-                        <span className="text-gray-500 text-sm">processando...</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Quick Actions */}
-                <div className="px-6 py-4 border-t border-white/5 bg-black/20 flex flex-wrap gap-2">
-                  {[
-                    { icon: Info, text: 'Sobre', msg: 'Quem é você e o que pode fazer?', color: '#00A8FF' },
-                    { icon: CreditCard, text: 'Planos', msg: 'Quais são os planos disponíveis?', color: '#7C3AED' },
-                    { icon: Headphones, text: 'Suporte', msg: 'Preciso de suporte técnico', color: '#10B981' },
-                    { icon: Plug, text: 'API', msg: 'Como funciona a API e integração?', color: '#F59E0B' },
-                  ].map((action, i) => (
-                    <button 
-                      key={i}
-                      onClick={() => { setChatInput(action.msg); handleSendMessage(); }}
-                      className="px-4 py-2 glass rounded-xl text-sm hover:bg-white/10 transition-all flex items-center gap-2"
-                    >
-                      <action.icon className="w-4 h-4" style={{color: action.color}} />
-                      {action.text}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Input */}
-                <div className="px-6 py-5 border-t border-white/5 glass-strong">
-                  <div className="flex gap-4">
-                    <div className="flex-1 relative">
-                      <input 
-                        type="text" 
-                        value={chatInput}
-                        onChange={(e) => setChatInput(e.target.value)}
-                        onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                        placeholder="Digite sua mensagem..." 
-                        className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-[#00A8FF] focus:ring-2 focus:ring-[#00A8FF]/20 transition-all" 
-                      />
-                    </div>
-                    <button onClick={handleSendMessage} className="btn-primary px-6 py-4 rounded-2xl flex items-center gap-2">
-                      <Send className="w-5 h-5" />
-                      <span className="hidden sm:inline">Enviar</span>
-                    </button>
-                  </div>
+                <div className="flex items-center gap-2">
+                  <button className="p-2 hover:bg-white/10 rounded-lg transition-all text-gray-400 hover:text-white"><Download className="w-5 h-5" /></button>
+                  <button className="p-2 hover:bg-white/10 rounded-lg transition-all text-gray-400 hover:text-white"><Info className="w-5 h-5" /></button>
                 </div>
               </div>
 
-              {/* WhatsApp CTA */}
-              <div className="mt-10 card p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-                <div className="text-center sm:text-left">
-                  <h3 className="text-xl font-bold mb-2">Prefere WhatsApp?</h3>
-                  <p className="text-gray-400">Atendimento instantâneo 24/7</p>
+              {/* Messages */}
+              <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth">
+                {chatMessages.map((msg, i) => (
+                  <div key={i} className={`flex gap-4 ${msg.role === 'user' ? 'flex-row-reverse' : ''} animate-fade-up`}>
+                    <div className={`w-8 h-8 rounded-lg ${msg.role === 'user' ? 'bg-gradient-to-br from-[#FFD700] to-[#FDB931] text-black' : 'orb border border-[#FFD700]/30'} flex items-center justify-center text-[10px] font-bold flex-shrink-0`}>
+                      {msg.role === 'user' ? 'EU' : 'GPT'}
+                    </div>
+                    <div 
+                      className={`${msg.role === 'user' ? 'bg-[#FFD700]/10 border border-[#FFD700]/20 text-white' : 'glass border border-white/5 text-gray-200'} px-6 py-4 rounded-2xl max-w-[85%] text-sm leading-relaxed shadow-lg`}
+                      dangerouslySetInnerHTML={{ __html: formatMsg(msg.content) }}
+                    ></div>
+                  </div>
+                ))}
+                
+                {isTyping && (
+                  <div className="flex gap-4 items-start animate-fade-in">
+                    <div className="w-8 h-8 rounded-lg orb border border-[#FFD700]/30 flex items-center justify-center text-[10px] font-bold text-[#FFD700] flex-shrink-0">GPT</div>
+                    <div className="glass px-6 py-4 rounded-2xl flex items-center gap-3 border border-white/5">
+                      <div className="flex gap-1.5">
+                        <span className="w-1.5 h-1.5 bg-[#FFD700] rounded-full animate-bounce" style={{animationDelay: '0s'}}></span>
+                        <span className="w-1.5 h-1.5 bg-[#FFD700] rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></span>
+                        <span className="w-1.5 h-1.5 bg-[#FFD700] rounded-full animate-bounce" style={{animationDelay: '0.4s'}}></span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Input Area */}
+              <div className="p-6 glass-strong border-t border-white/5">
+                <div className="max-w-4xl mx-auto relative">
+                  <input 
+                    type="text" 
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                    placeholder="Envie uma mensagem para o agente..." 
+                    className="w-full pl-6 pr-16 py-4 bg-black/40 border border-white/10 rounded-2xl focus:outline-none focus:border-[#FFD700] focus:ring-1 focus:ring-[#FFD700] transition-all text-white placeholder-gray-500" 
+                  />
+                  <button 
+                    onClick={handleSendMessage} 
+                    className="absolute right-2 top-2 bottom-2 p-3 bg-[#FFD700] hover:bg-[#FDB931] text-black rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={!chatInput.trim()}
+                  >
+                    <Send className="w-5 h-5" />
+                  </button>
                 </div>
-                <a href="https://wa.me/5512996341928" target="_blank" className="btn-whatsapp px-8 py-4 rounded-2xl flex items-center gap-3">
-                  <Phone className="w-6 h-6" />
-                  Abrir WhatsApp
-                </a>
+                <div className="text-center mt-3">
+                  <p className="text-[10px] text-gray-600">agente.gpt pode cometer erros. Considere verificar informações importantes.</p>
+                </div>
               </div>
             </div>
           </section>

@@ -16,6 +16,14 @@
   --dark-700: #0a0f18;
   --dark-600: #111827;
   --dark-500: #1f2937;
+  --foreground-rgb: 255, 255, 255;
+  --primary-glow: conic-gradient(from 180deg at 50% 50%, #16abff33 0deg, #0885ff33 55deg, #54d6ff33 120deg, #0071ff33 160deg, transparent 360deg);
+  --secondary-glow: radial-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  
+  /* Master Ouro Palette */
+  --gold-primary: #FFD700;
+  --gold-secondary: #FDB931;
+  --gold-text: #FFFACD;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -410,5 +418,43 @@ body {
   background: var(--primary);
   border-radius: 50%;
   animation: particle 2s infinite;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-strong {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-gold {
+    background: rgba(255, 215, 0, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right, #00A8FF, #00E0FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(to right, #FFD700, #FDB931, #FFFACD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
