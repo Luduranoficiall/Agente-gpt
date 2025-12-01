@@ -2,8 +2,16 @@
   "framework": "nextjs",
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
+      "source": "/webhook",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/admin/:path*",
+      "destination": "/api"
+    },
+    {
+      "source": "/api/logs",
+      "destination": "/api"
     }
   ]
 }

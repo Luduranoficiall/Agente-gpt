@@ -1,54 +1,30 @@
 dotenv.config();
-import express from "express";
 import dotenv from "dotenv";
-import webhook from "./webhook.js";
-import adminRoutes from "./src/routes/admin.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
-
-dotenv.config();
+import next from "next";
+import app from "./src/app_setup.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express();
-app.use(express.json());
+const dev = process.env.NODE_ENV !== 'production';
+const nextApp = next({ dev });
+const handle = nextApp.getRequestHandler();
 
-// Rotas administrativas (painel admin Next.js)
-app.use("/api/admin", adminRoutes);
-
-// Página principal
-app.use(express.static(path.join(__dirname, "public")));
-
-// Painel de mensagens
-app.use("/dashboard", express.static(path.join(__dirname, "dashboard")));
-
-let logs = [];
-app.post("/webhook", (req, res, next) => {
-  logs.push({
-    data: req.body,
-    hora: new Date().toISOString()
+nextApp.prepare().then(() => {
+  // Handle all other routes with Next.js
+  app.all("*", (req, res) => {
+    return handle(req, res);
   });
-  if (logs.length > 200) logs.shift();
-  next();
+
+  // Só inicia o servidor se não estiver na Vercel (Desenvolvimento local)
+  if (process.env.NODE_ENV !== 'production') {
+    app.listen(process.env.PORT || 4000, () => {
+      console.log("🚀 Servidor do Agente rodando na porta " + (process.env.PORT || 4000));
+    });
+  }
 });
 
-app.get("/api/logs", (req, res) => {
-  res.json(logs);
-});
-
-app.use("/webhook", webhook);
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-// Exporta o app para a Vercel (Serverless)
+// Exporta o app para a Vercel (Serverless) - Legacy support, prefer api/index.js
 export default app;
-
-// Só inicia o servidor se não estiver na Vercel (Desenvolvimento local)
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(process.env.PORT || 4000, () => {
-    console.log("🚀 Servidor do Agente rodando na porta " + (process.env.PORT || 4000));
-  });
-}
