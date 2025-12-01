@@ -43,6 +43,12 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log("🚀 Servidor do Agente rodando na porta " + (process.env.PORT || 4000));
-});
+// Exporta o app para a Vercel (Serverless)
+export default app;
+
+// Só inicia o servidor se não estiver na Vercel (Desenvolvimento local)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(process.env.PORT || 4000, () => {
+    console.log("🚀 Servidor do Agente rodando na porta " + (process.env.PORT || 4000));
+  });
+}
