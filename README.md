@@ -1,4 +1,7 @@
-# 🚀 Agente GPT - Ultra Enterprise
+# 🚀 Agente GPT - Ultra Enterprise (ATUALIZADO)
+
+> **DOCUMENTAÇÃO OFICIAL VERCEL - VERSÃO 2.0**
+> *Última atualização: 01/12/2025*
 
 Sistema FULL STACK unificado (Next.js + Node.js/Express) pronto para Vercel.
 
