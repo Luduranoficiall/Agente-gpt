@@ -1,7 +1,10 @@
 {
-  "name": "agente-gpt-frontend",
-  "version": "1.0.0",
+  "name": "agente-gpt-ultra",
+  "version": "2.0.0",
+  "description": "Sistema Enterprise de Agentes IA com Next.js e Node.js",
   "private": true,
+  "author": "Luduranoficiall",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
