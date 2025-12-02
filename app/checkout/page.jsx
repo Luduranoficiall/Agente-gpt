@@ -10,18 +10,41 @@ function CheckoutContent() {
   
   const [metodo, setMetodo] = useState("pix");
   const [loading, setLoading] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState("idle"); // idle, processing, approved
 
   const valor = plano === "empresarial" ? "297,00" : "197,00";
 
   const handlePayment = async () => {
     setLoading(true);
+    setPaymentStatus("processing");
+    
     // Simulação de processamento de pagamento
     setTimeout(() => {
-      alert("Pagamento processado com sucesso! Bem-vindo ao Agente GPT Master Ouro.");
-      // Redireciona para o painel do cliente para configuração
-      router.push("/cliente"); 
-    }, 2000);
+      setPaymentStatus("approved");
+      localStorage.setItem("subscription", "active");
+      localStorage.setItem("plan", plano);
+      
+      setTimeout(() => {
+        // Redireciona para o Agente (Home) para começar a usar
+        router.push("/"); 
+      }, 2000);
+    }, 3000);
   };
+
+  if (paymentStatus === "approved") {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center p-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+        <div className="text-center z-10 animate-in fade-in zoom-in duration-500">
+          <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_50px_rgba(34,197,94,0.5)]">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h1 className="text-4xl font-bold text-white mb-2">Pagamento Aprovado!</h1>
+          <p className="text-gray-400 text-lg">Preparando seu Agente Master Ouro...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-4 relative overflow-hidden">
