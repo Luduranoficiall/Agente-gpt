@@ -287,6 +287,7 @@ Chamadas oficiais Google Generative Language API.
     *   **Framework Preset:** Next.js
     *   **Root Directory:** `./` (Raiz)
     *   **Environment Variables:** Adicione as variáveis do seu `.env` (DATABASE_URL, JWT_SECRET, etc).
+    *   **Build Command:** Deixe vazio (padrão) ou use `next build`.
 
 3.  **Banco de Dados:**
     *   Crie um banco Postgres na aba "Storage" da Vercel.
