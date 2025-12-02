@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "agente.gpt | ULTRA ENTERPRISE – EXTRAORDINÁRI.A • ALIANCI.A",
+  title: "agente.gpt | MASTER PREMIUM ULTRA OURO – EXTRAORDINÁRI.A • ALIANCI.A",
   description: "Plataforma de IA Conversacional Enterprise com Analytics Avançado",
 };
 
