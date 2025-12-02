@@ -19,9 +19,10 @@
   ],
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"next dev\" \"nodemon src/server.js\"",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "server": "node src/server.js"
   },
   "dependencies": {
     "@vercel/postgres": "latest",
@@ -39,5 +40,9 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11"
   }
 }

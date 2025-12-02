@@ -260,28 +260,49 @@ Chamadas oficiais Google Generative Language API.
 
 ---
 
-## 🚀 13. COMO SUBIR NO VERCEL
+## 💻 13. COMO RODAR LOCALMENTE
 
-1.  Configure `.env`
-2.  Rode:
+1.  **Clone o repositório**
+2.  **Instale as dependências:**
     ```bash
     npm install
-    npm run build
-    vercel
-    vercel --prod
+    ```
+3.  **Configure o arquivo `.env`** (use o `.env.example` como base)
+4.  **Inicie o ambiente de desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
+    Isso iniciará tanto o Frontend (Next.js na porta 3000) quanto o Backend (Express na porta 8000) simultaneamente.
+
+## 🚀 14. COMO SUBIR NO VERCEL
+
+1.  **Push para o GitHub:**
+    O projeto está configurado para deploy automático. Basta fazer um push para a branch `main`.
+    ```bash
+    git push origin main
     ```
 
+2.  **Configuração na Vercel:**
+    *   Importe o projeto do GitHub.
+    *   **Framework Preset:** Next.js
+    *   **Root Directory:** `./` (Raiz)
+    *   **Environment Variables:** Adicione as variáveis do seu `.env` (DATABASE_URL, JWT_SECRET, etc).
+
+3.  **Banco de Dados:**
+    *   Crie um banco Postgres na aba "Storage" da Vercel.
+    *   Conecte ao projeto.
+    *   Execute o script `database/schema.sql` no "Query Runner" do banco para criar as tabelas.
+
 **Tudo vai subir automaticamente:**
-*   Backend
-*   Frontend
-*   API
-*   Painel admin
-*   Painel cliente
-*   Página de vendas
+*   Backend (Serverless Functions)
+*   Frontend (Next.js App Router)
+*   API Integrada
+*   Painel Admin & Cliente
+*   Página de Vendas
 
 ---
 
-## 🔥 14. COMO VENDER O AGENTE
+## 🔥 15. COMO VENDER O AGENTE
 
 **Você pode vender:**
 *   Para membros ALIANCI.A por **R$ 197**

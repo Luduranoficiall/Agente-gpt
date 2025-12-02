@@ -1,7 +1,8 @@
-import { createClient } from "@vercel/postgres";
+import { createPool } from "@vercel/postgres";
 import dotenv from "dotenv";
 dotenv.config();
 
-export const db = createClient({
+export const db = createPool({
   connectionString: process.env.POSTGRES_URL
 });
+
