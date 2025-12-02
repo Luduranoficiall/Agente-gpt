@@ -40,7 +40,7 @@ export default function Home() {
     };
 
     window.sanitize = function(text) {
-      return text.replace(/\\n/g,'<br>').replace(/(https?:\\/\\/[^\\s<]+)/g,'<a href="$1" target="_blank" class="text-[#00A8FF]">$1</a>');
+      return text.replace(/\n/g,'<br>').replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" class="text-[#00A8FF]">$1</a>');
     };
 
     window.sendMessage = async function() {
