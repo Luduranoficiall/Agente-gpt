@@ -11,7 +11,11 @@ export default function Home() {
     const responses = {
       planos: `📋 **PLANOS MASTER PREMIUM**\n\n━━━━━━━━━━━━━━━━━━\n🔹 **MEMBROS ALIANCI.A** – R$ 197/mês\n🔹 **CLIENTES EXTERNOS** – R$ 297/mês\n\n🚀 **Benefícios Ouro:**\n• IA Comercial de Elite\n• Painel do Cliente Exclusivo\n• Suporte Prioritário\n\n👉 [Assinar Agora](/vendas)`,
       suporte: `🛠️ **Suporte Técnico Premium**\n\nNossa equipe de elite está pronta para te ajudar.\n\n• WhatsApp Exclusivo 24/7\n• Playbooks de Vendas\n• Consultoria de Implementação\n\n[Falar com Suporte](https://wa.me/5512996341928)`,
-      default: `Olá! Sou a **RegIA**, sua inteligência artificial **Master Premium Ultra Ouro**.\n\nEstou aqui para elevar o nível do seu atendimento e vendas. Como posso ser útil hoje?`
+      whatsapp: `📱 **Conexão WhatsApp**\n\nPara conectar seu WhatsApp, acesse o Painel do Cliente.\n\n1. Clique no menu lateral em "Configuração WhatsApp"\n2. Escaneie o QR Code\n3. Aguarde a confirmação\n\n[Ir para Painel](/cliente)`,
+      reuniao: `📅 **Agendamento Inteligente**\n\nPosso agendar uma reunião para você. Nossa agenda está integrada com o Google Calendar.\n\n[Acessar Agenda](/cliente)`,
+      saudacao: `Olá! 👋 É um prazer ter você aqui. Sou a **RegIA**, sua assistente de alta performance.\n\nComo posso acelerar seus resultados hoje?`,
+      agradecimento: `De nada! 🌟 Estou sempre à disposição para ajudar você a alcançar o extraordinário. Precisa de mais alguma coisa?`,
+      default: `Entendi. Como sou uma IA focada em **Alta Performance e Vendas**, posso te ajudar com:\n\n• Planos e Assinaturas\n• Configuração do seu Agente\n• Estratégias de Venda\n• Suporte Técnico\n\nO que você prefere?`
     };
 
     window.addMessage = function(content, isUser = false) {
@@ -61,14 +65,19 @@ export default function Home() {
       chat.appendChild(typing);
       chat.scrollTop = chat.scrollHeight;
 
-      await new Promise(r => setTimeout(r, 1000 + Math.random()*1000));
+      await new Promise(r => setTimeout(r, 1000 + Math.random()*1500));
       
       if(document.getElementById('typingIndicator')) document.getElementById('typingIndicator').remove();
 
       const lower = value.toLowerCase();
       let reply = responses.default;
-      if (lower.includes('plano') || lower.includes('preço') || lower.includes('valor')) reply = responses.planos;
-      else if (lower.includes('suporte') || lower.includes('ajuda')) reply = responses.suporte;
+      
+      if (lower.includes('plano') || lower.includes('preço') || lower.includes('valor') || lower.includes('custo')) reply = responses.planos;
+      else if (lower.includes('suporte') || lower.includes('ajuda') || lower.includes('problema') || lower.includes('erro')) reply = responses.suporte;
+      else if (lower.includes('whatsapp') || lower.includes('conectar') || lower.includes('qr')) reply = responses.whatsapp;
+      else if (lower.includes('reunião') || lower.includes('agenda') || lower.includes('marcar')) reply = responses.reuniao;
+      else if (lower.includes('oi') || lower.includes('olá') || lower.includes('bom dia') || lower.includes('boa tarde') || lower.includes('boa noite')) reply = responses.saudacao;
+      else if (lower.includes('obrigado') || lower.includes('valeu') || lower.includes('grato')) reply = responses.agradecimento;
       
       window.addMessage(window.sanitize(reply));
     };
