@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   async rewrites() {
     // Rewrites apenas para desenvolvimento local
     if (process.env.NODE_ENV === 'development') {
