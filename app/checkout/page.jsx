@@ -18,7 +18,8 @@ function CheckoutContent() {
     // Simulação de processamento de pagamento
     setTimeout(() => {
       alert("Pagamento processado com sucesso! Bem-vindo ao Agente GPT Master Ouro.");
-      router.push("/login"); // Ou dashboard direto se já estiver logado
+      // Redireciona para o painel do cliente para configuração
+      router.push("/cliente"); 
     }, 2000);
   };
 
