@@ -11,7 +11,7 @@ export default function Register() {
 
   const register = async () => {
     try {
-      await axios.post("/auth/register", { nome, email, senha });
+      await axios.post("/api/auth/register", { nome, email, senha });
       alert("Registrado com sucesso! Faça login.");
       router.push("/login");
     } catch (e) {

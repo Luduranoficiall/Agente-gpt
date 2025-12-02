@@ -7,7 +7,7 @@ export default function Cliente() {
   const [pix, setPix] = useState(null);
 
   useEffect(() => {
-    axios.get("/auth/me", {
+    axios.get("/api/auth/me", {
       headers: { Authorization: "Bearer " + localStorage.getItem("token") }
     }).then(res => setUser(res.data.user));
   }, []);
@@ -15,7 +15,7 @@ export default function Cliente() {
   if (!user) return <p>Carregando...</p>;
 
   const gerarPix = async () => {
-    const r = await axios.post("/pagamento/gerar", {}, {
+    const r = await axios.post("/api/pagamento/gerar", {}, {
       headers: { Authorization: "Bearer " + localStorage.getItem("token") }
     });
     setPix(r.data);

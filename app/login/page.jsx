@@ -10,7 +10,7 @@ export default function Login() {
 
   const login = async () => {
     try {
-      const r = await axios.post("/auth/login", { email, senha });
+      const r = await axios.post("/api/auth/login", { email, senha });
       localStorage.setItem("token", r.data.token);
       router.push("/cliente");
     } catch (e) {

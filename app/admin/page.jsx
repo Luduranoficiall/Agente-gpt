@@ -7,8 +7,8 @@ export default function Admin() {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    axios.get("/admin/users").then(r => setUsers(r.data.users));
-    axios.get("/admin/logs").then(r => setLogs(r.data.logs));
+    axios.get("/api/admin/users").then(r => setUsers(r.data.users));
+    axios.get("/api/admin/logs").then(r => setLogs(r.data.logs));
   }, []);
 
   return (

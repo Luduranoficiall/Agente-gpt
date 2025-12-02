@@ -14,7 +14,8 @@ export const gerarPix = async (req, res) => {
       transaction_amount: 197,
       description: "Assinatura Agente GPT Master Ouro",
       payment_method_id: "pix",
-      payer: { email: req.user.email }
+      payer: { email: req.user.email },
+      notification_url: "https://agente-gpt-oficial.vercel.app/api/webhook/pix"
     });
 
     const qrBase64 = await QRCode.toDataURL(pg.body.point_of_interaction.transaction_data.qr_code);

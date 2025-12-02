@@ -11,7 +11,7 @@ export default function Chat() {
     const userMsg = { role: "user", content: input };
     setMsgs(m => [...m, userMsg]);
 
-    const r = await axios.post("/chat", { prompt: input }, {
+    const r = await axios.post("/api/chat", { prompt: input }, {
       headers: { Authorization: "Bearer " + localStorage.getItem("token") }
     });
 
