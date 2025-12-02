@@ -14,10 +14,16 @@ app.get("/", (req, res) => {
   res.json({ status: "online", agente: "Master Ouro" });
 });
 
-app.use("/auth", authRoutes);
-app.use("/chat", chatRoutes);
-app.use("/admin", adminRoutes);
-app.use("/pagamento", pagamentoRoutes);
-app.use("/webhook", webhookRoutes);
+// Roteador unificado para suportar tanto /api (Vercel) quanto / (Local)
+const router = express.Router();
+router.use("/auth", authRoutes);
+router.use("/chat", chatRoutes);
+router.use("/admin", adminRoutes);
+router.use("/pagamento", pagamentoRoutes);
+router.use("/webhook", webhookRoutes);
+
+// Aplica as rotas
+app.use("/api", router);
+app.use("/", router);
 
 export default app;
