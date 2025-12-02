@@ -6,3 +6,7 @@ dist
 build
 .DS_Store
 *.log
+credentials/
+storage/
+*.sqlite3
+
