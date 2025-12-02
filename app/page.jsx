@@ -133,7 +133,7 @@ export default function Home() {
             </button>
             <div className="flex items-center gap-2 cursor-pointer hover:bg-[#1a1a1a] px-3 py-1.5 rounded-lg transition-colors">
               <span className="font-semibold text-lg text-gray-200">Agente GPT 4.0</span>
-              <span className="text-xs font-bold text-[#FFD700] bg-[#FFD700]/10 px-2 py-0.5 rounded border border-[#FFD700]/20">MASTER OURO</span>
+              <span className="text-xs font-bold text-[#FFD700] bg-[#FFD700]/10 px-2 py-0.5 rounded border border-[#FFD700]/20">MASTER OURO V4.1</span>
             </div>
           </div>
           <button className="p-2 hover:bg-[#1a1a1a] rounded-full">
