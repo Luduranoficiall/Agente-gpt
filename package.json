@@ -1,40 +1,24 @@
 {
-  "name": "agente-gpt",
-  "version": "2.0.0",
-  "description": "Sistema Enterprise Agente GPT - EXTRAORDINÁRIA.AI",
-  "private": true,
-  "author": "Luduranoficiall",
-  "license": "MIT",
+  "name": "agente-gpt-master-ouro",
+  "version": "1.0.0",
   "type": "module",
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "server": "NODE_ENV=production node server.js"
+    "start": "next start"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.24.1",
-    "@vercel/postgres": "^0.10.0",
-    "axios": "^1.13.2",
-    "chart.js": "^4.5.1",
+    "@vercel/postgres": "latest",
+    "axios": "^1.6.7",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "lucide-react": "^0.555.0",
-    "next": "14.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mercadopago": "^2.1.0",
+    "next": "14.1.0",
+    "qrcode": "^1.5.3",
     "react": "18.2.0",
-    "react-chartjs-2": "^5.3.1",
     "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.19.25",
-    "@types/react": "^18.3.27",
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.9.3"
   }
 }

@@ -1,9 +1,9 @@
+import app from "./app.js";
 import dotenv from "dotenv";
 dotenv.config();
-import app from "./app.js";
 
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Backend Master Ouro rodando na porta ${PORT}`);
+  console.log(`🔥 Servidor rodando http://localhost:${PORT}`);
 });
