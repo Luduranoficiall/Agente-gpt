@@ -12,7 +12,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start",
+    "server": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
