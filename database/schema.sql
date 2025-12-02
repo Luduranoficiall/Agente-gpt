@@ -42,10 +42,9 @@ CREATE TABLE IF NOT EXISTS pagamentos (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Inserir um usuário Admin padrão (Senha: admin123 - RECOMENDADO ALTERAR)
--- A senha deve ser gerada com bcrypt. O hash abaixo é para 'admin123'
+-- Inserir um usuário Admin padrão (Senha: admin123)
 INSERT INTO users (nome, email, senha, plano, ativo, admin) 
-VALUES ('Admin Master', 'admin@masterouro.com', '$2a$10$X7V.j.X7V.j.X7V.j.X7V.j.X7V.j.X7V.j.X7V.j.X7V.j.X7V.j', 'master', true, true)
+VALUES ('Admin Master', 'admin@masterouro.com', '$2a$10$ifIkBEBGd8Go4vm6DaHvBOvRcIyOczLETvq07U2zk86fwYJvkGJJW', 'master', true, true)
 ON CONFLICT (email) DO NOTHING;
 
 -- Inserir Agente Padrão
