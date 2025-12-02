@@ -1,38 +1,37 @@
 "use client";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
   useEffect(() => {
-    // Initialize Lucide icons
+    // Initialize Lucide icons if available
     if (window.lucide) window.lucide.createIcons();
 
     const responses = {
-      planos: `📋 **PLANOS agente.gpt**\n\n━━━━━━━━━━━━━━━━━━\n🔹 PROFISSIONAL – R$ 197/mês\n🔹 EMPRESARIAL – R$ 497/mês (GPT-4o Turbo)\n🔹 ENTERPRISE – Custom ilimitado\n\n👉 Assine agora: https://agente-gpt-oficial.vercel.app/vendas`,
-      suporte: `🛠️ **Suporte Técnico**\n\n• WhatsApp 24/7\n• Playbooks Opção A\n• Revalidação automática de tokens\n\nAbra um chamado direto no WhatsApp oficial.`,
-      integracao: `🔗 **Integrações & API**\n\nBase URL: https://api.agente-gpt.fly.dev\nHeader: X-ADMIN-TOKEN\nEndpoints principais: /chat, /companies, /metrics, /events`,
-      status: `📡 **Status do Canal A**\n\nWhatsApp Cloud ONLINE\nTokens atualizados e phone ID validado. Rodando health-check automaticamente a cada 5 min.`
+      planos: `📋 **PLANOS MASTER PREMIUM**\n\n━━━━━━━━━━━━━━━━━━\n🔹 **MEMBROS ALIANCI.A** – R$ 197/mês\n🔹 **CLIENTES EXTERNOS** – R$ 297/mês\n\n🚀 **Benefícios Ouro:**\n• IA Comercial de Elite\n• Painel do Cliente Exclusivo\n• Suporte Prioritário\n\n👉 [Assinar Agora](/vendas)`,
+      suporte: `🛠️ **Suporte Técnico Premium**\n\nNossa equipe de elite está pronta para te ajudar.\n\n• WhatsApp Exclusivo 24/7\n• Playbooks de Vendas\n• Consultoria de Implementação\n\n[Falar com Suporte](https://wa.me/5512996341928)`,
+      default: `Olá! Sou a **RegIA**, sua inteligência artificial **Master Premium Ultra Ouro**.\n\nEstou aqui para elevar o nível do seu atendimento e vendas. Como posso ser útil hoje?`
     };
 
     window.addMessage = function(content, isUser = false) {
       const chat = document.getElementById('chatMessages');
+      const welcomeScreen = document.getElementById('welcomeScreen');
+      if (welcomeScreen) welcomeScreen.style.display = 'none';
+
       const row = document.createElement('div');
-      row.style.display = 'flex';
-      row.style.gap = '12px';
-      row.style.alignItems = 'flex-start';
-      if (isUser) row.style.flexDirection = 'row-reverse';
+      row.className = 'flex gap-4 mb-6 ' + (isUser ? 'flex-row-reverse' : '');
+      
       const avatar = document.createElement('div');
-      avatar.style.width = '40px';
-      avatar.style.height = '40px';
-      avatar.style.borderRadius = '12px';
-      avatar.style.display = 'flex';
-      avatar.style.alignItems = 'center';
-      avatar.style.justifyContent = 'center';
-      avatar.style.fontWeight = '700';
-      avatar.textContent = isUser ? 'EU' : 'GPT';
-      avatar.style.background = isUser ? 'linear-gradient(135deg,#9333EA,#F472B6)' : 'radial-gradient(circle at 30% 30%, #00C6FF, #0085FF)';
+      avatar.className = `w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${isUser ? 'bg-gray-700' : 'bg-gradient-to-br from-[#FFD700] to-[#FDB931]'}`;
+      avatar.innerHTML = isUser ? 
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : 
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12L2.5 12"></path><path d="M12 12l9.5-5.5"></path></svg>';
+      
       const bubble = document.createElement('div');
-      bubble.className = 'chat-bubble' + (isUser ? ' user' : '');
+      bubble.className = 'chat-bubble ' + (isUser ? 'user' : 'bot');
       bubble.innerHTML = content;
+      
       row.appendChild(avatar);
       row.appendChild(bubble);
       chat.appendChild(row);
@@ -40,21 +39,37 @@ export default function Home() {
     };
 
     window.sanitize = function(text) {
-      return text.replace(/\n/g,'<br>').replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" class="text-[#00A8FF]">$1</a>');
+      return text.replace(/\n/g,'<br>')
+                 .replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" class="text-[#FFD700] hover:underline">$1</a>')
+                 .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>');
     };
 
     window.sendMessage = async function() {
       const input = document.getElementById('chatInput');
       const value = input.value.trim();
       if (!value) return;
+      
       window.addMessage(window.sanitize(value), true);
       input.value = '';
-      await new Promise(r => setTimeout(r, 400 + Math.random()*400));
+      
+      // Simulate typing delay
+      const chat = document.getElementById('chatMessages');
+      const typing = document.createElement('div');
+      typing.id = 'typingIndicator';
+      typing.className = 'flex gap-4 mb-6';
+      typing.innerHTML = `<div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FDB931] flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg></div><div class="chat-bubble text-gray-400">Digitando...</div>`;
+      chat.appendChild(typing);
+      chat.scrollTop = chat.scrollHeight;
+
+      await new Promise(r => setTimeout(r, 1000 + Math.random()*1000));
+      
+      if(document.getElementById('typingIndicator')) document.getElementById('typingIndicator').remove();
+
       const lower = value.toLowerCase();
-      let reply = responses.status;
-      if (lower.includes('plano')) reply = responses.planos;
+      let reply = responses.default;
+      if (lower.includes('plano') || lower.includes('preço') || lower.includes('valor')) reply = responses.planos;
       else if (lower.includes('suporte') || lower.includes('ajuda')) reply = responses.suporte;
-      else if (lower.includes('api') || lower.includes('integra')) reply = responses.integracao;
+      
       window.addMessage(window.sanitize(reply));
     };
 
@@ -63,202 +78,123 @@ export default function Home() {
       window.sendMessage();
     };
 
-    window.openWhatsApp = function() {
-      window.open('https://wa.me/5512996341928', '_blank');
-    };
-
-    window.setBadge = function(id, status) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      if (status === 'ok') {
-        el.style.color = '#34D399';
-        el.style.borderColor = 'rgba(52,211,153,0.4)';
-        el.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>OK';
-      } else {
-        el.style.color = '#F87171';
-        el.style.borderColor = 'rgba(248,113,113,0.4)';
-        el.innerHTML = '<i data-lucide="alert-triangle" class="w-4 h-4"></i>Bloqueado';
-      }
-      if (window.lucide) window.lucide.createIcons();
-    };
-
-    window.logDiag = function(message, type='info') {
-      const box = document.getElementById('diagLog');
-      const line = document.createElement('div');
-      line.textContent = message;
-      line.style.color = type === 'error' ? '#FCA5A5' : '#9CA3AF';
-      box.prepend(line);
-    };
-
-    window.runWhatsAppDiagnostics = function() {
-      const btn = document.getElementById('diagBtn');
-      btn.disabled = true;
-      btn.textContent = 'Rodando...';
-      document.getElementById('diagStatus').textContent = 'Validando tokens, webhooks e endpoint Meta...';
-      window.logDiag('Iniciando health-check automático');
-      setTimeout(() => { window.setBadge('statusApi', 'ok'); window.logDiag('API Meta respondendo em 182ms'); }, 500);
-      setTimeout(() => { window.setBadge('statusToken', 'error'); window.logDiag('Token expirado detectado', 'error'); }, 1100);
-      setTimeout(() => { window.setBadge('statusPhone', 'ok'); window.logDiag('Phone Number ID validado'); }, 1700);
-      setTimeout(() => {
-        document.getElementById('diagStatus').innerHTML = '<span style="color:#FCA5A5">Token expirado</span> — regenere no Meta Business e atualize a variável <code>WHATSAPP_TOKEN</code>.';
-        window.logDiag('Recomendação: gerar token permanente + reenviar webhook', 'error');
-        btn.disabled = false;
-        btn.textContent = 'Rodar health-check';
-        if (window.lucide) window.lucide.createIcons();
-      }, 2200);
-    };
   }, []);
 
   return (
-    <>
-      <div className="bg-grid"></div>
-
-      <header className="glass max-w-6xl mx-auto mt-8 px-6 py-4 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{background: 'radial-gradient(circle at 30% 30%, #FFD700, #FFA500)', boxShadow: '0 12px 30px rgba(255, 215, 0, 0.45)'}}>
-            <span className="font-black text-xl text-black">GPT</span>
-          </div>
-          <div>
-            <p className="text-xs tracking-[0.3em] text-[#FFD700] font-bold">MASTER PREMIUM ULTRA OURO</p>
-            <h1 className="text-2xl font-bold">RegIA • agente.gpt</h1>
-          </div>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="status-pill text-success" style={{color: 'var(--success)', borderColor: 'rgba(52,211,153,0.4)'}}>
-            <span className="w-2 h-2 rounded-full bg-emerald-300" style={{animation: 'pulseGlow 2s infinite'}}></span>
-            Opção A blindada
-          </div>
-          <button className="btn-primary" onClick={() => window.openWhatsApp()}>
-            <i data-lucide="phone-call" className="w-4 h-4"></i>
-            WhatsApp Oficial
+    <div className="flex h-screen bg-[#0a0a0a] text-gray-100 overflow-hidden font-sans">
+      {/* Sidebar */}
+      <aside className={`${sidebarOpen ? 'w-[260px]' : 'w-0'} bg-[#000] border-r border-white/10 transition-all duration-300 flex flex-col overflow-hidden`}>
+        <div className="p-4">
+          <button onClick={() => window.location.reload()} className="w-full flex items-center gap-3 px-4 py-3 bg-[#1a1a1a] hover:bg-[#222] border border-white/5 rounded-lg transition-colors text-sm font-medium text-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Nova Conversa
           </button>
         </div>
-      </header>
 
-      <main className="max-w-6xl mx-auto px-6 py-10 grid lg:grid-cols-[1.65fr_1fr] gap-8">
-        <section className="space-y-6">
-          <div className="glass p-8">
-            <div className="badge" style={{background: 'rgba(0,168,255,0.12)', color: 'var(--primary)'}}>Canal único – Opção A</div>
-            <h2 className="mt-6 text-4xl font-black">Assistente oficial pronto para vender 24/7</h2>
-            <p className="text-gray-300 mt-4 max-w-2xl">
-              RegIA responde em segundos, direciona para o melhor plano, aciona integrações e mantém o WhatsApp Cloud sempre validado.
-            </p>
-            <div className="mt-6 grid sm:grid-cols-3 gap-4">
-              <div className="glass p-4">
-                <p className="text-gray-400 text-sm">Latência média</p>
-                <p className="text-2xl font-bold">0.3s</p>
+        <div className="flex-1 overflow-y-auto px-2 py-2">
+          <div className="px-3 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider">Hoje</div>
+          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-[#1a1a1a] rounded-lg truncate transition-colors">
+            Planos Master Ouro
+          </button>
+          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-[#1a1a1a] rounded-lg truncate transition-colors">
+            Configuração WhatsApp
+          </button>
+        </div>
+
+        <div className="p-4 border-t border-white/10">
+          <a href="/cliente" className="flex items-center gap-3 px-3 py-3 hover:bg-[#1a1a1a] rounded-lg transition-colors text-sm">
+            <div className="w-8 h-8 rounded bg-[#FFD700] flex items-center justify-center text-black font-bold">L</div>
+            <div className="flex-1">
+              <div className="font-bold text-white">Luduran</div>
+              <div className="text-xs text-[#FFD700]">Master Premium</div>
+            </div>
+          </a>
+        </div>
+      </aside>
+
+      {/* Main Chat Area */}
+      <main className="flex-1 flex flex-col relative">
+        {/* Header */}
+        <header className="h-14 flex items-center justify-between px-4 border-b border-white/5 bg-[#0a0a0a]/50 backdrop-blur-md z-10">
+          <div className="flex items-center gap-3">
+            <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 hover:bg-[#1a1a1a] rounded-lg text-gray-400">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+            </button>
+            <div className="flex items-center gap-2 cursor-pointer hover:bg-[#1a1a1a] px-3 py-1.5 rounded-lg transition-colors">
+              <span className="font-semibold text-lg text-gray-200">Agente GPT 4.0</span>
+              <span className="text-xs font-bold text-[#FFD700] bg-[#FFD700]/10 px-2 py-0.5 rounded border border-[#FFD700]/20">MASTER OURO</span>
+            </div>
+          </div>
+          <button className="p-2 hover:bg-[#1a1a1a] rounded-full">
+            <img src="https://github.com/shadcn.png" className="w-8 h-8 rounded-full" alt="User" />
+          </button>
+        </header>
+
+        {/* Chat Content */}
+        <div className="flex-1 overflow-y-auto scroll-area relative">
+          <div className="max-w-3xl mx-auto w-full pt-10 pb-32 px-4" id="chatMessages">
+            {/* Welcome Screen (Hidden when chat starts) */}
+            <div id="welcomeScreen" className="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 animate-in fade-in duration-700">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#FFD700] to-[#FDB931] flex items-center justify-center shadow-[0_0_40px_rgba(255,215,0,0.3)] mb-4">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12L2.5 12"></path><path d="M12 12l9.5-5.5"></path></svg>
               </div>
-              <div className="glass p-4">
-                <p className="text-gray-400 text-sm">WhatsApp</p>
-                <p className="text-2xl font-bold text-emerald-300">Online</p>
-              </div>
-              <div className="glass p-4">
-                <p className="text-gray-400 text-sm">Empresas ativas</p>
-                <p className="text-2xl font-bold">527</p>
+              <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
+                Como posso ajudar hoje?
+              </h1>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl mt-8">
+                <button onClick={() => window.sendQuickMessage('Quais são os planos Master Ouro?')} className="p-4 border border-white/10 rounded-xl hover:bg-[#1a1a1a] hover:border-[#FFD700]/50 transition-all text-left group">
+                  <div className="font-semibold text-gray-200 group-hover:text-[#FFD700]">Ver Planos e Preços</div>
+                  <div className="text-sm text-gray-500">Conheça as assinaturas exclusivas</div>
+                </button>
+                <button onClick={() => window.sendQuickMessage('Como configurar meu WhatsApp?')} className="p-4 border border-white/10 rounded-xl hover:bg-[#1a1a1a] hover:border-[#FFD700]/50 transition-all text-left group">
+                  <div className="font-semibold text-gray-200 group-hover:text-[#FFD700]">Conectar WhatsApp</div>
+                  <div className="text-sm text-gray-500">Tutorial de conexão QR Code</div>
+                </button>
+                <button onClick={() => window.sendQuickMessage('Quero agendar uma reunião')} className="p-4 border border-white/10 rounded-xl hover:bg-[#1a1a1a] hover:border-[#FFD700]/50 transition-all text-left group">
+                  <div className="font-semibold text-gray-200 group-hover:text-[#FFD700]">Agendar Reunião</div>
+                  <div className="text-sm text-gray-500">Integração com Google Agenda</div>
+                </button>
+                <button onClick={() => window.sendQuickMessage('Preciso de suporte técnico')} className="p-4 border border-white/10 rounded-xl hover:bg-[#1a1a1a] hover:border-[#FFD700]/50 transition-all text-left group">
+                  <div className="font-semibold text-gray-200 group-hover:text-[#FFD700]">Suporte Técnico</div>
+                  <div className="text-sm text-gray-500">Falar com um especialista</div>
+                </button>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="glass p-0 overflow-hidden" style={{minHeight: '520px', display: 'flex', flexDirection: 'column'}}>
-            <div className="px-6 py-5 border-b border-white/10 flex items-center justify-between">
-              <div>
-                <p className="text-xs tracking-[0.3em] text-gray-400">RegIA ONLINE</p>
-                <h3 className="text-xl font-semibold">Console de Atendimento</h3>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span className="dot-online"></span>
-                SLA 99.9%
-              </div>
-            </div>
-            <div id="chatMessages" className="flex-1 px-6 py-6 space-y-4 overflow-y-auto scroll-area">
-              <div className="chat-row" style={{display: 'flex', gap: '12px'}}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{background: 'radial-gradient(circle at 30% 30%, #FFD700, #FFA500)', fontWeight: '700', color: '#000'}}>GPT</div>
-                <div className="chat-bubble">
-                  <p>Olá! 👋<br/>Eu sou a <strong className="text-[#FFD700]">RegIA</strong> — a inteligência <strong>MASTER PREMIUM ULTRA OURO</strong> do ecossistema <strong>EXTRAORDINÁRI.A • ALIANCI.A</strong>.</p>
-                  <p className="mt-3">Estou aqui para te entregar respostas rápidas, orientação precisa e soluções poderosas para o que você precisar:</p>
-                  <ul className="mt-3 space-y-1 text-gray-300 text-sm">
-                    <li>✨ Planos, preços e benefícios — explico tudo, sem complicação</li>
-                    <li>🛠️ Suporte técnico — do básico ao avançado</li>
-                    <li>🔗 Integrações, APIs e automações — te guio passo a passo</li>
-                    <li>🌐 Visão completa do ecossistema EXTRAORDINÁRI.A • ALIANCI.A</li>
-                    <li>🚀 Direcionamento inteligente — a melhor solução para o seu momento</li>
-                  </ul>
-                  <p className="mt-3 font-semibold">Como posso te ajudar agora?</p>
-                  <p className="text-sm text-emerald-300 mt-2">Lembrando: a melhor opção é sempre a <strong className="text-white">Opção A</strong>.</p>
+        {/* Input Area */}
+        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a] to-transparent pt-10 pb-6 px-4">
+          <div className="max-w-3xl mx-auto w-full relative">
+            <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden focus-within:border-[#FFD700]/50 transition-colors">
+              <textarea 
+                id="chatInput"
+                placeholder="Envie uma mensagem para a RegIA..." 
+                className="w-full bg-transparent text-white p-4 resize-none outline-none max-h-[200px] min-h-[52px]"
+                rows="1"
+                onKeyPress={(e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); window.sendMessage(); } }}
+              ></textarea>
+              <div className="flex justify-between items-center px-2 pb-2">
+                <div className="flex gap-2">
+                  <button className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                  </button>
+                  <button className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  </button>
                 </div>
+                <button onClick={() => window.sendMessage()} className="p-2 bg-[#FFD700] hover:bg-[#FDB931] text-black rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
               </div>
             </div>
-            <div className="px-6 pb-5 space-y-3">
-              <div className="flex flex-wrap gap-2">
-                <button className="btn-secondary" onClick={() => window.sendQuickMessage('Quais são os planos disponíveis?')}>Planos</button>
-                <button className="btn-secondary" onClick={() => window.sendQuickMessage('Preciso de suporte técnico agora')}>Suporte</button>
-                <button className="btn-secondary" onClick={() => window.sendQuickMessage('Como integro a API?')}>Integrações/API</button>
-                <button className="btn-secondary" onClick={() => window.sendQuickMessage('Qual o status do WhatsApp?')}>Status</button>
-              </div>
-              <div className="flex gap-3">
-                <input id="chatInput" type="text" placeholder="Digite sua mensagem..." className="flex-1 bg-black/30 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#00A8FF]" onKeyPress={(e) => { if(e.key === 'Enter') window.sendMessage() }} />
-                <button className="btn-primary" onClick={() => window.sendMessage()}><i data-lucide="send" className="w-4 h-4"></i>Enviar</button>
-              </div>
-            </div>
+            <p className="text-center text-xs text-gray-500 mt-3">
+              Agente GPT Master Ouro pode cometer erros. Considere verificar informações importantes.
+            </p>
           </div>
-        </section>
-
-        <aside className="space-y-6">
-          <div className="glass p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs tracking-[0.3em] text-gray-400">WHATSAPP CLOUD</p>
-                <h3 className="text-xl font-semibold">Diagnóstico em tempo real</h3>
-              </div>
-              <button id="diagBtn" className="btn-primary" style={{padding: '10px 14px', fontSize: '0.85rem'}} onClick={() => window.runWhatsAppDiagnostics()}>Rodar health-check</button>
-            </div>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-center justify-between">
-                <span>API Meta</span>
-                <span id="statusApi" className="status-pill" style={{color: '#fbbf24', borderColor: 'rgba(251,191,36,0.4)'}}>Aguardando</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Token</span>
-                <span id="statusToken" className="status-pill" style={{color: '#fbbf24', borderColor: 'rgba(251,191,36,0.4)'}}>Aguardando</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Phone Number ID</span>
-                <span id="statusPhone" className="status-pill" style={{color: '#fbbf24', borderColor: 'rgba(251,191,36,0.4)'}}>Aguardando</span>
-              </div>
-            </div>
-            <div className="log-entry">
-              <p id="diagStatus" className="text-sm text-gray-300">Clique em health-check para validar o canal.</p>
-              <div id="diagLog" className="text-xs text-gray-500 mt-3 space-y-1 max-h-32 overflow-y-auto scroll-area"></div>
-            </div>
-          </div>
-
-          <div className="glass p-6">
-            <p className="text-xs tracking-[0.3em] text-gray-400">OPERAÇÃO OFICIAL</p>
-            <h3 className="text-xl font-semibold mt-2">Canal A ativo e sincronizado</h3>
-            <p className="text-gray-300 mt-3">WhatsApp único, tokens frescos, webhooks aprovados e analytics stream ao vivo. Sem divergência com canal B (desligado).</p>
-            <div className="log-entry mt-4">
-              <div className="flex items-center gap-2 text-emerald-300">
-                <i data-lucide="shield-check" className="w-4 h-4"></i>
-                Produção blindada – SLA 99.9%
-              </div>
-              <p className="text-sm text-gray-400 mt-2">Última validação: Agora mesmo • Clientes respondidos em 2.1s • Sem fila pendente.</p>
-            </div>
-            <button className="btn-secondary w-full mt-4" onClick={() => window.openWhatsApp()}>Atender clientes agora</button>
-          </div>
-
-          <div className="glass p-6 space-y-4">
-            <div className="flex items-center gap-2">
-              <i data-lucide="activity" className="w-5 h-5 text-[#00A8FF]"></i>
-              <h3 className="text-lg font-semibold">Logs rápidos</h3>
-            </div>
-            <div id="fastLog" className="space-y-3 text-sm">
-              <div className="log-entry">Webhook reconectado • Meta OK • 08:12h</div>
-              <div className="log-entry">Token permanente renovado • 08:05h</div>
-              <div className="log-entry">Alertas automáticos configurados • 07:58h</div>
-            </div>
-          </div>
-        </aside>
+        </div>
       </main>
-    </>
+    </div>
   );
 }

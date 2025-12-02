@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --bg: #03040a;
-  --card: rgba(255,255,255,0.04);
-  --border: rgba(255,255,255,0.1);
-  --primary: #00A8FF;
-  --secondary: #7C3AED;
+  --bg: #0a0a0a;
+  --card: rgba(255,255,255,0.03);
+  --border: rgba(255,255,255,0.08);
+  --primary: #FFD700;
+  --secondary: #FDB931;
   --success: #34D399;
   --danger: #F87171;
 }
@@ -18,36 +18,75 @@ body {
   margin: 0;
   min-height: 100vh;
   background: var(--bg);
-  color: #fff;
+  color: #e5e7eb;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .bg-grid {
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(circle at 10% 20%, rgba(0,168,255,0.12), transparent 50%),
-    radial-gradient(circle at 80% 0%, rgba(124,58,237,0.12), transparent 45%),
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: cover, cover, 80px 80px, 80px 80px;
-  opacity: 0.7;
+    radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.08), transparent 40%),
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: cover, 40px 40px, 40px 40px;
+  opacity: 0.5;
   pointer-events: none;
   z-index: -1;
 }
 
 .glass {
-  background: var(--card);
+  background: rgba(20, 20, 20, 0.7);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  backdrop-filter: blur(18px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  backdrop-filter: blur(20px);
 }
 
-.scroll-area { scrollbar-width: thin; scrollbar-color: var(--primary) transparent; }
+.scroll-area { scrollbar-width: thin; scrollbar-color: #333 transparent; }
 .scroll-area::-webkit-scrollbar { width: 6px; }
-.scroll-area::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--primary), var(--secondary)); border-radius: 999px; }
+.scroll-area::-webkit-scrollbar-thumb { background: #333; border-radius: 999px; }
+.scroll-area::-webkit-scrollbar-track { background: transparent; }
+
+/* Chat Specifics */
+.chat-bubble {
+  padding: 12px 18px;
+  border-radius: 18px;
+  max-width: 85%;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  position: relative;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.chat-bubble.user {
+  background: #2a2a2a;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-bubble:not(.user) {
+  background: transparent;
+  color: #e5e7eb;
+  padding-left: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gold-gradient-text {
+  background: linear-gradient(to right, #FFD700, #FDB931, #FFD700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
 
 .badge { padding: 6px 14px; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
 
