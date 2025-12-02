@@ -16,6 +16,17 @@ app.get("/", (req, res) => {
 
 // Roteador unificado para suportar tanto /api (Vercel) quanto / (Local)
 const router = express.Router();
+
+// Rota de verificação de saúde do sistema
+router.get("/", (req, res) => {
+  res.json({
+    status: "online",
+    agente: "Master Ouro",
+    versao: "1.0.0",
+    ambiente: process.env.NODE_ENV || "desenvolvimento"
+  });
+});
+
 router.use("/auth", authRoutes);
 router.use("/chat", chatRoutes);
 router.use("/admin", adminRoutes);
