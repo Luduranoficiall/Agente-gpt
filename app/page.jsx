@@ -6,7 +6,9 @@ export default function Home() {
 
   useEffect(() => {
     // Initialize Lucide icons if available
-    if (window.lucide) window.lucide.createIcons();
+    if (window.lucide && window.lucide.createIcons) {
+      window.lucide.createIcons();
+    }
 
     const responses = {
       planos: `📋 **PLANOS MASTER PREMIUM**\n\n━━━━━━━━━━━━━━━━━━\n🔹 **MEMBROS ALIANCI.A** – R$ 197/mês\n🔹 **CLIENTES EXTERNOS** – R$ 297/mês\n\n🚀 **Benefícios Ouro:**\n• IA Comercial de Elite\n• Painel do Cliente Exclusivo\n• Suporte Prioritário\n\n👉 [Assinar Agora](/vendas)`,
