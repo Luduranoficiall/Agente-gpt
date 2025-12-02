@@ -1,31 +1,144 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export default function Register() {
+function RegisterContent() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [tipoPessoa, setTipoPessoa] = useState("fisica"); // fisica ou juridica
+  const [documento, setDocumento] = useState(""); // CPF ou CNPJ
+  const [loading, setLoading] = useState(false);
+  
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const plano = searchParams.get("plano") || "profissional";
 
   const register = async () => {
+    if (!nome || !email || !senha || !documento) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    setLoading(true);
     try {
-      await axios.post("/api/auth/register", { nome, email, senha });
-      alert("Registrado com sucesso! Faça login.");
-      router.push("/login");
+      // Envia os dados para a API (incluindo plano e tipo de pessoa)
+      await axios.post("/api/auth/register", { 
+        nome, 
+        email, 
+        senha, 
+        plano,
+        tipoPessoa,
+        documento 
+      });
+      
+      // Redireciona para o checkout passando o plano
+      router.push(`/checkout?plano=${plano}&email=${email}`);
     } catch (e) {
-      alert("Erro ao registrar");
+      console.error(e);
+      alert("Erro ao registrar. Verifique se o email já está em uso.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div style={{ padding: 40, background: "#000", color: "white", minHeight: "100vh" }}>
-      <h1>Registrar</h1>
-      <input placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)} style={{ display: "block", margin: "10px 0", padding: 10 }} />
-      <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} style={{ display: "block", margin: "10px 0", padding: 10 }} />
-      <input type="password" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} style={{ display: "block", margin: "10px 0", padding: 10 }} />
-      <button onClick={register} style={{ padding: 10 }}>Criar Conta</button>
+    <div className="min-h-screen bg-black text-white flex items-center justify-center p-4 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+      
+      <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl w-full max-w-md z-10 shadow-2xl">
+        <h1 className="text-3xl font-bold mb-2 text-center text-[#FFD700]">Criar Conta</h1>
+        <p className="text-center text-gray-400 mb-6">
+          Assinando o plano: <span className="text-white font-bold uppercase">{plano}</span>
+        </p>
+
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">Nome Completo</label>
+            <input 
+              className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-[#FFD700] outline-none transition-colors"
+              placeholder="Seu nome" 
+              value={nome} 
+              onChange={e => setNome(e.target.value)} 
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">Email</label>
+            <input 
+              className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-[#FFD700] outline-none transition-colors"
+              placeholder="seu@email.com" 
+              value={email} 
+              onChange={e => setEmail(e.target.value)} 
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">Senha</label>
+            <input 
+              type="password" 
+              className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-[#FFD700] outline-none transition-colors"
+              placeholder="••••••••" 
+              value={senha} 
+              onChange={e => setSenha(e.target.value)} 
+            />
+          </div>
+
+          <div className="flex gap-4">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input 
+                type="radio" 
+                name="tipoPessoa" 
+                value="fisica" 
+                checked={tipoPessoa === "fisica"} 
+                onChange={() => setTipoPessoa("fisica")}
+                className="accent-[#FFD700]"
+              />
+              <span>Pessoa Física</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input 
+                type="radio" 
+                name="tipoPessoa" 
+                value="juridica" 
+                checked={tipoPessoa === "juridica"} 
+                onChange={() => setTipoPessoa("juridica")}
+                className="accent-[#FFD700]"
+              />
+              <span>Empresarial</span>
+            </label>
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">
+              {tipoPessoa === "fisica" ? "CPF" : "CNPJ"}
+            </label>
+            <input 
+              className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-[#FFD700] outline-none transition-colors"
+              placeholder={tipoPessoa === "fisica" ? "000.000.000-00" : "00.000.000/0000-00"} 
+              value={documento} 
+              onChange={e => setDocumento(e.target.value)} 
+            />
+          </div>
+
+          <button 
+            onClick={register} 
+            disabled={loading}
+            className="w-full py-3 bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black font-bold rounded-lg hover:opacity-90 transition-opacity mt-4 disabled:opacity-50"
+          >
+            {loading ? "Criando conta..." : "Continuar para Pagamento →"}
+          </button>
+        </div>
+      </div>
     </div>
+  );
+}
+
+export default function Register() {
+  return (
+    <Suspense fallback={<div className="text-white text-center p-10">Carregando...</div>}>
+      <RegisterContent />
+    </Suspense>
   );
 }

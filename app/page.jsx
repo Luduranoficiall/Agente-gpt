@@ -7,7 +7,7 @@ export default function Home() {
     if (window.lucide) window.lucide.createIcons();
 
     const responses = {
-      planos: `📋 **PLANOS agente.gpt**\n\n━━━━━━━━━━━━━━━━━━\n🔹 PROFISSIONAL – R$ 197/mês\n🔹 EMPRESARIAL – R$ 497/mês (GPT-4o Turbo)\n🔹 ENTERPRISE – Custom ilimitado\n\n👉 Canal oficial: https://wa.me/5512996341928`,
+      planos: `📋 **PLANOS agente.gpt**\n\n━━━━━━━━━━━━━━━━━━\n🔹 PROFISSIONAL – R$ 197/mês\n🔹 EMPRESARIAL – R$ 497/mês (GPT-4o Turbo)\n🔹 ENTERPRISE – Custom ilimitado\n\n👉 Assine agora: https://agente-gpt-oficial.vercel.app/vendas`,
       suporte: `🛠️ **Suporte Técnico**\n\n• WhatsApp 24/7\n• Playbooks Opção A\n• Revalidação automática de tokens\n\nAbra um chamado direto no WhatsApp oficial.`,
       integracao: `🔗 **Integrações & API**\n\nBase URL: https://api.agente-gpt.fly.dev\nHeader: X-ADMIN-TOKEN\nEndpoints principais: /chat, /companies, /metrics, /events`,
       status: `📡 **Status do Canal A**\n\nWhatsApp Cloud ONLINE\nTokens atualizados e phone ID validado. Rodando health-check automaticamente a cada 5 min.`
