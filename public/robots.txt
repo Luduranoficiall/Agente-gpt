@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://agente-gpt-oficial.vercel.app/sitemap.xml
+
+Sitemap: https://agente-gpt-oficial.vercel.app/sitemap.xml
