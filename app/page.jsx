@@ -67,7 +67,13 @@ export default function Home() {
       const typing = document.createElement('div');
       typing.id = 'typingIndicator';
       typing.className = 'flex gap-4 mb-6';
-      typing.innerHTML = `<div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FDB931] flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg></div><div class="chat-bubble text-gray-400">Digitando...</div>`;
+      typing.innerHTML = `
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FDB931] flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
+        </div>
+        <div class="chat-bubble text-gray-400 flex items-center h-full pt-3">
+          <div class="typing-indicator"><span></span><span></span><span></span></div>
+        </div>`;
       chat.appendChild(typing);
       chat.scrollTop = chat.scrollHeight;
 
