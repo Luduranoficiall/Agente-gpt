@@ -15,13 +15,13 @@ export default function Home() {
     }
 
     const responses = {
-      planos: `📋 **PLANOS MASTER PREMIUM**\n\n━━━━━━━━━━━━━━━━━━\n🔹 **MEMBROS ALIANCI.A** – R$ 197/mês\n🔹 **CLIENTES EXTERNOS** – R$ 297/mês\n\n🚀 **Benefícios Ouro:**\n• IA Comercial de Elite\n• Painel do Cliente Exclusivo\n• Suporte Prioritário\n\n👉 [Assinar Agora](/vendas)`,
-      suporte: `🛠️ **Suporte Técnico Premium**\n\nNossa equipe de elite está pronta para te ajudar.\n\n• WhatsApp Exclusivo 24/7\n• Playbooks de Vendas\n• Consultoria de Implementação\n\n[Falar com Suporte](https://wa.me/5512996341928)`,
-      whatsapp: `📱 **Conexão WhatsApp**\n\nPara conectar seu WhatsApp, acesse o Painel do Cliente.\n\n1. Clique no menu lateral em "Configuração WhatsApp"\n2. Escaneie o QR Code\n3. Aguarde a confirmação\n\n[Ir para Painel](/cliente)`,
-      reuniao: `📅 **Agendamento Inteligente**\n\nPosso agendar uma reunião para você. Nossa agenda está integrada com o Google Calendar.\n\n[Acessar Agenda](/cliente)`,
-      saudacao: `Olá! 👋 É um prazer ter você aqui. Sou a **RegIA**, sua assistente de alta performance.\n\nComo posso acelerar seus resultados hoje?`,
-      agradecimento: `De nada! 🌟 Estou sempre à disposição para ajudar você a alcançar o extraordinário. Precisa de mais alguma coisa?`,
-      default: `Entendi. Como sou uma IA focada em **Alta Performance e Vendas**, posso te ajudar com:\n\n• Planos e Assinaturas\n• Configuração do seu Agente\n• Estratégias de Venda\n• Suporte Técnico\n\nO que você prefere?`
+      planos: `📋 **PLANOS MASTER PREMIUM (HARD LEVEL)**\n\n━━━━━━━━━━━━━━━━━━\n🔹 **MEMBROS ALIANCI.A** – R$ 197/mês\n🔹 **CLIENTES EXTERNOS** – R$ 297/mês\n\n🚀 **Benefícios de Elite:**\n• IA Comercial Nível Hard\n• Painel Exclusivo Master Ouro\n• Suporte VIP Prioritário\n\n👉 [Assinar Agora](/vendas)`,
+      suporte: `🛠️ **Suporte Técnico de Elite**\n\nNossa equipe Master Premium está pronta para resolver qualquer desafio.\n\n• WhatsApp Exclusivo 24/7\n• Estratégias de Venda Hard Level\n• Consultoria de Implementação\n\n[Falar com Suporte VIP](https://wa.me/5512996341928)`,
+      whatsapp: `📱 **Conexão WhatsApp Blindada**\n\nPara conectar seu WhatsApp com estabilidade total, acesse o Painel Master.\n\n1. Clique no menu lateral em "Configuração WhatsApp"\n2. Escaneie o QR Code\n3. Aguarde a validação segura\n\n[Ir para Painel Master](/cliente)`,
+      reuniao: `📅 **Agendamento Executivo**\n\nPosso gerenciar sua agenda com precisão. Integração total com Google Calendar para máxima produtividade.\n\n[Acessar Agenda](/cliente)`,
+      saudacao: `Olá! 👋 Bem-vindo ao nível Hard. Sou a **RegIA**, sua inteligência **Master Premium Ultra Ouro**.\n\nEstou aqui para escalar seus resultados. Qual é a missão de hoje?`,
+      agradecimento: `Disponha! 🌟 O sucesso é o nosso padrão. Conte comigo para continuar dominando o mercado.`,
+      default: `Compreendido. Como uma IA **Master Premium Nível Hard**, meu foco é resultado absoluto.\n\nPosso te auxiliar com:\n\n• Planos de Alta Performance\n• Configuração Avançada do Agente\n• Estratégias de Venda Agressivas\n• Suporte Técnico VIP\n\nQual o próximo passo para o sucesso?`
     };
 
     window.addMessage = function(content, isUser = false) {
