@@ -1,66 +1,123 @@
-# 🚀 INSTRUÇÕES PARA CONFIGURAÇÃO FINAL
+# 🚀 INSTRUÇÕES COMPLETAS - VERCEL + DOMÍNIO
 
-## Olá Luduran! Quando você parar, siga estes passos:
+## Olá Luduran! Siga estes passos quando parar:
 
 ---
 
-## ✅ PASSO 1: Configurar Vercel (1 minuto)
+# PARTE 1: CONFIGURAR CHAVE API (2 min)
 
-### Acesse:
+## Passo 1.1: Acessar Vercel
 ```
-https://vercel.com
+https://vercel.com/dashboard
 ```
+Faça login com sua conta.
 
-### Navegue até:
-1. Seu projeto **Agente-gpt**
-2. Clique em **Settings** (⚙️)
-3. Clique em **Environment Variables**
+## Passo 1.2: Ir nas configurações do projeto
+1. Clique no projeto **agente-gpt**
+2. Clique em **Settings** (ícone ⚙️ no topo)
+3. No menu lateral, clique em **Environment Variables**
 
-### Adicione esta variável:
+## Passo 1.3: Adicionar a chave Gemini
+
+Clique em **Add New** e preencha:
 
 | Campo | Valor |
 |-------|-------|
-| **Name** | `GEMINI_API_KEY` |
+| **Key** | `GEMINI_API_KEY` |
 | **Value** | `AIzaSyClE_Mib9QWWhJUGN0wso7IPzYXhsogTBk` |
-| **Environment** | ✅ Marque: Production, Preview, Development |
 
-4. Clique em **Save**
+✅ Marque: **Production**, **Preview**, **Development**
 
----
+Clique em **Save**
 
-## ✅ PASSO 2: Fazer Redeploy (30 segundos)
-
-1. Ainda na Vercel, clique em **Deployments**
-2. No último deploy, clique nos **3 pontinhos** (⋯)
+## Passo 1.4: Fazer Redeploy
+1. Clique em **Deployments** (menu do topo)
+2. No deploy mais recente, clique nos **⋯** (3 pontinhos)
 3. Clique em **Redeploy**
-4. Confirme
+4. Clique em **Redeploy** novamente para confirmar
+
+⏳ Aguarde ~1 minuto para o deploy completar.
 
 ---
 
-## ✅ PASSO 3: Testar (1 minuto)
+# PARTE 2: VERIFICAR/CONFIGURAR DOMÍNIO (3 min)
 
-Acesse seu site:
+## Seu domínio atual:
+```
+https://agente-gpt-oficial.vercel.app ✅ Funcionando!
+```
+
+## Para adicionar domínio personalizado (ex: agentegpt.com.br):
+
+### Passo 2.1: Ir nas configurações de domínio
+1. No projeto, clique em **Settings**
+2. Clique em **Domains** no menu lateral
+
+### Passo 2.2: Adicionar seu domínio
+1. Digite seu domínio (ex: `agentegpt.com.br`)
+2. Clique em **Add**
+
+### Passo 2.3: Configurar DNS
+A Vercel vai mostrar registros DNS para configurar:
+
+**Se seu domínio está no Registro.br:**
+1. Acesse https://registro.br
+2. Vá em Meus Domínios → seu domínio → DNS
+3. Adicione os registros que a Vercel mostrar
+
+**Registros típicos:**
+| Tipo | Nome | Valor |
+|------|------|-------|
+| A | @ | 76.76.21.21 |
+| CNAME | www | cname.vercel-dns.com |
+
+### Passo 2.4: Aguardar propagação
+⏳ DNS pode levar até 24h para propagar (geralmente 5-30 min)
+
+---
+
+# PARTE 3: TESTAR TUDO (1 min)
+
+## Acesse seu site:
 ```
 https://agente-gpt-oficial.vercel.app
 ```
 
-Digite uma mensagem no chat e veja se a IA responde!
+## Teste o chat:
+1. Digite uma mensagem qualquer
+2. Veja se a IA responde (Gemini 1.5 Flash)
+
+## Se funcionar: 🎉 PRONTO PARA VENDER!
 
 ---
 
-## 🎉 PRONTO!
+# ❓ PROBLEMAS COMUNS
 
-Se funcionar, seu Agente GPT Master Premium está 100% operacional!
+## "API não responde"
+→ Verifique se a chave foi salva corretamente
+→ Faça redeploy novamente
+
+## "Domínio não funciona"
+→ Aguarde propagação do DNS (até 24h)
+→ Verifique registros no Registro.br
+
+## "Erro 500"
+→ Verifique logs em Vercel → Deployments → Functions
 
 ---
 
-## ❓ Se der erro:
+# 📋 RESUMO RÁPIDO
 
-1. Verifique se a chave foi salva corretamente
-2. Faça redeploy novamente
-3. Aguarde 1-2 minutos para propagar
+| Tarefa | Tempo |
+|--------|-------|
+| 1. Adicionar `GEMINI_API_KEY` no Vercel | 1 min |
+| 2. Fazer Redeploy | 1 min |
+| 3. Testar chat | 1 min |
+| 4. Configurar domínio (opcional) | 5 min |
+
+**Total: ~5 minutos e seu agente está no ar!**
 
 ---
 
-**Criado automaticamente em:** 6 de dezembro de 2025
+**Criado em:** 6 de dezembro de 2025
 **Por:** GitHub Copilot 🤖
