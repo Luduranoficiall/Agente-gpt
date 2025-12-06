@@ -142,9 +142,9 @@ export default function Home() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
             </button>
             <div className="flex items-center gap-2 cursor-pointer hover:bg-[#1a1a1a] px-3 py-1.5 rounded-lg transition-colors">
-              <span className="font-semibold text-lg text-gray-200">Agente GPT 4.0</span>
-              <span className="text-xs font-bold text-[#FFD700] bg-[#FFD700]/10 px-2 py-0.5 rounded border border-[#FFD700]/20">
-                MASTER OURO V5.0 (AO VIVO)
+              <span className="font-semibold text-lg text-gray-200">Agente GPT</span>
+              <span className="text-xs font-bold text-black bg-gradient-to-r from-[#FFD700] to-[#FDB931] px-2 py-1 rounded shadow-lg">
+                V6.0 HARD LEVEL
               </span>
             </div>
           </div>
@@ -161,8 +161,8 @@ export default function Home() {
               <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#FFD700] to-[#FDB931] flex items-center justify-center shadow-[0_0_40px_rgba(255,215,0,0.3)] mb-4">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12L2.5 12"></path><path d="M12 12l9.5-5.5"></path></svg>
               </div>
-              <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
-                Como posso ajudar hoje?
+              <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-white to-[#FDB931]">
+                Qual é a missão de hoje?
               </h1>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl mt-8">
@@ -213,7 +213,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-center text-xs text-gray-500 mt-3">
-              Agente GPT Master Ouro pode cometer erros. Considere verificar informações importantes.
+              Agente GPT V6.0 Hard Level • Master Premium Ultra Ouro • Extraordinári.A
             </p>
           </div>
         </div>

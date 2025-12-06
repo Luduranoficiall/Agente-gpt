@@ -111,7 +111,7 @@ function RegisterContent() {
           </div>
 
           <div className="flex gap-4">
-                        <label className="flex items-center gap-2 cursor-pointer">
+            <label className="flex items-center gap-2 cursor-pointer">
               <input 
                 type="radio" 
                 name="tipoPessoa" 
