@@ -1,236 +1,327 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-// Force dynamic rendering to avoid caching old versions
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
 
 export default function Home() {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [conversations, setConversations] = useState([
+    { id: 1, title: 'Nova conversa', date: 'Agora' }
+  ]);
+  const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
-    // Initialize Lucide icons if available
-    if (window.lucide && window.lucide.createIcons) {
-      window.lucide.createIcons();
-    }
+    scrollToBottom();
+  }, [messages]);
 
-    const responses = {
-      planos: `📋 **PLANOS MASTER PREMIUM (HARD LEVEL)**\n\n━━━━━━━━━━━━━━━━━━\n🔹 **MEMBROS ALIANCI.A** – R$ 197/mês\n🔹 **CLIENTES EXTERNOS** – R$ 297/mês\n\n🚀 **Benefícios de Elite:**\n• IA Comercial Nível Hard\n• Painel Exclusivo Master Ouro\n• Suporte VIP Prioritário\n\n👉 [Assinar Agora](/vendas)`,
-      suporte: `🛠️ **Suporte Técnico de Elite**\n\nNossa equipe Master Premium está pronta para resolver qualquer desafio.\n\n• WhatsApp Exclusivo 24/7\n• Estratégias de Venda Hard Level\n• Consultoria de Implementação\n\n[Falar com Suporte VIP](https://wa.me/5512996341928)`,
-      whatsapp: `📱 **Conexão WhatsApp Blindada**\n\nPara conectar seu WhatsApp com estabilidade total, acesse o Painel Master.\n\n1. Clique no menu lateral em "Configuração WhatsApp"\n2. Escaneie o QR Code\n3. Aguarde a validação segura\n\n[Ir para Painel Master](/cliente)`,
-      reuniao: `📅 **Agendamento Executivo**\n\nPosso gerenciar sua agenda com precisão. Integração total com Google Calendar para máxima produtividade.\n\n[Acessar Agenda](/cliente)`,
-      saudacao: `Olá! 👋 Bem-vindo ao nível Hard. Sou a **RegIA**, sua inteligência **Master Premium Ultra Ouro**.\n\nEstou aqui para escalar seus resultados. Qual é a missão de hoje?`,
-      agradecimento: `Disponha! 🌟 O sucesso é o nosso padrão. Conte comigo para continuar dominando o mercado.`,
-      default: `Compreendido. Como uma IA **Master Premium Nível Hard**, meu foco é resultado absoluto.\n\nPosso te auxiliar com:\n\n• Planos de Alta Performance\n• Configuração Avançada do Agente\n• Estratégias de Venda Agressivas\n• Suporte Técnico VIP\n\nQual o próximo passo para o sucesso?`
-    };
-
-    window.addMessage = function(content, isUser = false) {
-      const chat = document.getElementById('chatMessages');
-      const welcomeScreen = document.getElementById('welcomeScreen');
-      if (welcomeScreen) welcomeScreen.style.display = 'none';
-
-      const row = document.createElement('div');
-      row.className = 'flex gap-4 mb-6 ' + (isUser ? 'flex-row-reverse' : '');
-      
-      const avatar = document.createElement('div');
-      avatar.className = `w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${isUser ? 'bg-gray-700' : 'bg-gradient-to-br from-[#FFD700] to-[#FDB931]'}`;
-      avatar.innerHTML = isUser ? 
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' : 
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12L2.5 12"></path><path d="M12 12l9.5-5.5"></path></svg>';
-      
-      const bubble = document.createElement('div');
-      bubble.className = 'chat-bubble ' + (isUser ? 'user' : 'bot');
-      bubble.innerHTML = content;
-      
-      row.appendChild(avatar);
-      row.appendChild(bubble);
-      chat.appendChild(row);
-      chat.scrollTop = chat.scrollHeight;
-    };
-
-    window.sanitize = function(text) {
-      return text.replace(/\n/g,'<br>')
-                 .replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" class="text-[#FFD700] hover:underline">$1</a>')
-                 .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>');
-    };
-
-    window.sendMessage = async function() {
-      const input = document.getElementById('chatInput');
-      const value = input.value.trim();
-      if (!value) return;
-      
-      window.addMessage(window.sanitize(value), true);
-      input.value = '';
-      
-      // Simulate typing delay
-      const chat = document.getElementById('chatMessages');
-      const typing = document.createElement('div');
-      typing.id = 'typingIndicator';
-      typing.className = 'flex gap-4 mb-6';
-      typing.innerHTML = `
-        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FDB931] flex items-center justify-center">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path></svg>
-        </div>
-        <div class="chat-bubble text-gray-400 flex items-center h-full pt-3">
-          <div class="typing-indicator"><span></span><span></span><span></span></div>
-        </div>`;
-      chat.appendChild(typing);
-      chat.scrollTop = chat.scrollHeight;
-
-      await new Promise(r => setTimeout(r, 800 + Math.random()*700));
-      
-      if(document.getElementById('typingIndicator')) document.getElementById('typingIndicator').remove();
-
-      const lower = value.toLowerCase();
-      let reply = null;
-      
-      // Respostas rápidas para comandos conhecidos
-      if (lower.includes('plano') || lower.includes('preço') || lower.includes('valor') || lower.includes('custo')) reply = responses.planos;
-      else if (lower.includes('suporte') || lower.includes('ajuda') || lower.includes('problema') || lower.includes('erro')) reply = responses.suporte;
-      else if (lower.includes('whatsapp') || lower.includes('conectar') || lower.includes('qr')) reply = responses.whatsapp;
-      else if (lower.includes('reunião') || lower.includes('agenda') || lower.includes('marcar')) reply = responses.reuniao;
-      else if (lower.includes('oi') || lower.includes('olá') || lower.includes('bom dia') || lower.includes('boa tarde') || lower.includes('boa noite')) reply = responses.saudacao;
-      else if (lower.includes('obrigado') || lower.includes('valeu') || lower.includes('grato')) reply = responses.agradecimento;
-      
-      // Se não for comando conhecido, usa a IA Gemini via API segura
-      if (!reply) {
-        try {
-          const res = await fetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: value })
-          });
-          const data = await res.json();
-          reply = data.response || data.error || responses.default;
-        } catch (err) {
-          console.error('Erro ao chamar IA:', err);
-          reply = responses.default;
-        }
-      }
-      
-      window.addMessage(window.sanitize(reply));
-    };
-
-    window.sendQuickMessage = function(msg) {
-      document.getElementById('chatInput').value = msg;
-      window.sendMessage();
-    };
-
+  useEffect(() => {
+    inputRef.current?.focus();
   }, []);
 
+  const sendMessage = async () => {
+    if (!input.trim() || isLoading) return;
+
+    const userMessage = { role: 'user', content: input.trim() };
+    setMessages(prev => [...prev, userMessage]);
+    setInput('');
+    setIsLoading(true);
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          message: userMessage.content,
+          history: messages 
+        })
+      });
+
+      const data = await res.json();
+      
+      if (data.error) {
+        setMessages(prev => [...prev, { 
+          role: 'assistant', 
+          content: `⚠️ ${data.error}\n\nPor favor, tente novamente ou entre em contato com o suporte.`,
+          isError: true 
+        }]);
+      } else {
+        setMessages(prev => [...prev, { 
+          role: 'assistant', 
+          content: data.response 
+        }]);
+      }
+    } catch (error) {
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: '❌ Erro de conexão. Verifique sua internet e tente novamente.',
+        isError: true 
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
+  const newChat = () => {
+    setMessages([]);
+    setConversations(prev => [
+      { id: Date.now(), title: 'Nova conversa', date: 'Agora' },
+      ...prev
+    ]);
+  };
+
+  const quickActions = [
+    { icon: '🚀', label: 'Planos e Preços', prompt: 'Quais são os planos disponíveis?' },
+    { icon: '💡', label: 'Como Funciona', prompt: 'Como funciona o Agente GPT?' },
+    { icon: '🔧', label: 'Suporte Técnico', prompt: 'Preciso de suporte técnico' },
+    { icon: '📱', label: 'Integrar WhatsApp', prompt: 'Como integro com WhatsApp?' },
+  ];
+
   return (
-    <div className="flex h-screen bg-[#0a0a0a] text-gray-100 overflow-hidden font-sans">
+    <div className="flex h-screen bg-[#0a0a0a] overflow-hidden">
+      {/* Background Effects */}
+      <div className="fixed inset-0 bg-gradient-radial from-amber-900/10 via-transparent to-transparent pointer-events-none" />
+      <div className="fixed inset-0 opacity-30 pointer-events-none" style={{
+        backgroundImage: `radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.1), transparent 50%)`
+      }} />
+      
       {/* Sidebar */}
-      <aside className={`${sidebarOpen ? 'w-[260px]' : 'w-0'} bg-[#000] border-r border-white/10 transition-all duration-300 flex flex-col overflow-hidden`}>
+      <aside className={`${sidebarOpen ? 'w-72' : 'w-0'} bg-[#111111] border-r border-white/5 transition-all duration-300 flex flex-col overflow-hidden relative z-10`}>
+        {/* New Chat Button */}
         <div className="p-4">
-          <button onClick={() => window.location.reload()} className="w-full flex items-center gap-3 px-4 py-3 bg-[#1a1a1a] hover:bg-[#222] border border-white/5 rounded-lg transition-colors text-sm font-medium text-white">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            Nova Conversa
-          </button>
-        </div>
-
-        <div className="flex-1 overflow-y-auto px-2 py-2">
-          <div className="px-3 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider">Hoje</div>
-          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-[#1a1a1a] rounded-lg truncate transition-colors">
-            Planos Master Ouro
-          </button>
-          <button className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-[#1a1a1a] rounded-lg truncate transition-colors">
-            Configuração WhatsApp
-          </button>
-        </div>
-
-        <div className="p-4 border-t border-white/10">
-          <a href="/cliente" className="flex items-center gap-3 px-3 py-3 hover:bg-[#1a1a1a] rounded-lg transition-colors text-sm">
-            <div className="w-8 h-8 rounded bg-[#FFD700] flex items-center justify-center text-black font-bold">L</div>
-            <div className="flex-1">
-              <div className="font-bold text-white">Luduran</div>
-              <div className="text-xs text-[#FFD700]">Master Premium</div>
+          <button 
+            onClick={newChat}
+            className="w-full flex items-center gap-3 px-4 py-3.5 bg-gradient-to-r from-amber-500/10 to-amber-600/5 hover:from-amber-500/20 hover:to-amber-600/10 border border-amber-500/20 rounded-xl transition-all duration-300 group"
+          >
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
+              <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
             </div>
+            <span className="text-sm font-semibold text-white/90 group-hover:text-white">Nova Conversa</span>
+          </button>
+        </div>
+
+        {/* Conversations */}
+        <div className="flex-1 overflow-y-auto px-3 py-2 space-y-1">
+          <div className="px-3 py-2 text-xs font-bold text-white/30 uppercase tracking-widest">Recentes</div>
+          {conversations.map((conv) => (
+            <button 
+              key={conv.id}
+              className="w-full text-left px-3 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 flex items-center gap-3 group"
+            >
+              <svg className="w-4 h-4 text-white/40 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <span className="truncate flex-1">{conv.title}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* User Profile */}
+        <div className="p-4 border-t border-white/5">
+          <a href="/cliente" className="flex items-center gap-3 px-3 py-3 hover:bg-white/5 rounded-xl transition-all duration-200 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-black font-bold text-sm shadow-lg shadow-amber-500/20">
+              L
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="font-semibold text-white text-sm truncate">Luduran</div>
+              <div className="text-xs text-amber-400 font-medium">Master Premium</div>
+            </div>
+            <svg className="w-4 h-4 text-white/30 group-hover:text-white/60 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+            </svg>
           </a>
         </div>
       </aside>
 
-      {/* Main Chat Area */}
+      {/* Main Content */}
       <main className="flex-1 flex flex-col relative">
         {/* Header */}
-        <header className="h-14 flex items-center justify-between px-4 border-b border-white/5 bg-[#0a0a0a]/50 backdrop-blur-md z-10">
+        <header className="h-14 border-b border-white/5 flex items-center px-4 gap-4 bg-[#0a0a0a]/80 backdrop-blur-xl z-10">
+          <button 
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 hover:bg-white/5 rounded-lg transition-colors"
+          >
+            <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          
           <div className="flex items-center gap-3">
-            <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 hover:bg-[#1a1a1a] rounded-lg text-gray-400">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
-            </button>
-            <div className="flex items-center gap-2 cursor-pointer hover:bg-[#1a1a1a] px-3 py-1.5 rounded-lg transition-colors">
-              <span className="font-semibold text-lg text-gray-200">Agente GPT</span>
-              <span className="text-xs font-bold text-black bg-gradient-to-r from-[#FFD700] to-[#FDB931] px-2 py-1 rounded shadow-lg">
-                V6.0 HARD LEVEL
-              </span>
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
+              <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <h1 className="text-sm font-bold text-white">Agente GPT</h1>
+              <p className="text-[10px] text-amber-400 font-semibold tracking-wider uppercase">Master Premium</p>
             </div>
           </div>
-          <button className="p-2 hover:bg-[#1a1a1a] rounded-full">
-            <img src="https://github.com/shadcn.png" className="w-8 h-8 rounded-full" alt="User" />
-          </button>
+
+          <div className="flex-1" />
+
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-semibold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+              Online
+            </span>
+          </div>
         </header>
 
-        {/* Chat Content */}
-        <div className="flex-1 overflow-y-auto scroll-area relative">
-          <div className="max-w-3xl mx-auto w-full pt-10 pb-32 px-4" id="chatMessages">
-            {/* Welcome Screen (Hidden when chat starts) */}
-            <div id="welcomeScreen" className="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 animate-in fade-in duration-700">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#FFD700] to-[#FDB931] flex items-center justify-center shadow-[0_0_40px_rgba(255,215,0,0.3)] mb-4">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12L2.5 12"></path><path d="M12 12l9.5-5.5"></path></svg>
-              </div>
-              <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-white to-[#FDB931]">
-                Qual é a missão de hoje?
-              </h1>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl mt-8">
-                <button onClick={() => window.sendQuickMessage('Quais são os planos Master Ouro?')} className="p-4 border border-white/10 rounded-xl hover:bg-[#1a1a1a] hover:border-[#FFD700]/50 transition-all text-left group">
-                  <div className="font-semibold text-gray-200 group-hover:text-[#FFD700]">Ver Planos e Preços</div>
-                  <div className="text-sm text-gray-500">Conheça as assinaturas exclusivas</div>
-                </button>
-                <button onClick={() => window.sendQuickMessage('Como configurar meu WhatsApp?')} className="p-4 border border-white/10 rounded-xl hover:bg-[#1a1a1a] hover:border-[#FFD700]/50 transition-all text-left group">
-                  <div className="font-semibold text-gray-200 group-hover:text-[#FFD700]">Conectar WhatsApp</div>
-                  <div className="text-sm text-gray-500">Tutorial de conexão QR Code</div>
-                </button>
-                <button onClick={() => window.sendQuickMessage('Quero agendar uma reunião')} className="p-4 border border-white/10 rounded-xl hover:bg-[#1a1a1a] hover:border-[#FFD700]/50 transition-all text-left group">
-                  <div className="font-semibold text-gray-200 group-hover:text-[#FFD700]">Agendar Reunião</div>
-                  <div className="text-sm text-gray-500">Integração com Google Agenda</div>
-                </button>
-                <button onClick={() => window.sendQuickMessage('Preciso de suporte técnico')} className="p-4 border border-white/10 rounded-xl hover:bg-[#1a1a1a] hover:border-[#FFD700]/50 transition-all text-left group">
-                  <div className="font-semibold text-gray-200 group-hover:text-[#FFD700]">Suporte Técnico</div>
-                  <div className="text-sm text-gray-500">Falar com um especialista</div>
-                </button>
+        {/* Chat Area */}
+        <div className="flex-1 overflow-y-auto scroll-area">
+          {messages.length === 0 ? (
+            /* Welcome Screen */
+            <div className="h-full flex flex-col items-center justify-center px-4 py-12">
+              <div className="max-w-2xl w-full text-center space-y-8">
+                {/* Logo Animation */}
+                <div className="relative inline-block">
+                  <div className="absolute inset-0 bg-amber-500/20 blur-3xl rounded-full scale-150 animate-pulse" />
+                  <div className="relative w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 flex items-center justify-center shadow-2xl shadow-amber-500/30">
+                    <svg className="w-10 h-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <h2 className="text-3xl font-bold text-white">
+                    Olá! Sou o <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Agente GPT</span>
+                  </h2>
+                  <p className="text-white/50 text-lg max-w-md mx-auto">
+                    Sua inteligência artificial premium. Como posso ajudar você hoje?
+                  </p>
+                </div>
+
+                {/* Quick Actions */}
+                <div className="grid grid-cols-2 gap-3 max-w-lg mx-auto mt-8">
+                  {quickActions.map((action, i) => (
+                    <button
+                      key={i}
+                      onClick={() => {
+                        setInput(action.prompt);
+                        inputRef.current?.focus();
+                      }}
+                      className="flex items-center gap-3 p-4 bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 hover:border-amber-500/20 rounded-xl transition-all duration-300 group text-left"
+                    >
+                      <span className="text-2xl">{action.icon}</span>
+                      <span className="text-sm text-white/70 group-hover:text-white font-medium">{action.label}</span>
+                    </button>
+                  ))}
+                </div>
+
+                <p className="text-xs text-white/30 mt-8">
+                  Powered by Gemini 1.5 Flash • EXTRAORDINÁRI.A
+                </p>
               </div>
             </div>
-          </div>
+          ) : (
+            /* Messages */
+            <div className="max-w-3xl mx-auto px-4 py-8 space-y-6">
+              {messages.map((msg, i) => (
+                <div key={i} className={`flex gap-4 ${msg.role === 'user' ? 'flex-row-reverse' : ''} animate-fadeIn`}>
+                  {/* Avatar */}
+                  <div className={`w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center ${
+                    msg.role === 'user' 
+                      ? 'bg-gradient-to-br from-gray-600 to-gray-700' 
+                      : 'bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg shadow-amber-500/20'
+                  }`}>
+                    {msg.role === 'user' ? (
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    )}
+                  </div>
+
+                  {/* Message Bubble */}
+                  <div className={`flex-1 max-w-[85%] ${msg.role === 'user' ? 'text-right' : ''}`}>
+                    <div className={`inline-block px-4 py-3 rounded-2xl ${
+                      msg.role === 'user'
+                        ? 'bg-gradient-to-br from-amber-500/20 to-amber-600/10 border border-amber-500/20 text-white'
+                        : msg.isError
+                          ? 'bg-red-500/10 border border-red-500/20 text-red-300'
+                          : 'text-white/90'
+                    }`}>
+                      <p className="whitespace-pre-wrap text-[15px] leading-relaxed">{msg.content}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Typing Indicator */}
+              {isLoading && (
+                <div className="flex gap-4 animate-fadeIn">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                    <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div className="flex items-center gap-1.5 px-4 py-3">
+                    <span className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </div>
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
+            </div>
+          )}
         </div>
 
         {/* Input Area */}
-        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a] to-transparent pt-10 pb-6 px-4">
-          <div className="max-w-3xl mx-auto w-full relative">
-            <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden focus-within:border-[#FFD700]/50 transition-colors">
-              <textarea 
-                id="chatInput"
-                placeholder="Envie uma mensagem para a RegIA..." 
-                className="w-full bg-transparent text-white p-4 resize-none outline-none max-h-[200px] min-h-[52px]"
-                rows="1"
-                onKeyPress={(e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); window.sendMessage(); } }}
-              ></textarea>
-              <div className="flex justify-between items-center px-2 pb-2">
-                <div className="flex gap-2">
-                  <button className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
-                  </button>
-                  <button className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                  </button>
-                </div>
-                <button onClick={() => window.sendMessage()} className="p-2 bg-[#FFD700] hover:bg-[#FDB931] text-black rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                </button>
-              </div>
+        <div className="border-t border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl p-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="relative flex items-center gap-3 bg-[#1a1a1a] border border-white/10 focus-within:border-amber-500/50 rounded-2xl p-2 transition-all duration-300 shadow-xl shadow-black/20">
+              <textarea
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Digite sua mensagem..."
+                rows={1}
+                className="flex-1 bg-transparent text-white placeholder-white/30 px-4 py-2 resize-none focus:outline-none text-[15px] max-h-32"
+                style={{ minHeight: '44px' }}
+              />
+              <button
+                onClick={sendMessage}
+                disabled={!input.trim() || isLoading}
+                className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-black disabled:opacity-30 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-amber-500/30 transition-all duration-300 disabled:hover:shadow-none"
+              >
+                {isLoading ? (
+                  <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                )}
+              </button>
             </div>
-            <p className="text-center text-xs text-gray-500 mt-3">
-              Agente GPT V6.0 Hard Level • Master Premium Ultra Ouro • Extraordinári.A
+            <p className="text-center text-[11px] text-white/20 mt-3">
+              Agente GPT Master Premium • Powered by Gemini 1.5 Flash
             </p>
           </div>
         </div>
