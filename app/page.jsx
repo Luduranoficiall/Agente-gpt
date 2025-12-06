@@ -77,19 +77,36 @@ export default function Home() {
       chat.appendChild(typing);
       chat.scrollTop = chat.scrollHeight;
 
-      await new Promise(r => setTimeout(r, 1000 + Math.random()*1500));
+      await new Promise(r => setTimeout(r, 800 + Math.random()*700));
       
       if(document.getElementById('typingIndicator')) document.getElementById('typingIndicator').remove();
 
       const lower = value.toLowerCase();
-      let reply = responses.default;
+      let reply = null;
       
+      // Respostas rápidas para comandos conhecidos
       if (lower.includes('plano') || lower.includes('preço') || lower.includes('valor') || lower.includes('custo')) reply = responses.planos;
       else if (lower.includes('suporte') || lower.includes('ajuda') || lower.includes('problema') || lower.includes('erro')) reply = responses.suporte;
       else if (lower.includes('whatsapp') || lower.includes('conectar') || lower.includes('qr')) reply = responses.whatsapp;
       else if (lower.includes('reunião') || lower.includes('agenda') || lower.includes('marcar')) reply = responses.reuniao;
       else if (lower.includes('oi') || lower.includes('olá') || lower.includes('bom dia') || lower.includes('boa tarde') || lower.includes('boa noite')) reply = responses.saudacao;
       else if (lower.includes('obrigado') || lower.includes('valeu') || lower.includes('grato')) reply = responses.agradecimento;
+      
+      // Se não for comando conhecido, usa a IA Gemini via API segura
+      if (!reply) {
+        try {
+          const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: value })
+          });
+          const data = await res.json();
+          reply = data.response || data.error || responses.default;
+        } catch (err) {
+          console.error('Erro ao chamar IA:', err);
+          reply = responses.default;
+        }
+      }
       
       window.addMessage(window.sanitize(reply));
     };

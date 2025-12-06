@@ -25,6 +25,7 @@
     "server": "node src/server.js"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@vercel/postgres": "latest",
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
