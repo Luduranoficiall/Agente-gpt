@@ -1,8 +1,9 @@
 {
   "name": "agente-gpt-master-ouro",
-  "version": "1.0.1",
-  "description": "Plataforma de IA Conversacional Enterprise com Analytics Avançado - Agente GPT Master Ouro",
+  "version": "2.0.0",
+  "description": "Agente GPT Master Ouro - Assistente de IA Premium by Lucas Duran",
   "homepage": "https://agente-gpt-oficial.vercel.app",
+  "author": "Lucas Duran <luduranoficiall@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/Luduranoficiall/Agente-gpt"
@@ -12,30 +13,18 @@
     "chatbot",
     "nextjs",
     "react",
-    "node",
-    "openai",
     "gemini",
-    "master-ouro"
+    "lucas-duran"
   ],
-  "type": "module",
   "scripts": {
-    "dev": "concurrently \"next dev\" \"nodemon src/server.js\"",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "server": "node src/server.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
-    "@vercel/postgres": "latest",
-    "axios": "^1.6.7",
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2",
-    "mercadopago": "^2.1.0",
     "next": "14.1.0",
-    "qrcode": "^1.5.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -44,8 +33,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.22",
-    "concurrently": "^9.2.1",
-    "nodemon": "^3.1.11",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17"
   }
